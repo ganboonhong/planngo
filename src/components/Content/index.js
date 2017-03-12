@@ -3,15 +3,16 @@ import './style.css';
 import Password from '../Password';
 import Username from '../Username';
 import Email from '../Email';
-import ButtonSubmit from '../ButtonSubmit';
-import { Grid, Button } from 'react-bootstrap';
+import { Grid, Button, FormGroup } from 'react-bootstrap';
 
 class Content extends Component {
 
   constructor(){
     super();
     this.state = {
-
+        usernameHelpText: '',
+        emailHelpText: '',
+        passwordHelpText: '',
     };
   };
 
@@ -19,11 +20,14 @@ class Content extends Component {
     e.preventDefault()
     var isValidData = true;
 
-    for(var key in this.props.validateFields){
+    for(var key = 0; key < Object.keys(this.props.validateFields).length; key++){
         var field = this.props.validateFields[key];
         if(!this.refs[field].checkValid()) {
+            var obj = {};
+            obj[field+'HelpText']= 'Please check this field.';
+            this.setState(obj);
             isValidData = false;
-            break;
+            // break;
         }
     }
 
@@ -35,10 +39,16 @@ class Content extends Component {
     return (
         <Grid> 
             <form>
-                <Username ref='username'/>
-                <Email ref='email'/>
-                <Password ref='password'/>
-                <Button onClick={this.handleSubmit.bind(this)} />
+                <Username ref='username' usernameHelpText={`${this.state.usernameHelpText}`}/>
+                <Email ref='email' emailHelpText={`${this.state.emailHelpText}`}/>
+                <Password ref='password'  passwordHelpText={`${this.state.emailHelpText}`}/>
+
+                <FormGroup>
+                    <Button bsStyle="primary" type="submit" onClick={this.handleSubmit.bind(this)}>
+                        Submit
+                    </Button>
+                </FormGroup>
+
             </form>
         </Grid>
     )
@@ -46,11 +56,7 @@ class Content extends Component {
 }
 
 Content.defaultProps = {
-    validateFields:{
-        username: 'username',
-        email:    'email',
-        password: 'password',
-    }
+    validateFields :['username', 'email', 'password']
 }
 
 export default Content;

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { FormGroup, FormControl,ControlLabel } from 'react-bootstrap';
+import { FormGroup, FormControl,ControlLabel, HelpBlock } from 'react-bootstrap';
 import RowCenter from '../RowCenter';
 
 class Username extends Component {
@@ -40,10 +40,12 @@ class Username extends Component {
                         <ControlLabel>Username*</ControlLabel>
                           <FormControl
                             type="text"
+                            required={true}
                             value={this.state.username}
                             placeholder="Your Username"
                             onChange={this.handleChange}
                           />
+                          <HelpBlock>{`${this.props.usernameHelpText}`}</HelpBlock>
                           <FormControl.Feedback />
                     </FormGroup>
                 </RowCenter>

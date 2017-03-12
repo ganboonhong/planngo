@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { FormGroup, FormControl, ControlLabel } from 'react-bootstrap';
+import { FormGroup, FormControl, ControlLabel, HelpBlock } from 'react-bootstrap';
 import RowCenter from '../RowCenter';
 
 export default class Email extends Component {
@@ -31,6 +31,8 @@ export default class Email extends Component {
       });
     }
 
+
+
     render() {
         return (
                 <RowCenter>
@@ -40,11 +42,13 @@ export default class Email extends Component {
                     > 
                         <ControlLabel>Email*</ControlLabel>
                           <FormControl
-                            type="text"
+                            type="email"
+                            required={true}
                             value={this.state.email}
                             placeholder="Your Email"
                             onChange={this.handleChange}
                           />
+                          <HelpBlock>{`${this.props.emailHelpText}`}</HelpBlock>
                           <FormControl.Feedback />
                     </FormGroup>
                 </RowCenter>

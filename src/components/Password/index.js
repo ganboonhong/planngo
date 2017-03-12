@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { FormGroup, FormControl, ControlLabel } from 'react-bootstrap';
+import { FormGroup, FormControl, ControlLabel, HelpBlock } from 'react-bootstrap';
 import RowCenter from '../RowCenter';
 
 export default class Password extends Component {
@@ -17,10 +17,8 @@ export default class Password extends Component {
     getValidationState = () => {
 
       const length = this.state.password.length;
-      if (length > this.props.strongLength) {
+      if (length > this.props.minimumLength) {
         return 'success'
-      }else if (length > this.props.minimumLength){
-       return 'warning'; 
       }else if (length > 0) {
         return 'error'
       };
@@ -68,11 +66,13 @@ export default class Password extends Component {
                     > 
                         <ControlLabel>Password*</ControlLabel>
                           <FormControl
+                            required={true}
                             type="password"
                             value={this.state.password}
-                            placeholder={"At least " + this.props.minimumLength + " characters"}
+                            placeholder={`At least ${this.props.minimumLength} characters`}
                             onChange={this.handlePassword}
                           />
+                          <HelpBlock>{`${this.props.passwordHelpText}`}</HelpBlock>
                           <FormControl.Feedback />
                     </FormGroup>
                 </RowCenter>
@@ -84,11 +84,13 @@ export default class Password extends Component {
                     > 
                         <ControlLabel>Confirm Password*</ControlLabel>
                           <FormControl
+                            required={true}
                             type="password"
                             value={this.state.passwordConfirm}
                             placeholder="Confirm Your Password"
                             onChange={this.handlePasswordConfirm}
                           />
+                          <HelpBlock>{`${this.props.passwordHelpText}`}</HelpBlock>
                           <FormControl.Feedback />
                     </FormGroup>
                 </RowCenter>
@@ -98,6 +100,5 @@ export default class Password extends Component {
 }
 
 Password.defaultProps = {
-    minimumLength: 3,
-    strongLength: 8
+    minimumLength: 8
 };
