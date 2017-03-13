@@ -10,45 +10,69 @@ export default class Password extends Component {
           password: '',
           passwordConfirm: '',
           validPassword: '',
-          validPasswordConfirm: ''
-      };
+          validPasswordConfirm: '',
+          showHelpTextP:'',
+          showHelpTextPC:'',
+      }
     }
   
     getValidationState = () => {
 
       const length = this.state.password.length;
-      if (length > this.props.minimumLength) {
+      if (length >= this.props.minimumLength) {
         return 'success'
       }else if (length > 0) {
         return 'error'
       };
-    };
+    }
 
     checkValid = () => {
-        return (this.state.validPassword && this.state.validPasswordConfirm);
-    };
+        var obj       = {
+            result: false,
+            score:  0,
+        };
+
+        if (this.state.validPassword && this.state.validPasswordConfirm) obj['result'] = true;
+        if (this.state.validPassword) obj.score++;
+        if (this.state.validPasswordConfirm) obj.score++;
+
+        return obj;
+
+    }
   
     handlePassword = (e) => {
-        var password = e.target.value;
+      var password = e.target.value;
       this.setState({
         password: password,
-        validPassword: (password.length > this.props.minimumLength)
+        validPassword: (password.length >= this.props.minimumLength),
+        showHelpTextP: (password.length >= this.props.minimumLength) ? 'hide' : '',
       });
-    };
+      this._checkFunc();
+    }
+
+    _checkFunc = () =>{
+        setTimeout(() => {
+            this.props.checkFunc();
+        }, 500)
+    }
 
     handlePasswordConfirm = (e) => {
         var passwordConfirm = e.target.value
         this.setState({
             passwordConfirm: passwordConfirm,
-            validPasswordConfirm: (this.state.password === passwordConfirm)
+            validPasswordConfirm: (this.state.password === passwordConfirm 
+                && passwordConfirm.length >= this.props.minimumLength),
+            showHelpTextPC: (this.state.password === passwordConfirm  && 
+                passwordConfirm.length >= this.props.minimumLength) ? 'hide' : '',
         });
-    };
+        this._checkFunc();
+    }
 
     getPasswordConfirmState = () => {
         const length = this.state.passwordConfirm.length;
         if (length === 0)
             return;
-        else if(this.state.password === this.state.passwordConfirm) 
+        else if(this.state.password === this.state.passwordConfirm && length >-  this.props.minimumLength)
             return 'success';
         else
             return 'error';
@@ -72,7 +96,7 @@ export default class Password extends Component {
                             placeholder={`At least ${this.props.minimumLength} characters`}
                             onChange={this.handlePassword}
                           />
-                          <HelpBlock>{`${this.props.passwordHelpText}`}</HelpBlock>
+                          <HelpBlock className={this.state.showHelpTextP}>{`${this.props.passwordHelpText}`}</HelpBlock>
                           <FormControl.Feedback />
                     </FormGroup>
                 </RowCenter>
@@ -90,13 +114,18 @@ export default class Password extends Component {
                             placeholder="Confirm Your Password"
                             onChange={this.handlePasswordConfirm}
                           />
-                          <HelpBlock>{`${this.props.passwordHelpText}`}</HelpBlock>
+                          <HelpBlock className={this.state.showHelpTextPC}>{`${this.props.passwordHelpText}`}</HelpBlock>
                           <FormControl.Feedback />
                     </FormGroup>
                 </RowCenter>
             </div>
         );
     }
+}
+
+Password.propTypes = {
+  checkValid: React.PropTypes.func,
+  checkFunc: React.PropTypes.func,
 }
 
 Password.defaultProps = {

@@ -8,13 +8,24 @@ export default class Email extends Component {
       super(props);
       this.state = {
           email: '',
-          validEmail: false
+          validEmail: false,
+          showHelpText: ''
       };
     }
 
     checkValid = () => {
-        return this.state.validEmail;
-    };
+        var obj = {
+            result: false,
+            score: 0
+        }
+
+        if(this.state.validEmail){
+            obj.result = true;
+            obj.score  = 1;
+        }
+
+        return obj;
+    }
   
     getValidationState = () => {
       let email = this.state.email;  
@@ -22,16 +33,22 @@ export default class Email extends Component {
       if (re.test(email)) return 'success';
       else if (!email) return;
       else if (!re.test(email)) return 'error';
-    };
+    }
   
     handleChange = (e) => {
       this.setState({
         email: e.target.value,
-        validEmail: this.props.re.test(e.target.value)
+        validEmail: this.props.re.test(e.target.value),
+        showHelpText: (this.props.re.test(e.target.value)) ? 'hide' : '',
       });
+      this._checkFunc();
     }
 
-
+    _checkFunc = () => {
+        setTimeout( () => {
+            this.props.checkFunc();
+        }, 500)
+    }
 
     render() {
         return (
@@ -48,7 +65,7 @@ export default class Email extends Component {
                             placeholder="Your Email"
                             onChange={this.handleChange}
                           />
-                          <HelpBlock>{`${this.props.emailHelpText}`}</HelpBlock>
+                          <HelpBlock className={this.state.showHelpText}>{`${this.props.emailHelpText}`}</HelpBlock>
                           <FormControl.Feedback />
                     </FormGroup>
                 </RowCenter>
@@ -58,6 +75,7 @@ export default class Email extends Component {
 
 Email.propTypes = {
   checkValid: React.PropTypes.func,
+  checkFunc: React.PropTypes.func,
 };
 
 Email.defaultProps = {

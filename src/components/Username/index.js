@@ -8,27 +8,45 @@ class Username extends Component {
       super(props);
       this.state = {
           username: '',
-          validUsername: false
+          validUsername: false,
+          showHelpText: '',
       }
-    };
+    }
     
     checkValid = () => {
-        return this.state.validUsername;
-    };
+        var obj = {
+            result: false,
+            score: 0
+        }
+        if(this.state.validUsername) {
+            obj.result = true;
+            obj.score = 1;
+        }
+        return obj;
+    }
   
     getValidationState = () => {
       const length = this.state.username.length;
-      if (length > 2) return 'success';
+      if (length > this.props.minimumCharacter) return 'success';
       else if (length > 0) return 'error';
-    };
+    }
   
     handleChange = (e) => {
         var username = e.target.value;
+        
         this.setState({
             username: username,
-            validUsername: username.length > 2
+            validUsername: username.length > this.props.minimumCharacter,
+            showHelpText: (username.length > this.props.minimumCharacter) ? 'hide' : '',
         });
-    };
+        this._checkFunc();
+    }
+
+    _checkFunc = () => {
+        setTimeout(() => {
+            this.props.checkFunc();
+        }, 500);
+    }
 
     render() {
         return (
@@ -45,7 +63,7 @@ class Username extends Component {
                             placeholder="Your Username"
                             onChange={this.handleChange}
                           />
-                          <HelpBlock>{`${this.props.usernameHelpText}`}</HelpBlock>
+                          <HelpBlock className={this.state.showHelpText}>{`${this.props.usernameHelpText}`}</HelpBlock>
                           <FormControl.Feedback />
                     </FormGroup>
                 </RowCenter>
@@ -55,6 +73,11 @@ class Username extends Component {
 
 Username.propTypes = {
   checkValid: React.PropTypes.func,
+  checkFunc: React.PropTypes.func,
 };
+
+Username.defaultProps = {
+    minimumCharacter: 2
+}
 
 export default Username;

@@ -3,7 +3,8 @@ import './style.css';
 import Password from '../Password';
 import Username from '../Username';
 import Email from '../Email';
-import { Grid, Button, FormGroup } from 'react-bootstrap';
+import RowCenter from '../RowCenter';
+import { Grid, Button, FormGroup, ProgressBar } from 'react-bootstrap';
 
 class Content extends Component {
 
@@ -11,9 +12,11 @@ class Content extends Component {
     super();
     this.state = {
         usernameHelpText: '',
-        emailHelpText: '',
+        emailHelpText:    '',
         passwordHelpText: '',
+        progress: 0,
     };
+    this.checkProgress = this.checkProgress.bind(this)
   };
 
   handleSubmit(e) {
@@ -22,32 +25,53 @@ class Content extends Component {
 
     for(var key = 0; key < Object.keys(this.props.validateFields).length; key++){
         var field = this.props.validateFields[key];
-        if(!this.refs[field].checkValid()) {
-            var obj = {};
+        var obj = {};
+
+        if(!this.refs[field].checkValid().result) {
+            
             obj[field+'HelpText']= 'Please check this field.';
-            this.setState(obj);
+            
             isValidData = false;
-            // break;
+        }else{
+            obj[field+'HelpText']= '';
         }
+        this.setState(obj);
     }
 
     console.log(isValidData)
 
   }
 
+  checkProgress = () => {
+        var progress = 0;
+
+        for(var key = 0; key < Object.keys(this.props.validateFields).length; key++){
+            var field = this.props.validateFields[key];
+            var r = this.refs[field].checkValid();
+            if(r.score) progress += r.score;
+        }
+        this.setState({progress: (progress/4 * 100)});
+  }
+
   render() {
     return (
         <Grid> 
             <form>
-                <Username ref='username' usernameHelpText={`${this.state.usernameHelpText}`}/>
-                <Email ref='email' emailHelpText={`${this.state.emailHelpText}`}/>
-                <Password ref='password'  passwordHelpText={`${this.state.emailHelpText}`}/>
+                <Username checkFunc={this.checkProgress} ref='username' usernameHelpText={`${this.state.usernameHelpText}`}/>
+                <Email checkFunc={this.checkProgress}ref='email' emailHelpText={`${this.state.emailHelpText}`}/>
+                <Password checkFunc={this.checkProgress} ref='password'  passwordHelpText={`${this.state.emailHelpText}`}/>
 
-                <FormGroup>
-                    <Button bsStyle="primary" type="submit" onClick={this.handleSubmit.bind(this)}>
-                        Submit
-                    </Button>
-                </FormGroup>
+                <RowCenter>
+                    <ProgressBar bsStyle="info" now={this.state.progress} />
+                </RowCenter>
+
+                <RowCenter>
+                    <FormGroup>
+                        <Button bsStyle="primary" type="submit" onClick={this.handleSubmit.bind(this)}>
+                            Submit
+                        </Button>
+                    </FormGroup>
+                </RowCenter>
 
             </form>
         </Grid>
