@@ -5,13 +5,13 @@ import { Router, Route } from 'react-router';
 import App from './components/App';
 import About from './components/About';
 import NotFound from './components/NotFound';
-import Login from './components/Login';
+import Join from './components/Join';
 
 const Routes = (props) => (
   <Router {...props}>
     <Route path="/" component={App} />
     <Route path="/about" component={About} />
-    <Route path="/login" component={Login} />
+    <Route path="/join" component={Join} />
     <Route path="*" component={NotFound} />
   </Router>
 );

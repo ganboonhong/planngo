@@ -5,6 +5,7 @@ import Username from '../Username';
 import Email from '../Email';
 import RowCenter from '../RowCenter';
 import { Grid, Button, FormGroup, ProgressBar } from 'react-bootstrap';
+import $ from 'jquery';
 
 class Content extends Component {
 
@@ -22,23 +23,41 @@ class Content extends Component {
   handleSubmit(e) {
     e.preventDefault()
     var isValidData = true;
+    var dataTmp = {};
 
     for(var key = 0; key < Object.keys(this.props.validateFields).length; key++){
         var field = this.props.validateFields[key];
         var obj = {};
 
         if(!this.refs[field].checkValid().result) {
-            
-            obj[field+'HelpText']= 'Please check this field.';
-            
-            isValidData = false;
+            obj[field+'HelpText'] = 'Please check this field.';
+            isValidData           = false;
         }else{
+            dataTmp[field] = this.refs[field].checkValid().value;
             obj[field+'HelpText']= '';
         }
         this.setState(obj);
     }
 
-    console.log(isValidData)
+    if(isValidData) {
+        
+        var formData = {
+            name: dataTmp.username,
+            email: dataTmp.email,
+            password: dataTmp.password,
+        };
+
+        $.ajax({
+            url: 'http://localhost:3000/join',
+            type: 'POST', 
+            data: JSON.stringify(formData),
+            dataType: 'json',
+            contentType: 'application/json',
+        }).done((data) => {
+            console.log(data)
+        });
+
+    }
 
   }
 
@@ -58,7 +77,7 @@ class Content extends Component {
         <Grid> 
             <form>
                 <Username checkFunc={this.checkProgress} ref='username' usernameHelpText={`${this.state.usernameHelpText}`}/>
-                <Email checkFunc={this.checkProgress}ref='email' emailHelpText={`${this.state.emailHelpText}`}/>
+                <Email checkFunc={this.checkProgress} ref='email' emailHelpText={`${this.state.emailHelpText}`}/>
                 <Password checkFunc={this.checkProgress} ref='password'  passwordHelpText={`${this.state.emailHelpText}`}/>
 
                 <RowCenter>
@@ -67,7 +86,7 @@ class Content extends Component {
 
                 <RowCenter>
                     <FormGroup>
-                        <Button bsStyle="primary" type="submit" onClick={this.handleSubmit.bind(this)}>
+                        <Button id='for' bsStyle="primary" type="submit" onClick={this.handleSubmit.bind(this)}>
                             Submit
                         </Button>
                     </FormGroup>

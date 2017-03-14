@@ -16,7 +16,8 @@ export default class Email extends Component {
     checkValid = () => {
         var obj = {
             result: false,
-            score: 0
+            score: 0,
+            value: this.state.email
         }
 
         if(this.state.validEmail){
@@ -28,7 +29,7 @@ export default class Email extends Component {
     }
   
     getValidationState = () => {
-      let email = this.state.email;  
+      var email = this.state.email;  
       const re = this.props.re;
       if (re.test(email)) return 'success';
       else if (!email) return;
@@ -53,10 +54,7 @@ export default class Email extends Component {
     render() {
         return (
                 <RowCenter>
-                    <FormGroup
-                      controlId="formBasicText"
-                      validationState={this.getValidationState()}
-                    > 
+                    <FormGroup controlId="formBasicText" validationState={this.getValidationState()}> 
                         <ControlLabel>Email*</ControlLabel>
                           <FormControl
                             type="email"

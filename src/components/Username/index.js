@@ -16,7 +16,8 @@ class Username extends Component {
     checkValid = () => {
         var obj = {
             result: false,
-            score: 0
+            score: 0,
+            value: this.state.username
         }
         if(this.state.validUsername) {
             obj.result = true;
@@ -51,10 +52,7 @@ class Username extends Component {
     render() {
         return (
                 <RowCenter>
-                    <FormGroup
-                      controlId="formBasicText"
-                      validationState={this.getValidationState()}
-                    > 
+                    <FormGroup controlId="username" validationState={this.getValidationState()}> 
                         <ControlLabel>Username*</ControlLabel>
                           <FormControl
                             type="text"

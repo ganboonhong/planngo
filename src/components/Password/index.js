@@ -7,17 +7,16 @@ export default class Password extends Component {
     constructor(props) {
       super(props);
       this.state = {
-          password: '',
-          passwordConfirm: '',
-          validPassword: '',
+          password:             '',
+          passwordConfirm:      '',
+          validPassword:        '',
           validPasswordConfirm: '',
-          showHelpTextP:'',
-          showHelpTextPC:'',
+          showHelpTextP:        '',
+          showHelpTextPC:       '',
       }
     }
   
     getValidationState = () => {
-
       const length = this.state.password.length;
       if (length >= this.props.minimumLength) {
         return 'success'
@@ -27,9 +26,10 @@ export default class Password extends Component {
     }
 
     checkValid = () => {
-        var obj       = {
+        var obj = {
             result: false,
             score:  0,
+            value: this.state.password
         };
 
         if (this.state.validPassword && this.state.validPasswordConfirm) obj['result'] = true;
@@ -37,7 +37,6 @@ export default class Password extends Component {
         if (this.state.validPasswordConfirm) obj.score++;
 
         return obj;
-
     }
   
     handlePassword = (e) => {
@@ -78,16 +77,11 @@ export default class Password extends Component {
             return 'error';
     };
 
-
     render() {
-
         return (
             <div>
                 <RowCenter>
-                    <FormGroup
-                      controlId="formBasicText"
-                      validationState={this.getValidationState()}
-                    > 
+                    <FormGroup controlId="formBasicText" validationState={this.getValidationState()}> 
                         <ControlLabel>Password*</ControlLabel>
                           <FormControl
                             required={true}
@@ -102,10 +96,7 @@ export default class Password extends Component {
                 </RowCenter>
 
                 <RowCenter>
-                    <FormGroup
-                      controlId="formBasicText"
-                      validationState={this.getPasswordConfirmState()}
-                    > 
+                    <FormGroup controlId="formBasicText" validationState={this.getPasswordConfirmState()}> 
                         <ControlLabel>Confirm Password*</ControlLabel>
                           <FormControl
                             required={true}
@@ -129,5 +120,5 @@ Password.propTypes = {
 }
 
 Password.defaultProps = {
-    minimumLength: 8
+    minimumLength: 3
 };

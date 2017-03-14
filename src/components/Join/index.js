@@ -4,7 +4,7 @@ import Header from '../Header';
 import Content from '../Content';
 import Footer from '../Footer';
 
-class Login extends Component {
+class Join extends Component {
   render () {
     return (
       <div>
@@ -16,4 +16,4 @@ class Login extends Component {
   }
 }
 
-export default Login;
+export default Join;
