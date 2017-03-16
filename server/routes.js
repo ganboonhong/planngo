@@ -1,5 +1,10 @@
-var models  = require('./sequelize/models');
-var bodyParser = require('body-parser');
+const models  = require('./sequelize/models');
+const bodyParser = require('body-parser');
+const crypto = require('crypto');
+var Result = {success: false, error: ''};
+var Body;
+var Res;
+
 
 module.exports = function(app){
 
@@ -16,8 +21,21 @@ module.exports = function(app){
     }));
 
     app.post('/join', function(req, res){
-        console.log(models.User.create(req.body));
-        res.send(req.body);
+        
+        var User = models.User;
+        Body     = req.body;
+        Res      = res;
+
+        User.findOne({where: {name: Body.name}}).then(function(user){
+            if(!user){
+                Body.password = crypto.createHmac('sha256', Body.password).digest('hex');
+                var promise = User.create(Body);
+                if(promise) Result.success = true;
+            }else{
+                Result.error = 'duplicated'
+            }
+            Res.send(Result);
+        });
     });
 
 }

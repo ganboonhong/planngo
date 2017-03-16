@@ -1,8 +1,8 @@
 // server/app.js
-var express = require('express');
-var morgan = require('morgan');
-var path = require('path');
-var app = express();
+const express = require('express');
+const morgan = require('morgan');
+const path = require('path');
+const app = express();
 require('./routes')(app);
 
 // Setup logger
