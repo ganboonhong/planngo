@@ -22,6 +22,7 @@
     "mocha": "^3.2.0",
     "mz": "^2.6.0",
     "react-scripts": "0.9.2",
+    "sequelize-cli": "^2.5.1",
     "supertest": "^3.0.0",
     "supertest-as-promised": "^4.0.2"
   },
