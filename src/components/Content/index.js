@@ -40,7 +40,7 @@ class Content extends Component {
     }
 
     if(isValidData) {
-        
+
         var formData = {
             name: dataTmp.username,
             email: dataTmp.email,
@@ -48,11 +48,13 @@ class Content extends Component {
         };
 
         $.ajax({
-            url: 'http://localhost:3000/join',
+            url: 'http://localhost:9000/join',
             type: 'POST', 
             data: JSON.stringify(formData),
             dataType: 'json',
             contentType: 'application/json',
+            crossDomain: true,
+
         }).done((data) => {
             console.log(data)
         });
