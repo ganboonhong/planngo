@@ -55,6 +55,7 @@ export default class ContentLogin extends Component {
             dataType: 'json',
             contentType: 'application/json',
             crossDomain: true,
+            xhrFields: {withCredentials: true},
 
         }).done((result) => {
             if(result) this.setState({
@@ -65,7 +66,7 @@ export default class ContentLogin extends Component {
 
             if(result.success){
                 setTimeout(() => {
-                    window.location.href = "http://facebook.com"
+                    // window.location.href = "http://facebook.com"
                 }, 3000);
             }
         });
