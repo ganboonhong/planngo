@@ -6,7 +6,7 @@ class Header extends Component {
   render() {
     return (
         <Grid>
-              <TextCenter bsStyle="primary">Sign Up</TextCenter>
+              <TextCenter bsStyle="primary">{this.props.title}</TextCenter>
         </Grid>
     );
   }

@@ -38,7 +38,7 @@ class Username extends Component {
         this.setState({
             username: username,
             validUsername: username.length > this.props.minimumCharacter,
-            showHelpText: (username.length > this.props.minimumCharacter) ? 'hide' : '',
+            showHelpText: (username.length > this.props.minimumCharacter) ? 'hide text-danger' : '',
         });
         this._checkFunc();
     }
@@ -60,6 +60,7 @@ class Username extends Component {
                             value={this.state.username}
                             placeholder="Your Username"
                             onChange={this.handleChange}
+                            autoFocus
                           />
                           <HelpBlock className={this.state.showHelpText}>{`${this.props.usernameHelpText}`}</HelpBlock>
                           <FormControl.Feedback />

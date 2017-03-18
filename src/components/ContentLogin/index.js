@@ -1,27 +1,22 @@
 import React, { Component } from 'react';
-import './style.css';
-import Password from '../Password';
-import Username from '../Username';
+import PasswordLogin from '../PasswordLogin';
 import TextCenter from '../TextCenter';
-import Email from '../Email';
+import EmailLogin from '../EmailLogin';
 import RowCenter from '../RowCenter';
-import { Grid, Button, FormGroup, ProgressBar, Modal } from 'react-bootstrap';
+import { Grid, Button, FormGroup, Modal } from 'react-bootstrap';
 import $ from 'jquery';
 
-export default class Content extends Component {
+export default class ContentLogin extends Component {
 
   constructor(){
     super();
     this.state = {
-        usernameHelpText: '',
         emailHelpText:    '',
         passwordHelpText: '',
-        progress: 0,
         showModal: false,
         modalMsg: '',
         msgBsStyle: 'primary',
     };
-    this.checkProgress = this.checkProgress.bind(this)
     this.open = this.open.bind(this)
     this.close = this.close.bind(this)
   };
@@ -54,7 +49,7 @@ export default class Content extends Component {
         };
 
         $.ajax({
-            url: 'http://localhost:9000/join',
+            url: 'http://localhost:9000/login',
             type: 'POST', 
             data: JSON.stringify(formData),
             dataType: 'json',
@@ -70,24 +65,13 @@ export default class Content extends Component {
 
             if(result.success){
                 setTimeout(() => {
-                    // window.location.href = "http://facebook.com"
+                    window.location.href = "http://facebook.com"
                 }, 3000);
             }
         });
 
     }
 
-  }
-
-  checkProgress = () => {
-        var progress = 0;
-
-        for(var key = 0; key < Object.keys(this.props.validateFields).length; key++){
-            var field = this.props.validateFields[key];
-            var r = this.refs[field].checkValid();
-            if(r.score) progress += r.score;
-        }
-        this.setState({progress: (progress/4 * 100)});
   }
 
   close = () => {
@@ -104,12 +88,8 @@ export default class Content extends Component {
             <Grid> 
 
                 <form>
-                    <Username checkFunc={this.checkProgress} ref='username' usernameHelpText={`${this.state.usernameHelpText}`}/>
-                    <Email checkFunc={this.checkProgress} ref='email' emailHelpText={`${this.state.emailHelpText}`}/>
-                    <Password checkFunc={this.checkProgress} ref='password'  passwordHelpText={`${this.state.emailHelpText}`}/>
-                    <RowCenter>
-                        <ProgressBar bsStyle="info" now={this.state.progress} />
-                    </RowCenter>
+                    <EmailLogin ref='email' emailHelpText={`${this.state.emailHelpText}`}/>
+                    <PasswordLogin ref='password'  passwordHelpText={`${this.state.emailHelpText}`}/>
                     <RowCenter>
                         <FormGroup>
                             <Button id='for' bsStyle="primary" type="submit" onClick={this.handleSubmit.bind(this)}>
@@ -140,6 +120,6 @@ export default class Content extends Component {
   }
 }
 
-Content.defaultProps = {
-    validateFields :['username', 'email', 'password']
+ContentLogin.defaultProps = {
+    validateFields :['email', 'password']
 }

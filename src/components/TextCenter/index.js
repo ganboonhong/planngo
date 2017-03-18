@@ -9,7 +9,7 @@ class TextCenter extends Component {
                     <Col md={3}></Col>
                     <Col md={6}>
                         <h1>
-                        <Label bsStyle="primary">
+                        <Label bsStyle={this.props.bsStyle}>
                             { this.props.children}
                         </Label>
                         </h1>

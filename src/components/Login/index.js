@@ -1,19 +1,16 @@
 import React, { Component } from 'react';
-import './style.css';
 import Title from '../Title';
-import Content from '../Content';
+import ContentLogin from '../ContentLogin';
 import Footer from '../Footer';
 
-class Join extends Component {
+export default class Login extends Component {
   render () {
     return (
       <div>
-        <Title title="Sign Up for EO Digital"/>
-        <Content />
+        <Title title="Sign in to EO Digital" />
+        <ContentLogin />
         <Footer />
       </div>
     );
   }
 }
-
-export default Join;
