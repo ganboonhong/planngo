@@ -1,27 +1,14 @@
 import React, { Component } from 'react';
 import Pagination from '../Pagination';
 import $ from 'jquery';
-import { Table } from 'react-bootstrap';
+import { Table, Button, Glyphicon } from 'react-bootstrap';
 import Title from './Title';
 
 export default class List extends Component {
     constructor() {
         super();
 
-        var orders = (() => {
-            var tmp = null;
-
-            $.ajax({
-                async: false,
-                url: 'http://localhost:9000/order',
-                type: 'GET',
-                dataType: 'json',
-            }).done((result) => {
-                tmp = result;
-            });
-            
-            return tmp;
-        })();
+        var orders = this.getOrders();
 
         this.state = {
             orders: orders,
@@ -37,8 +24,7 @@ export default class List extends Component {
         this.setState({ pageOfItems: pageOfItems });
     }
 
-    reloadOrderList = () => {
-        console.log('list reloadOrderList')
+    getOrders = () => {
         var orders = (() => {
             var tmp = null;
 
@@ -54,16 +40,18 @@ export default class List extends Component {
             return tmp;
         })();
 
+        return orders;
+    }
 
+    reloadOrderList = () => {
+        var orders      = this.getOrders();
         var currentPage = parseInt($(".pagination").find(".active").find("a").text())
         this.setState({orders: orders, pageOfItems: this.state.pageOfItems});
         this.refs['pagination'].setPage(currentPage);
-
     }
  
     render() {
         return (
-
             <div>
                 <Title title="Order List" />
                 <Table striped bordered condensed hover>
@@ -73,6 +61,7 @@ export default class List extends Component {
                         <th>Sequence</th>
                         <th>Price</th>
                         <th>Remarks</th>
+                        <th></th>
                       </tr>
                     </thead>
                     <tbody>
@@ -82,6 +71,11 @@ export default class List extends Component {
                             <td>{item.sequence}</td>
                             <td>{item.price}</td>
                             <td>{item.remarks}</td>
+                            <td style={{"width": "10px"}}>
+                                <Button bsSize="xsmall" bsStyle="danger">
+                                    <Glyphicon glyph="trash" />
+                                </Button>
+                            </td>
                           </tr>
                         )}
                     </tbody>

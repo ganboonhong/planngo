@@ -5,11 +5,7 @@ export default class Remarks extends Component {
 
     constructor(props) {
       super(props);
-      this.state = {
-          remarks: '',
-          validRemarks: true, // remarks is not compulsary
-          showHelpText: '',
-      }
+      this.state = this.props.initState;
     }
     
     checkValid = () => {
@@ -31,6 +27,10 @@ export default class Remarks extends Component {
             // validRemarks: remarks.length > this.props.minimumCharacter,
             // showHelpText: (remarks.length > this.props.minimumCharacter) ? 'hide' : '',
         });
+    }
+
+    clearState = () => {
+        this.setState(this.props.initState);
     }
 
     render() {
@@ -62,5 +62,10 @@ Remarks.propTypes = {
 };
 
 Remarks.defaultProps = {
-    minimumCharacter: 1
+    minimumCharacter: 1,
+    initState: {
+        remarks: '',
+        validRemarks: true, // remarks is not compulsary
+        showHelpText: '',
+    }
 }

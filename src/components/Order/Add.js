@@ -31,6 +31,7 @@ export default class Add extends Component {
             }else{
                 dataTmp[field] = this.refs[field].checkValid().value;
                 obj[field+'HelpText']= '';
+                this.refs[field].clearState();
             }
             this.setState(obj);
         }

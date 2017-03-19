@@ -5,11 +5,7 @@ export default class Price extends Component {
 
     constructor(props) {
       super(props);
-      this.state = {
-          price: '',
-          validPrice: false,
-          showHelpText: '',
-      }
+      this.state = this.props.initState;
     }
     
     checkValid = () => {
@@ -31,6 +27,10 @@ export default class Price extends Component {
             validPrice: price.length >= this.props.minimumCharacter,
             showHelpText: (price.length >= this.props.minimumCharacter) ? 'hide' : '',
         });
+    }
+
+    clearState = () => {
+        this.setState(this.props.initState);
     }
 
     render() {
@@ -61,5 +61,10 @@ Price.propTypes = {
 };
 
 Price.defaultProps = {
-    minimumCharacter: 1
+    minimumCharacter: 1,
+    initState: {
+        price: '',
+        validPrice: false,
+        showHelpText: '',
+    }
 }

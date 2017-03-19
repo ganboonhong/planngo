@@ -5,11 +5,7 @@ export default class Sequence extends Component {
 
     constructor(props) {
       super(props);
-      this.state = {
-          sequence: '',
-          validSequence: false,
-          showHelpText: '',
-      }
+      this.state = this.props.initState;
     }
     
     checkValid = () => {
@@ -21,6 +17,10 @@ export default class Sequence extends Component {
             obj.result = true;
         }
         return obj;
+    }
+
+    clearState = () => {
+        this.setState(this.props.initState);
     }
   
     handleChange = (e) => {
@@ -62,5 +62,10 @@ Sequence.propTypes = {
 };
 
 Sequence.defaultProps = {
-    minimumCharacter: 1
+    minimumCharacter: 1,
+    initState: {
+        sequence: '',
+        validSequence: false,
+        showHelpText: '',
+    }
 }
