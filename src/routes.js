@@ -1,4 +1,3 @@
-// src/routes.js
 import React from 'react';
 import { Router, Route } from 'react-router';
 
@@ -7,7 +6,7 @@ import About from './components/About';
 import NotFound from './components/NotFound';
 import Join from './components/Join';
 import Login from './components/Login';
-import Register from './components/Register';
+import Order from './components/Order';
 
 const Routes = (props) => (
   <Router {...props}>
@@ -15,7 +14,7 @@ const Routes = (props) => (
     <Route path="/about" component={About} />
     <Route path="/join" component={Join} />
     <Route path="/login" component={Login} />
-    <Route path="/register" component={Register} />
+    <Route path="/order" component={Order} />
     <Route path="*" component={NotFound} />
   </Router>
 );

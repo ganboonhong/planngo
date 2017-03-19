@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { Col, Row, FormGroup, FormControl, ControlLabel, HelpBlock } from 'react-bootstrap';
-import RowCenter from '../RowCenter';
 
-class Sequence extends Component {
+export default class Sequence extends Component {
 
     constructor(props) {
       super(props);
@@ -24,22 +23,14 @@ class Sequence extends Component {
         return obj;
     }
   
-  
     handleChange = (e) => {
         var sequence = e.target.value;
         
         this.setState({
             sequence: sequence,
             validSequence: sequence.length > this.props.minimumCharacter,
-            showHelpText: (sequence.length > this.props.minimumCharacter) ? 'hide text-danger' : '',
+            showHelpText: (sequence.length > this.props.minimumCharacter) ? 'hide' : '',
         });
-        this._checkFunc();
-    }
-
-    _checkFunc = () => {
-        setTimeout(() => {
-            this.props.checkFunc();
-        }, 500);
     }
 
     render() {
@@ -73,5 +64,3 @@ Sequence.propTypes = {
 Sequence.defaultProps = {
     minimumCharacter: 1
 }
-
-export default Sequence;

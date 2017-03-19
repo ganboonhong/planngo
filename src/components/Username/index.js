@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { FormGroup, FormControl,ControlLabel, HelpBlock } from 'react-bootstrap';
 import RowCenter from '../RowCenter';
 
-class Username extends Component {
+export default class Username extends Component {
 
     constructor(props) {
       super(props);
@@ -38,7 +38,7 @@ class Username extends Component {
         this.setState({
             username: username,
             validUsername: username.length > this.props.minimumCharacter,
-            showHelpText: (username.length > this.props.minimumCharacter) ? 'hide text-danger' : '',
+            showHelpText: (username.length > this.props.minimumCharacter) ? 'hide' : '',
         });
         this._checkFunc();
     }
@@ -78,5 +78,3 @@ Username.propTypes = {
 Username.defaultProps = {
     minimumCharacter: 2
 }
-
-export default Username;

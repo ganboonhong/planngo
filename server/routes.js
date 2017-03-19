@@ -5,8 +5,6 @@ const session = require('express-session');
 var Sess;
 var Result = {success: false, msg: '', msgBsStyle: ''};
 var Body;
-var Res;
-
 
 module.exports = function(app){
 
@@ -49,7 +47,6 @@ module.exports = function(app){
         
         var User = models.User;
         Body     = req.body;
-        Res      = res;
 
         User.findOne({where: {email: Body.email}}
                         ).then(
@@ -59,22 +56,18 @@ module.exports = function(app){
                                 var promise   = User.create(Body
                                     ).then(
                                         (user) => {
-                                            var tmpUser = user.get({plain: true});
-                                            Result.success = true;
-                                            Result.msg = 'Congratulations, '+tmpUser.name+' ! You\'ve signed up successfully.'
+                                            var tmpUser       = user.get({plain: true});
+                                            Result.success    = true;
+                                            Result.msg        = 'Congratulations, '+tmpUser.name+' ! You\'ve signed up successfully.'
                                             Result.msgBsStyle = 'success';
-                                            Res.send(Result);
-                                            console.log(Result);
-                                            console.log('1----')
+                                            res.send(Result);
                                         }
                                     );
                             }else{
-                                Result.msg = 'This email has been used.'
+                                Result.msg        = 'This email has been used.'
                                 Result.msgBsStyle = 'danger';
-                                Res.send(Result);
+                                res.send(Result);
                             }
-                                            console.log(Result);
-                                            console.log('2----')
                         });
     }); // eo post join
 
@@ -82,13 +75,12 @@ module.exports = function(app){
 
         var User = models.User;
         Body     = req.body;
-        Res      = res;
         Sess     = req.session;
 
         if(Sess[Body.email]){
             Result.msg = 'you\'ve already signed in.';
             Result.msgBsStyle = 'danger';
-            Res.send(Result);
+            res.send(Result);
         }else{
 
             User.findOne({where: {
@@ -99,20 +91,47 @@ module.exports = function(app){
             ).then(
                 (user) => {
                     if(user){
-                        var tmpUser = user.get({plain: true});
-                        Result.msg = 'Login successfully! Welcome back ' + tmpUser.name + '.';
-                        Result.msgBsStyle = 'success';
-                        Result.success = true;
+                        var tmpUser         = user.get({plain: true});
+                        Result.msg          = 'Login successfully! Welcome back ' + tmpUser.name + '.';
+                        Result.msgBsStyle   = 'success';
+                        Result.success      = true;
                         Sess[tmpUser.email] = true;
-                        Res.send(Result);
+                        res.send(Result);
                     }else{
-                        Result.msg = 'Wrong email or password.'
+                        Result.msg        = 'Wrong email or password.'
                         Result.msgBsStyle = 'danger';
-                        Res.send(Result);
+                        res.send(Result);
                     }
                 }
             );
         }
     }) // eo post login
+
+    app.post('/order', (req, res) => {
+        var Order = models.Order;
+        Body      = req.body;
+        // Sess      = req.session;
+        // TODO: check session
+
+        Order.create(Body).then(
+            (order) => {
+                console.log(order);
+                res.send(Body);
+            }
+        )
+    })  // eo post order
+
+    app.get('/order', (req, res) => {
+        var Order = models.Order;
+
+        Order.findAll({
+            where: {
+                // sequence: 333
+            },
+            raw: true
+        }).then((orders) => {
+            res.send(orders);
+        });
+    });  // eo get order
 
 }
