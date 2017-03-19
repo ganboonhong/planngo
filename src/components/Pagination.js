@@ -7,9 +7,9 @@ const propTypes = {
     initialPage: PropTypes.number   
 }
  
-const defaultProps = {
-    initialPage: 1
-}
+// const defaultProps = {
+//     initialPage: 1
+// }
  
 class Pagination extends React.Component {
     constructor(props) {
@@ -94,24 +94,25 @@ class Pagination extends React.Component {
  
     render() {
         var pager = this.state.pager;
+        var liStyle = {cursor: 'pointer'};
  
         return (
             <ul className="pagination">
-                <li className={pager.currentPage === 1 ? 'disabled' : ''}>
+                <li className={pager.currentPage === 1 ? 'disabled' : ''} style={liStyle}>
                     <a onClick={() => this.setPage(1)}>First</a>
                 </li>
-                <li className={pager.currentPage === 1 ? 'disabled' : ''}>
+                <li className={pager.currentPage === 1 ? 'disabled' : ''} style={liStyle}>
                     <a onClick={() => this.setPage(pager.currentPage - 1)}>Previous</a>
                 </li>
                 {pager.pages.map((page, index) =>
-                    <li key={index} className={pager.currentPage === page ? 'active' : ''}>
+                    <li key={index} className={pager.currentPage === page ? 'active' : ''} style={liStyle}>
                         <a onClick={() => this.setPage(page)}>{page}</a>
                     </li>
                 )}
-                <li className={pager.currentPage === pager.totalPages ? 'disabled' : ''}>
+                <li className={pager.currentPage === pager.totalPages ? 'disabled' : ''} style={liStyle}>
                     <a onClick={() => this.setPage(pager.currentPage + 1)}>Next</a>
                 </li>
-                <li className={pager.currentPage === pager.totalPages ? 'disabled' : ''}>
+                <li className={pager.currentPage === pager.totalPages ? 'disabled' : ''} style={liStyle}>
                     <a onClick={() => this.setPage(pager.totalPages)}>Last</a>
                 </li>
             </ul>
@@ -120,5 +121,5 @@ class Pagination extends React.Component {
 }
  
 Pagination.propTypes = propTypes;
-Pagination.defaultProps
+// Pagination.defaultProps
 export default Pagination;

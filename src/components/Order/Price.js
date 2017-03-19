@@ -38,7 +38,7 @@ export default class Price extends Component {
                 <Row>
                     <Col md={11}>
                         <FormGroup controlId="price"> 
-                            <ControlLabel>Price No*</ControlLabel>
+                            <ControlLabel>Price*</ControlLabel>
                               <FormControl
                                 type="text"
                                 required={true}

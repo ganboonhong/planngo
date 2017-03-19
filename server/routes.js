@@ -128,6 +128,7 @@ module.exports = function(app){
             where: {
                 // sequence: 333
             },
+            order: [['id', 'DESC']],
             raw: true
         }).then((orders) => {
             res.send(orders);

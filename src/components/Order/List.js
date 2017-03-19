@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import Pagination from '../Pagination';
-import _ from 'underscore';
-import $ from 'jquery'
+import $ from 'jquery';
+import { Table } from 'react-bootstrap';
+import Title from './Title';
 
 export default class List extends Component {
     constructor() {
         super();
 
-
-        var exampleItems = (() => {
+        var orders = (() => {
             var tmp = null;
 
             $.ajax({
@@ -19,23 +19,16 @@ export default class List extends Component {
             }).done((result) => {
                 tmp = result;
             });
-
-            console.log('tmp:' + tmp)
+            
             return tmp;
         })();
 
-        console.log(exampleItems)
- 
-
-        // an example array of items to be paged
-        // var exampleItems = _.range(1, 151).map(i => { return { id: i, name: 'Item ' + i }; });
-
         this.state = {
-            exampleItems: exampleItems,
+            orders: orders,
             pageOfItems: []
         };
  
-        // bind function in constructor instead of render (https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-no-bind.md)
+        // bind function in constructor instead of render
         this.onChangePage = this.onChangePage.bind(this);
     }
  
@@ -45,22 +38,34 @@ export default class List extends Component {
     }
  
     render() {
+
         return (
+
             <div>
-                <div className="container">
-                    <div className="text-center">
-                        <h1>React - Pagination Example with logic like Google</h1>
-                        {this.state.pageOfItems.map(item =>
-                            <div key={item.id}>{item.name}</div>
+                <Title title="Order List" />
+                <Table striped bordered condensed hover>
+                    <thead>
+                      <tr>
+                        <th>#</th>
+                        <th>Sequence</th>
+                        <th>Price</th>
+                        <th>Remarks</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        {this.state.pageOfItems.map((item, key) =>
+                          <tr key={item.id}>
+                            <td>{item.id}</td>
+                            <td>{item.sequence}</td>
+                            <td>{item.price}</td>
+                            <td>{item.remarks}</td>
+                          </tr>
                         )}
-                        <Pagination items={this.state.exampleItems} onChangePage={this.onChangePage} />
-                    </div>
-                </div>
-                <hr />
-                <div className="credits text-center">
-                    <p>
-                        <a href="http://jasonwatmore.com" target="_top">JasonWatmore.com</a>
-                    </p>
+                    </tbody>
+                </Table>
+
+                <div className="text-center">
+                    <Pagination items={this.state.orders} onChangePage={this.onChangePage} />
                 </div>
             </div>
         );
