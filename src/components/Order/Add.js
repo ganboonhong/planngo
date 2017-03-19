@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Title from './Title';
 import Sequence from './Sequence';
 import Price from './Price';
+import Remarks from './Remarks';
 import {Button, FormGroup} from 'react-bootstrap';
 import $ from 'jquery';
 
@@ -11,6 +12,7 @@ export default class Add extends Component {
         this.state = {
             sequenceHelpText: '',
             priceHelpText: '',
+            remarksHelpText: '',
         }
     }
 
@@ -37,6 +39,7 @@ export default class Add extends Component {
             var formData = {
                 sequence: dataTmp.sequence,
                 price: dataTmp.price,
+                remarks: dataTmp.remarks,
             };
 
             $.ajax({
@@ -48,22 +51,16 @@ export default class Add extends Component {
                 crossDomain: true,
 
             }).done((result) => {
-                console.log(result)
-                // if(result) this.setState({
-                //     showModal: true,
-                //     modalMsg: result.msg,
-                //     msgBsStyle: result.msgBsStyle
-                // })
-
-                // if(result.success){
-                //     setTimeout(() => {
-                //         // window.location.href = "http://facebook.com"
-                //     }, 3000);
-                // }
+                // console.log(result)
+                this._reloadOrderList();
             });
 
         }
     }
+
+    _reloadOrderList(){
+        this.props.reloadOrderList();
+    }    
 
     render() {
         return (
@@ -71,6 +68,7 @@ export default class Add extends Component {
                 <Title title="Registration"/>
                 <Sequence ref="sequence" sequenceHelpText={this.state.sequenceHelpText} />
                 <Price ref="price" priceHelpText={this.state.priceHelpText} />
+                <Remarks ref="remarks" remarksHelpText={this.state.remarksHelpText} />
                 <FormGroup>
                     <Button bsStyle="primary" type="submit" onClick={this.handleSubmit}>Submit</Button>
                 </FormGroup>
@@ -80,5 +78,9 @@ export default class Add extends Component {
 }
 
 Add.defaultProps = {
-    validateFields: ['sequence', 'price']
+    validateFields: ['sequence', 'price', 'remarks']
+}
+
+Add.propTypes = {
+    reloadOrderList: React.PropTypes.func
 }

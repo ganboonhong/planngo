@@ -36,9 +36,32 @@ export default class List extends Component {
         // update state with new page of items
         this.setState({ pageOfItems: pageOfItems });
     }
+
+    reloadOrderList = () => {
+        console.log('list reloadOrderList')
+        var orders = (() => {
+            var tmp = null;
+
+            $.ajax({
+                async: false,
+                url: 'http://localhost:9000/order',
+                type: 'GET',
+                dataType: 'json',
+            }).done((result) => {
+                tmp = result;
+            });
+            
+            return tmp;
+        })();
+
+
+        var currentPage = parseInt($(".pagination").find(".active").find("a").text())
+        this.setState({orders: orders, pageOfItems: this.state.pageOfItems});
+        this.refs['pagination'].setPage(currentPage);
+
+    }
  
     render() {
-
         return (
 
             <div>
@@ -65,7 +88,7 @@ export default class List extends Component {
                 </Table>
 
                 <div className="text-center">
-                    <Pagination items={this.state.orders} onChangePage={this.onChangePage} />
+                    <Pagination ref="pagination" items={this.state.orders} onChangePage={this.onChangePage} />
                 </div>
             </div>
         );

@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { Col, Row, FormGroup, FormControl, ControlLabel, HelpBlock } from 'react-bootstrap';
 
-export default class Sequence extends Component {
+export default class Remarks extends Component {
 
     constructor(props) {
       super(props);
       this.state = {
-          sequence: '',
-          validSequence: false,
+          remarks: '',
+          validRemarks: true, // remarks is not compulsary
           showHelpText: '',
       }
     }
@@ -15,21 +15,21 @@ export default class Sequence extends Component {
     checkValid = () => {
         var obj = {
             result: false,
-            value: this.state.sequence
+            value: this.state.remarks
         }
-        if(this.state.validSequence) {
+        if(this.state.validRemarks) {
             obj.result = true;
         }
         return obj;
     }
   
     handleChange = (e) => {
-        var sequence = e.target.value;
+        var remarks = e.target.value;
         
         this.setState({
-            sequence: sequence,
-            validSequence: sequence.length >= this.props.minimumCharacter,
-            showHelpText: (sequence.length >= this.props.minimumCharacter) ? 'hide' : '',
+            remarks: remarks,
+            // validRemarks: remarks.length > this.props.minimumCharacter,
+            // showHelpText: (remarks.length > this.props.minimumCharacter) ? 'hide' : '',
         });
     }
 
@@ -37,17 +37,17 @@ export default class Sequence extends Component {
         return (
                 <Row>
                     <Col md={11}>
-                        <FormGroup controlId="sequence"> 
-                            <ControlLabel>Sequence No*</ControlLabel>
+                        <FormGroup controlId="remarks"> 
+                            <ControlLabel>Remarks</ControlLabel>
                               <FormControl
                                 type="text"
+                                componentClass="textarea"
                                 required={true}
-                                value={this.state.sequence}
-                                placeholder="Sequence No"
+                                value={this.state.remarks}
+                                placeholder="Remarks"
                                 onChange={this.handleChange}
-                                autoFocus
                               />
-                              <HelpBlock className={this.state.showHelpText}>{`${this.props.sequenceHelpText}`}</HelpBlock>
+                              <HelpBlock className={this.state.showHelpText}>{`${this.props.remarksHelpText}`}</HelpBlock>
                               <FormControl.Feedback />
                         </FormGroup>
                     </Col>
@@ -57,10 +57,10 @@ export default class Sequence extends Component {
     }
 }
 
-Sequence.propTypes = {
+Remarks.propTypes = {
   checkValid: React.PropTypes.func,
 };
 
-Sequence.defaultProps = {
+Remarks.defaultProps = {
     minimumCharacter: 1
 }

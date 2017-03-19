@@ -126,7 +126,7 @@ module.exports = function(app){
 
         Order.findAll({
             where: {
-                // sequence: 333
+
             },
             order: [['id', 'DESC']],
             raw: true

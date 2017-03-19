@@ -28,8 +28,8 @@ export default class Price extends Component {
         
         this.setState({
             price: price,
-            validPrice: price.length > this.props.minimumCharacter,
-            showHelpText: (price.length > this.props.minimumCharacter) ? 'hide' : '',
+            validPrice: price.length >= this.props.minimumCharacter,
+            showHelpText: (price.length >= this.props.minimumCharacter) ? 'hide' : '',
         });
     }
 
@@ -45,7 +45,6 @@ export default class Price extends Component {
                                 value={this.state.price}
                                 placeholder="Price No"
                                 onChange={this.handleChange}
-                                autoFocus
                               />
                               <HelpBlock className={this.state.showHelpText}>{`${this.props.priceHelpText}`}</HelpBlock>
                               <FormControl.Feedback />
