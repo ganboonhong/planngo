@@ -7,6 +7,7 @@ import About from './components/About';
 import NotFound from './components/NotFound';
 import Join from './components/Join';
 import Login from './components/Login';
+import Register from './components/Register';
 
 const Routes = (props) => (
   <Router {...props}>
@@ -14,6 +15,7 @@ const Routes = (props) => (
     <Route path="/about" component={About} />
     <Route path="/join" component={Join} />
     <Route path="/login" component={Login} />
+    <Route path="/register" component={Register} />
     <Route path="*" component={NotFound} />
   </Router>
 );
