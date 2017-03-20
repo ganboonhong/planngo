@@ -6,13 +6,20 @@ import { Col, Row, Grid } from 'react-bootstrap';
 
 export default class Order extends Component {
 
-  // constructor(){
-  //   super();
-  // }
+  constructor(){
+    super();
+    this.state = {
+        objToEdit: {},
+    }
+  }
 
   reloadOrderList = () => {
-    console.log('reloadOrderList')
     this.refs['list'].reloadOrderList();
+  }
+
+  getObjFromList = (objToEdit) => {
+    this.setState({objToEdit: objToEdit});
+    this.refs['add'].populateData(objToEdit)
   }
 
 
@@ -22,9 +29,18 @@ export default class Order extends Component {
             <Grid>
                 <Row>
                     <Col md={4} sm={4}>
-                        <Add ref="add" reloadOrderList={this.reloadOrderList}/>
+                        <Add 
+                            ref="add" 
+                            reloadOrderList={this.reloadOrderList}
+                            idToEdit={this.state.idToEdit}
+                        />
                     </Col>
-                    <Col md={8} sm={8}><List ref="list" /></Col>
+                    <Col md={8} sm={8}>
+                        <List 
+                            ref="list" 
+                            getObjFromList={this.getObjFromList} 
+                        />
+                    </Col>
                 </Row>
             </Grid>
             <Footer />

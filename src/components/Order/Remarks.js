@@ -33,6 +33,10 @@ export default class Remarks extends Component {
         this.setState(this.props.initState);
     }
 
+    populateData = (objToEdit) => {
+        this.setState({remarks: objToEdit.remarks});
+    }
+
     render() {
         return (
                 <Row>

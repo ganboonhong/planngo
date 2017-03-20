@@ -13,6 +13,7 @@ export default class Add extends Component {
             sequenceHelpText: '',
             priceHelpText: '',
             remarksHelpText: '',
+            idToEdit: '',
         }
     }
 
@@ -31,7 +32,6 @@ export default class Add extends Component {
             }else{
                 dataTmp[field] = this.refs[field].checkValid().value;
                 obj[field+'HelpText']= '';
-                this.refs[field].clearState();
             }
             this.setState(obj);
         }
@@ -52,16 +52,33 @@ export default class Add extends Component {
                 crossDomain: true,
 
             }).done((result) => {
-                // console.log(result)
+                this._resetAllInput();
                 this._reloadOrderList();
             });
 
         }
     }
 
-    _reloadOrderList(){
+    _resetAllInput = () => {
+        for(var key = 0; key < Object.keys(this.props.validateFields).length; key++){
+            var field = this.props.validateFields[key];
+            this.refs[field].clearState();
+        }
+        this.setState{idToEdit: ''}
+    }
+
+    _reloadOrderList = () => {
         this.props.reloadOrderList();
-    }    
+    }
+
+    populateData = (objToEdit) => {
+        for(var key = 0; key < Object.keys(this.props.validateFields).length; key++){
+            var field = this.props.validateFields[key];
+            this.refs[field].populateData(objToEdit);
+        }
+
+        this.setState({idToEdit: objToEdit.id});
+    }
 
     render() {
         return (
@@ -73,7 +90,7 @@ export default class Add extends Component {
                 <FormGroup>
                     <Button bsStyle="primary" type="submit" onClick={this.handleSubmit}>Submit</Button>
                 </FormGroup>
-                <input type="hidden" name="id" value="123"/>
+                <input type="hidden" name="id" value={this.state.idToEdit}/>
             </form>
         );
     }

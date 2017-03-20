@@ -16,6 +16,7 @@ export default class List extends Component {
             pageOfItems: [],
             showModal: false,
             idToDelete: '',
+            idToEdit: '',
         };
  
         // bind function in constructor instead of render
@@ -74,6 +75,10 @@ export default class List extends Component {
         });
     }
 
+    startEdit = (orderObj) => {
+        this.props.getObjFromList(orderObj);
+    }
+
     close = () => {
       this.setState({ showModal: false });
     }
@@ -83,6 +88,7 @@ export default class List extends Component {
     }
  
     render() {
+        var buttonStyle = {margin: "2px"};
         return (
             <div>
                 <Title title="Order List" />
@@ -103,11 +109,20 @@ export default class List extends Component {
                             <td>{item.sequence}</td>
                             <td>{item.price}</td>
                             <td>{item.remarks}</td>
-                            <td style={{"width": "10px"}}>
+                            <td style={{"width": "70px"}}>
+                                <Button 
+                                    bsSize="xsmall" 
+                                    bsStyle="success" 
+                                    onClick={() => this.startEdit(item)}
+                                    style={buttonStyle}
+                                >
+                                    <Glyphicon glyph="pencil" />
+                                </Button>
                                 <Button 
                                     bsSize="xsmall" 
                                     bsStyle="danger" 
                                     onClick={() => this.confirmDelete(item.id)}
+                                    style={buttonStyle}
                                 >
                                     <Glyphicon glyph="trash" />
                                 </Button>
@@ -140,4 +155,8 @@ export default class List extends Component {
             </div>
         );
     }
+}
+
+List.propTypes = {
+    getIdFromList: React.PropTypes.func
 }
