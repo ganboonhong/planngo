@@ -5,6 +5,8 @@ module.exports = function(sequelize, DataTypes) {
     price: DataTypes.FLOAT(11),
     remarks: DataTypes.TEXT
   }, {
+    paranoid: true // enable soft delete
+  },{
     classMethods: {
       associate: function(models) {
         // associations can be defined here

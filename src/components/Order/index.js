@@ -6,9 +6,9 @@ import { Col, Row, Grid } from 'react-bootstrap';
 
 export default class Order extends Component {
 
-  constructor(){
-    super();
-  }
+  // constructor(){
+  //   super();
+  // }
 
   reloadOrderList = () => {
     console.log('reloadOrderList')

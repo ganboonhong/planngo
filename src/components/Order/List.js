@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import Pagination from '../Pagination';
+import TextCenter from '../TextCenter';
 import $ from 'jquery';
-import { Table, Button, Glyphicon } from 'react-bootstrap';
+import { Table, Button, Glyphicon, Modal, Grid } from 'react-bootstrap';
 import Title from './Title';
 
 export default class List extends Component {
@@ -12,7 +13,9 @@ export default class List extends Component {
 
         this.state = {
             orders: orders,
-            pageOfItems: []
+            pageOfItems: [],
+            showModal: false,
+            idToDelete: '',
         };
  
         // bind function in constructor instead of render
@@ -30,7 +33,7 @@ export default class List extends Component {
 
             $.ajax({
                 async: false,
-                url: 'http://localhost:9000/order',
+                url: 'http://localhost:9000/orders',
                 type: 'GET',
                 dataType: 'json',
             }).done((result) => {
@@ -45,9 +48,38 @@ export default class List extends Component {
 
     reloadOrderList = () => {
         var orders      = this.getOrders();
-        var currentPage = parseInt($(".pagination").find(".active").find("a").text())
+        var currentPage = parseInt($(".pagination").find(".active").find("a").text(), 10);
         this.setState({orders: orders, pageOfItems: this.state.pageOfItems});
         this.refs['pagination'].setPage(currentPage);
+    }
+
+    confirmDelete = (id) => {
+        this.setState({
+                idToDelete: id,
+                showModal: true
+            });
+    }
+
+    handleDelete = () => {
+        var obj = {id: this.state.idToDelete};
+
+        $.ajax({
+            url: 'http://localhost:9000/order',
+            type: 'DELETE',
+            dataType: 'json',
+            data: obj
+        }).done((result) => {
+            this.close();
+            this.reloadOrderList();
+        });
+    }
+
+    close = () => {
+      this.setState({ showModal: false });
+    }
+  
+    open = () => {
+      this.setState({ showModal: true });
     }
  
     render() {
@@ -72,7 +104,11 @@ export default class List extends Component {
                             <td>{item.price}</td>
                             <td>{item.remarks}</td>
                             <td style={{"width": "10px"}}>
-                                <Button bsSize="xsmall" bsStyle="danger">
+                                <Button 
+                                    bsSize="xsmall" 
+                                    bsStyle="danger" 
+                                    onClick={() => this.confirmDelete(item.id)}
+                                >
                                     <Glyphicon glyph="trash" />
                                 </Button>
                             </td>
@@ -84,6 +120,23 @@ export default class List extends Component {
                 <div className="text-center">
                     <Pagination ref="pagination" items={this.state.orders} onChangePage={this.onChangePage} />
                 </div>
+
+                <Modal show={this.state.showModal} onHide={this.close}>
+                      <Modal.Header closeButton>
+                            <Modal.Title>
+                                <Grid>
+                                      <TextCenter bsStyle="danger" >Message</TextCenter>
+                                </Grid>
+                            </Modal.Title>
+                      </Modal.Header>
+                      <Modal.Body>
+                            <h4>Confirm Delete?</h4>
+                      </Modal.Body>
+                      <Modal.Footer>
+                            <Button onClick={this.handleDelete}>Delete</Button>
+                            <Button onClick={this.close}>Cancel</Button>
+                      </Modal.Footer>
+                </Modal>
             </div>
         );
     }

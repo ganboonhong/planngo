@@ -115,24 +115,37 @@ module.exports = function(app){
 
         Order.create(Body).then(
             (order) => {
-                console.log(order);
                 res.send(Body);
             }
         )
     })  // eo post order
 
-    app.get('/order', (req, res) => {
+    app.get('/orders', (req, res) => {
         var Order = models.Order;
 
         Order.findAll({
-            where: {
-
-            },
+            where: {},
             order: [['id', 'DESC']],
             raw: true
         }).then((orders) => {
             res.send(orders);
         });
     });  // eo get order
+
+    app.delete('/order', (req, res) => {
+        var Order = models.Order;
+        Body      = req.body;
+
+        Order.destroy({
+            where: {
+                id: Body.id
+            },
+            paranoid: true
+        }).then( () => {
+            // delete callback
+        });
+
+        res.send(Body);
+    })  // eo delete order
 
 }

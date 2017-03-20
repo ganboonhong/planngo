@@ -73,6 +73,7 @@ export default class Add extends Component {
                 <FormGroup>
                     <Button bsStyle="primary" type="submit" onClick={this.handleSubmit}>Submit</Button>
                 </FormGroup>
+                <input type="hidden" name="id" value="123"/>
             </form>
         );
     }
