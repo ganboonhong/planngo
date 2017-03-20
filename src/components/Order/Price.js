@@ -34,7 +34,11 @@ export default class Price extends Component {
     }
 
     populateData = (objToEdit) => {
-        this.setState({price: objToEdit.price});
+        this.setState({
+            price: objToEdit.price,
+            validPrice: true,
+            showHelpText: '',
+        });
     }
 
     render() {

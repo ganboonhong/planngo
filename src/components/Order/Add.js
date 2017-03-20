@@ -27,6 +27,7 @@ export default class Add extends Component {
                 sequence: result.dataTmp.sequence,
                 price: result.dataTmp.price,
                 remarks: result.dataTmp.remarks,
+                id: this.state.idToEdit,
             };
 
             $.ajax({
@@ -99,7 +100,6 @@ export default class Add extends Component {
                 <FormGroup>
                     <Button bsStyle="primary" type="submit" onClick={this.handleSubmit}>Submit</Button>
                 </FormGroup>
-                <input type="hidden" name="id" value={this.state.idToEdit}/>
             </form>
         );
     }

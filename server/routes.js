@@ -121,8 +121,14 @@ module.exports = function(app){
                 }
             )
         }else{
+            var id = Body.id;
+            delete Body.id;
+
             // edit
-            // Order.update
+            Order.update(Body,{
+                where: {id: id}
+            })
+            res.send(Body);
         }
     })  // eo post order
 

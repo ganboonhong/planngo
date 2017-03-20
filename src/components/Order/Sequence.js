@@ -34,7 +34,11 @@ export default class Sequence extends Component {
     }
 
     populateData = (objToEdit) => {
-        this.setState({sequence: objToEdit.sequence});
+        this.setState({
+            sequence: objToEdit.sequence,
+            validSequence: true,
+            showHelpText: '',
+        });
     }
 
     render() {
