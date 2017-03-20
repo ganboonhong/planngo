@@ -66,6 +66,7 @@ module.exports = function(app){
                             }else{
                                 Result.msg        = 'This email has been used.'
                                 Result.msgBsStyle = 'danger';
+                                Result.success    = false;
                                 res.send(Result);
                             }
                         });

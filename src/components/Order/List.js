@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Pagination from '../Pagination';
 import TextCenter from '../TextCenter';
 import $ from 'jquery';
+import moment from 'moment'
 import { Table, Button, Glyphicon, Modal, Grid } from 'react-bootstrap';
 import Title from './Title';
 
@@ -99,16 +100,23 @@ export default class List extends Component {
                         <th>Sequence</th>
                         <th>Price</th>
                         <th>Remarks</th>
-                        <th></th>
+                        <th>Last Update</th>
+                        <th>Actions</th>
                       </tr>
                     </thead>
                     <tbody>
                         {this.state.pageOfItems.map((item, key) =>
                           <tr key={item.id}>
-                            <td>{item.id}</td>
-                            <td>{item.sequence}</td>
-                            <td>{item.price}</td>
+                            <td style={{"width": "30px"}}>{item.id}</td>
+                            <td style={{"width": "180px"}}>{item.sequence}</td>
+                            <td style={{"width": "100px"}}>{item.price}</td>
                             <td>{item.remarks}</td>
+                            <td style={{"width": "160px"}}>{
+                                (() => { 
+                                      return moment(item.updatedAt).format("MM/DD/YYYY HH:mm");  // inline function
+                                })()
+                            }
+                            </td>
                             <td style={{"width": "70px"}}>
                                 <Button 
                                     bsSize="xsmall" 

@@ -70,7 +70,7 @@ export default class Content extends Component {
 
             if(result.success){
                 setTimeout(() => {
-                    // window.location.href = "http://facebook.com"
+                    window.location.href = "http://localhost:3000/order"
                 }, 3000);
             }
         });
