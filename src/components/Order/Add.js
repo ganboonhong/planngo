@@ -64,7 +64,7 @@ export default class Add extends Component {
             var field = this.props.validateFields[key];
             this.refs[field].clearState();
         }
-        this.setState{idToEdit: ''}
+        this.setState({idToEdit: ''});
     }
 
     _reloadOrderList = () => {

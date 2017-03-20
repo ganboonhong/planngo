@@ -113,11 +113,17 @@ module.exports = function(app){
         // Sess      = req.session;
         // TODO: check session
 
-        Order.create(Body).then(
-            (order) => {
-                res.send(Body);
-            }
-        )
+        if(!Body.id){
+            // create
+            Order.create(Body).then(
+                (order) => {
+                    res.send(Body);
+                }
+            )
+        }else{
+            // edit
+            // Order.update
+        }
     })  // eo post order
 
     app.get('/orders', (req, res) => {
