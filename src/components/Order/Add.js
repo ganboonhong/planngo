@@ -19,6 +19,32 @@ export default class Add extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
+
+        var result = this._validateData();
+
+        if(result.isValidData) {
+            var formData = {
+                sequence: result.dataTmp.sequence,
+                price: result.dataTmp.price,
+                remarks: result.dataTmp.remarks,
+            };
+
+            $.ajax({
+                url: 'http://localhost:9000/order',
+                type: 'POST', 
+                data: JSON.stringify(formData),
+                dataType: 'json',
+                contentType: 'application/json',
+                crossDomain: true,
+            }).done((result) => {
+                this._resetAllInput();
+                this._reloadOrderList();
+            });
+        }
+    }
+
+    _validateData = () => {
+        var result = {};
         var isValidData = true;
         var dataTmp     = {};
 
@@ -36,27 +62,10 @@ export default class Add extends Component {
             this.setState(obj);
         }
 
-        if(isValidData) {
-            var formData = {
-                sequence: dataTmp.sequence,
-                price: dataTmp.price,
-                remarks: dataTmp.remarks,
-            };
+        result.isValidData = isValidData;
+        result.dataTmp     = dataTmp;
 
-            $.ajax({
-                url: 'http://localhost:9000/order',
-                type: 'POST', 
-                data: JSON.stringify(formData),
-                dataType: 'json',
-                contentType: 'application/json',
-                crossDomain: true,
-
-            }).done((result) => {
-                this._resetAllInput();
-                this._reloadOrderList();
-            });
-
-        }
+        return result;
     }
 
     _resetAllInput = () => {
