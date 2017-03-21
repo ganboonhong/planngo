@@ -25,7 +25,7 @@ class Footer extends Component {
     return (
       <div className="container-fluid text-center">
         <div className="row">
-          <div style={containerStyle} data-style-footer>
+          <div style={containerStyle} data-style-footer id="footer">
 
             <div className="col-sm-12">
               <p style={footerContentStyle}>
