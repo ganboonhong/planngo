@@ -49,7 +49,7 @@ export default class ContentLogin extends Component {
         };
 
         $.ajax({
-            url: 'http://localhost:9000/login',
+            url: 'http://127.0.0.1:9000/login',
             type: 'POST', 
             data: JSON.stringify(formData),
             dataType: 'json',
