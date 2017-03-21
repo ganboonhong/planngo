@@ -3,7 +3,8 @@
     "username": "root",
     "password": "Boonhong2015!",
     "database": "eodigital",
-    "host": "127.0.0.1",
+    // "host": "127.0.0.1",
+    "host": "138.68.11.86",
     "dialect": "mysql"
   },
   "test": {
