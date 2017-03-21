@@ -1,10 +1,9 @@
 {
   "development": {
     "username": "root",
-    "password": "Boonhong2015!",
+    "password": "",
     "database": "eodigital",
-    // "host": "127.0.0.1",
-    "host": "138.68.11.86",
+    "host": "127.0.0.1",
     "dialect": "mysql"
   },
   "test": {
