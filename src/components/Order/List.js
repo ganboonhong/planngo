@@ -6,7 +6,7 @@ import moment from 'moment'
 import { Table, Button, Glyphicon, Modal, Grid } from 'react-bootstrap';
 import Title from './Title';
 
-const production = false;
+const production = true;
 var domain = (production) ? '' : 'http://127.0.0.1:9000';
 
 export default class List extends Component {
