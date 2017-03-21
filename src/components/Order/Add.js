@@ -6,6 +6,9 @@ import Remarks from './Remarks';
 import {Button, FormGroup} from 'react-bootstrap';
 import $ from 'jquery';
 
+const production = false;
+var domain = (production) ? '' : 'http://127.0.0.1:9000';
+
 export default class Add extends Component {
     constructor(){
         super();
@@ -31,7 +34,7 @@ export default class Add extends Component {
             };
 
             $.ajax({
-                url: '/order',
+                url: domain + '/order',
                 type: 'POST', 
                 data: JSON.stringify(formData),
                 dataType: 'json',

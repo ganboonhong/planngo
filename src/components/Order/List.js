@@ -6,6 +6,9 @@ import moment from 'moment'
 import { Table, Button, Glyphicon, Modal, Grid } from 'react-bootstrap';
 import Title from './Title';
 
+const production = false;
+var domain = (production) ? '' : 'http://127.0.0.1:9000';
+
 export default class List extends Component {
     constructor() {
         super();
@@ -29,13 +32,15 @@ export default class List extends Component {
         this.setState({ pageOfItems: pageOfItems });
     }
 
+    
+
     getOrders = () => {
         var orders = (() => {
             var tmp = null;
 
             $.ajax({
                 async: false,
-                url: '/orders',
+                url: domain + '/orders',
                 type: 'GET',
                 dataType: 'json',
             }).done((result) => {
@@ -66,7 +71,7 @@ export default class List extends Component {
         var obj = {id: this.state.idToDelete};
 
         $.ajax({
-            url: ':9000/order',
+            url: domain + '/order',
             type: 'DELETE',
             dataType: 'json',
             data: obj
