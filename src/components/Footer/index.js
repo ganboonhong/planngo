@@ -5,15 +5,19 @@ class Footer extends Component {
   render() {
     var containerStyle = {
       fontFamily: '"Lato", sans-serif',
-      padding: '40px 0',
+      padding: '10px 0',
       borderTop: '1px solid #ddd',
       overflow: 'hidden',
       backgroundColor: '#555',
-      color: '#ccc'
+      color: '#ccc',
+      position: 'absolute',
+      width: "100%",
+      left: 0,
+      bottom: 0,
     };
 
     var footerContentStyle = {
-      fontSize: '16px',
+      fontSize: '10px',
       fontWeight: '200',
       margin: 0
     };
@@ -26,7 +30,7 @@ class Footer extends Component {
             <div className="col-sm-12">
               <p style={footerContentStyle}>
 
-                Built by <a href="http://y-note.tk/blog/2/4/0">Francis Gan</a> in 2017
+                Built by <a href="mailto:ganboonhong@gmail.com">Francis Gan</a> in 2017
 
               </p>
             </div>

@@ -1,10 +1,11 @@
-const models  = require('./sequelize/models');
-const bodyParser = require('body-parser');
-const crypto = require('crypto');
-const session = require('express-session');
-var Sess;
-var Result = {success: false, msg: '', msgBsStyle: ''};
-var Body;
+const models  = require('./sequelize/models'),
+bodyParser = require('body-parser'),
+crypto = require('crypto'),
+session = require('express-session');
+
+var Sess,
+Result = {success: false, msg: '', msgBsStyle: ''},
+Body;
 
 module.exports = function(app){
 
@@ -135,6 +136,7 @@ module.exports = function(app){
 
     app.get('/orders', (req, res) => {
         var Order = models.Order;
+        // Sess      = req.session;
 
         Order.findAll({
             where: {},
