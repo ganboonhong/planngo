@@ -31,7 +31,7 @@ export default class Add extends Component {
             };
 
             $.ajax({
-                url: 'http://127.0.0.1:9000/order',
+                url: '/order',
                 type: 'POST', 
                 data: JSON.stringify(formData),
                 dataType: 'json',

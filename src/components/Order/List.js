@@ -35,7 +35,7 @@ export default class List extends Component {
 
             $.ajax({
                 async: false,
-                url: 'http://127.0.0.1:9000/orders',
+                url: '/orders',
                 type: 'GET',
                 dataType: 'json',
             }).done((result) => {
@@ -66,7 +66,7 @@ export default class List extends Component {
         var obj = {id: this.state.idToDelete};
 
         $.ajax({
-            url: 'http://127.0.0.1:9000/order',
+            url: ':9000/order',
             type: 'DELETE',
             dataType: 'json',
             data: obj

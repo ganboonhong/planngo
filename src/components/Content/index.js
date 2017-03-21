@@ -54,7 +54,7 @@ export default class Content extends Component {
         };
 
         $.ajax({
-            url: 'http://127.0.0.1:9000/join',
+            url: '/join',
             type: 'POST', 
             data: JSON.stringify(formData),
             dataType: 'json',
@@ -70,7 +70,7 @@ export default class Content extends Component {
 
             if(result.success){
                 setTimeout(() => {
-                    window.location.href = "http://127.0.0.1:3000/order"
+                    window.location.href = "/order"
                 }, 3000);
             }
         });
