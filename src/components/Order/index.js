@@ -43,7 +43,7 @@ export default class Order extends Component {
                     </Col>
                 </Row>
             </Grid>
-
+            <Footer />
         </div>
     );
   }
