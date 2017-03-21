@@ -35,7 +35,7 @@ export default class List extends Component {
 
             $.ajax({
                 async: false,
-                url: 'http://localhost:9000/orders',
+                url: 'http://127.0.0.1:9000/orders',
                 type: 'GET',
                 dataType: 'json',
             }).done((result) => {
