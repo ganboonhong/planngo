@@ -15,7 +15,7 @@
   },
   "production": {
     "username": "root",
-    "password": "",
+    "password": "Boonhong2015!",
     "database": "eodigital",
     "host": "127.0.0.1",
     "dialect": "mysql"
