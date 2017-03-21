@@ -1,6 +1,6 @@
 var Sequelize = require('sequelize');
-var sequelize = new Sequelize('eodigital', 'root','', {
-                        host: 'localhost', 
+var sequelize = new Sequelize('eodigital', 'root','Boonhong2015!', {
+                        host: '138.68.11.86', 
                         dialect: 'mysql'
                     });
 
