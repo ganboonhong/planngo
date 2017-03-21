@@ -6,7 +6,7 @@ import Remarks from './Remarks';
 import {Button, FormGroup} from 'react-bootstrap';
 import $ from 'jquery';
 
-const production = false;
+const production = true;
 var domain = (production) ? '' : 'http://127.0.0.1:9000';
 
 export default class Add extends Component {
