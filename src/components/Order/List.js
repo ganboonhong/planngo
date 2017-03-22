@@ -5,8 +5,11 @@ import $ from 'jquery';
 import moment from 'moment'
 import { Table, Button, Glyphicon, Modal, Grid } from 'react-bootstrap';
 import Title from './Title';
+import Filter from './Filter';
+var FilterObj;
 
-const production = true;
+// const production = true;
+const production = false;
 var domain = (production) ? '' : 'http://127.0.0.1:9000';
 
 export default class List extends Component {
@@ -34,15 +37,24 @@ export default class List extends Component {
 
     
 
-    getOrders = () => {
+    getOrders = (filterObj = null) => {
+        FilterObj = filterObj;
         var orders = (() => {
             var tmp = null;
+
+            if(FilterObj){
+                FilterObj = {
+                    startDate: moment.utc(FilterObj.startDate._d).format("YYYY-MM-DD HH:MM"),
+                    endDate: moment.utc(FilterObj.endDate._d).format("YYYY-MM-DD HH:MM"),
+                }
+            }
 
             $.ajax({
                 async: false,
                 url: domain + '/orders',
                 type: 'GET',
                 dataType: 'json',
+                data: FilterObj
             }).done((result) => {
                 tmp = result;
             });
@@ -53,8 +65,9 @@ export default class List extends Component {
         return orders;
     }
 
-    reloadOrderList = () => {
-        var orders      = this.getOrders();
+    reloadOrderList = (filterObj = null) => {
+
+        var orders      = this.getOrders(filterObj);
         var currentPage = parseInt($(".pagination").find(".active").find("a").text(), 10);
         this.setState({orders: orders, pageOfItems: this.state.pageOfItems});
         this.refs['pagination'].setPage(currentPage);
@@ -98,6 +111,7 @@ export default class List extends Component {
         return (
             <div>
                 <Title title="Order List" />
+                <Filter ref="filter" reloadOrderList={this.reloadOrderList}/>
                 <Table striped bordered condensed hover>
                     <thead>
                       <tr>
@@ -171,5 +185,5 @@ export default class List extends Component {
 }
 
 List.propTypes = {
-    getIdFromList: React.PropTypes.func
+
 }

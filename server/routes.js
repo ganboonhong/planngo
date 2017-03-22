@@ -2,6 +2,7 @@ const models  = require('./sequelize/models'),
 bodyParser = require('body-parser'),
 crypto = require('crypto'),
 session = require('express-session');
+moment = require('moment');
 
 var Sess,
 Result = {success: false, msg: '', msgBsStyle: ''},
@@ -135,17 +136,27 @@ module.exports = function(app){
     })  // eo post order
 
     app.get('/orders', (req, res) => {
-        var Order = models.Order;
-        // Sess      = req.session;
+        var Order     = models.Order;
+        // Sess       = req.session;
+        var startDate = moment().add(-30, 'days').toDate();
+        var endDate   = moment().toDate();
+
+        if(req.query.startDate) startDate = moment(req.query.startDate).toDate();
+        if(req.query.endDate) endDate = moment(req.query.endDate).toDate();
+
 
         Order.findAll({
-            where: {},
+            where: {
+                updatedAt:{
+                    $between: [startDate, endDate]
+                }
+            },
             order: [['id', 'DESC']],
             raw: true
         }).then((orders) => {
             res.send(orders);
         });
-    });  // eo get order
+    });  // eo get orders
 
     app.delete('/order', (req, res) => {
         var Order = models.Order;
