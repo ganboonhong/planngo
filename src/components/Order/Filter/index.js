@@ -107,7 +107,7 @@ export default class Filter extends Component {
                                     </SplitButton>
                                 </Col>
 
-                                <Col md={7} sm={5} xs={12}>
+                                <Col md={7} sm={5} xs={12} className="filter">
                                     <FormControl
                                         ref="keyword"
                                         type="text"
