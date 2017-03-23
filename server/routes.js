@@ -148,6 +148,7 @@ module.exports = function(app){
         if(req.query.endDate) endDate = moment(req.query.endDate).toDate();
         if(req.query.keyword) keyword = req.query.keyword;
         if(req.query.currentFilter) currentFilter = req.query.currentFilter;
+        if(req.query.currentFilter == 'price') keyword = parseFloat(keyword);
 
 
         Order.findAll({
