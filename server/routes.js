@@ -140,15 +140,23 @@ module.exports = function(app){
         // Sess       = req.session;
         var startDate = moment().add(-30, 'days').toDate();
         var endDate   = moment().toDate();
+        var currentFilter = 'sequence';
+        var keyword = '';
+        var likeQuery = '"%"+ keyword +"%"';
 
         if(req.query.startDate) startDate = moment(req.query.startDate).toDate();
         if(req.query.endDate) endDate = moment(req.query.endDate).toDate();
+        if(req.query.keyword) keyword = req.query.keyword;
+        if(req.query.currentFilter) currentFilter = req.query.currentFilter;
 
 
         Order.findAll({
             where: {
                 updatedAt:{
                     $between: [startDate, endDate]
+                },
+                [currentFilter]: {
+                    $like: (typeof keyword == 'number') ? keyword : "%"+ keyword +"%"
                 }
             },
             order: [['id', 'DESC']],

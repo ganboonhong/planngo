@@ -16,7 +16,8 @@ export default class Filter extends Component {
             startDate: moment().add(-30, 'days'),
             endDate: moment(),
             filterLabel: 'Sequence',
-            currentFilter: 'sequence'
+            currentFilter: 'sequence',
+            keyword: '',
         }
 
 
@@ -27,6 +28,8 @@ export default class Filter extends Component {
         var filterObj = {
             startDate: this.state.startDate,
             endDate: this.state.endDate,
+            keyword: this.state.keyword,
+            currentFilter: this.state.currentFilter
         }
         this.props.reloadOrderList(filterObj);
     }
@@ -52,15 +55,36 @@ export default class Filter extends Component {
     }
 
     handleFilterSelect = (eventKey, event) => {
-        this.setState({
-            filterLabel: this.props.filterLabel[eventKey],
-            sequence: eventKey
-        })
+
+        setTimeout(() => {
+            this.setState({
+                filterLabel: this.props.filterLabel[eventKey],
+                currentFilter: eventKey
+            })
+            console.log(this.state.currentFilter)
+        }, 500)
+    }
+
+    handleKeywordChange = (e) => {
+        var keyword = e.target.value;
+
+        setTimeout(() => {
+            this.setState({
+                keyword: keyword
+            });
+        }, 500);
+    }
+
+    handleSubmit = (e) => {
+        e.preventDefault();
+        setTimeout(() => {
+            this.pushFilterObject();
+        }, 1000);
     }
 
     render() {
         return (
-            <div>
+            <form onSubmit={this.handleSubmit}>
                 <FormGroup>
                     <Row>
                         <Col md={3} sm={5} xs={8} className="filter">
@@ -72,13 +96,14 @@ export default class Filter extends Component {
 
                         <Col md={9} sm={12} xs={12} className="filter">
                             <Row>
-                                <Col md={3} sm={4} xs={12}>
+                                <Col md={3} sm={5} xs={12}>
                                     <SplitButton title={this.state.filterLabel} onSelect={this.handleFilterSelect}
                                         id="filterButton"
                                     >
                                          <MenuItem eventKey="id">ID</MenuItem>
                                          <MenuItem eventKey="sequence">Sequence</MenuItem>
                                          <MenuItem eventKey="price">Price</MenuItem>
+                                         <MenuItem eventKey="remarks">Remarks</MenuItem>
                                     </SplitButton>
                                 </Col>
 
@@ -86,15 +111,14 @@ export default class Filter extends Component {
                                     <FormControl
                                         ref="keyword"
                                         type="text"
-                                        required={true}
                                         // value={this.state.sequence}
                                         placeholder={"Search "+this.state.filterLabel}
-                                        // onChange={this.handleChange}
+                                        onChange={this.handleKeywordChange}
                                         autoFocus={this.state.keywordAutoFocus}
                                       />
                                 </Col>
 
-                                <Col md={2} sm={2} xs={12} className="filter"><Button>Search</Button></Col>
+                                <Col md={2} sm={2} xs={12} className="filter"><Button onClick={this.handleSubmit}>Search</Button></Col>
                             </Row>
                         </Col>                        
                     </Row>
@@ -121,7 +145,7 @@ export default class Filter extends Component {
                       </Modal.Footer>
                 </Modal>
 
-            </div>
+            </form>
         );
     }
 }
@@ -135,5 +159,6 @@ Filter.defaultProps = {
         id: 'ID',
         sequence: 'Sequence',
         price: 'Price',
+        remarks: 'Remarks',
     }
 }

@@ -46,6 +46,8 @@ export default class List extends Component {
                 FilterObj = {
                     startDate: moment.utc(FilterObj.startDate._d).format("YYYY-MM-DD HH:MM"),
                     endDate: moment.utc(FilterObj.endDate._d).format("YYYY-MM-DD HH:MM"),
+                    keyword: FilterObj.keyword,
+                    currentFilter: FilterObj.currentFilter,
                 }
             }
 
