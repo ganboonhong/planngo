@@ -28,14 +28,14 @@ export default class Order extends Component {
         <div>
             <Grid>
                 <Row>
-                    <Col md={4} sm={4}>
+                    <Col md={3} sm={3}>
                         <Add 
                             ref="add" 
                             reloadOrderList={this.reloadOrderList}
                             idToEdit={this.state.idToEdit}
                         />
                     </Col>
-                    <Col md={8} sm={8}>
+                    <Col md={9} sm={9}>
                         <List 
                             ref="list" 
                             getObjFromList={this.getObjFromList} 
