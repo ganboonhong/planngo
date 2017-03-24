@@ -5,6 +5,7 @@ import { Modal, Grid, Button, FormGroup, SplitButton,
 import TextCenter from '../../TextCenter';
 import moment from 'moment'
 import './style.css'
+import ReactDOM from 'react-dom';
 
 export default class Filter extends Component {
 
@@ -18,19 +19,22 @@ export default class Filter extends Component {
             filterLabel: 'Sequence',
             currentFilter: 'sequence',
             keyword: '',
+            showSearching: 'fa fa-refresh fa-spin hide'
         }
 
 
         this.handleSelectDate = this.handleSelectDate.bind(this);
     }
 
-    pushFilterObject = () => {
+    pushFilterObject = (reset=null) => {
+
         var filterObj = {
             startDate: this.state.startDate,
             endDate: this.state.endDate,
             keyword: this.state.keyword,
             currentFilter: this.state.currentFilter
         }
+        if(reset) filterObj = null;
         this.props.reloadOrderList(filterObj);
     }
 
@@ -56,12 +60,16 @@ export default class Filter extends Component {
 
     handleFilterSelect = (eventKey, event) => {
 
+        var keywordNode = ReactDOM.findDOMNode(this.refs.keyword);
+        keywordNode.focus();
+        keywordNode.value = "";
+
         setTimeout(() => {
             this.setState({
                 filterLabel: this.props.filterLabel[eventKey],
-                currentFilter: eventKey
-            })
-            console.log(this.state.currentFilter)
+                currentFilter: eventKey,
+            });
+            this.pushFilterObject(true);
         }, 500)
     }
 
@@ -75,8 +83,14 @@ export default class Filter extends Component {
         }, 500);
     }
 
+    toggleSearching = (show) => {
+        if(show) this.setState({showSearching: 'fa fa-refresh fa-spin'})
+        else this.setState({showSearching: 'fa fa-refresh fa-spin hide'})
+    }
+
     handleSubmit = (e) => {
         e.preventDefault();
+        this.toggleSearching(true);
         setTimeout(() => {
             this.pushFilterObject();
         }, 1000);
@@ -107,18 +121,22 @@ export default class Filter extends Component {
                                     </SplitButton>
                                 </Col>
 
-                                <Col md={7} sm={5} xs={12} className="filter">
+                                <Col md={6} sm={5} xs={12} className="filter">
                                     <FormControl
                                         ref="keyword"
                                         type="text"
                                         // value={this.state.sequence}
                                         placeholder={"Search "+this.state.filterLabel}
                                         onChange={this.handleKeywordChange}
-                                        autoFocus={this.state.keywordAutoFocus}
                                       />
                                 </Col>
 
-                                <Col md={2} sm={2} xs={12} className="filter"><Button onClick={this.handleSubmit}>Search</Button></Col>
+                                <Col md={3} sm={2} xs={12} className="filter">
+                                    <Button onClick={this.handleSubmit}>Search</Button>
+                                    <i className={this.state.showSearching} 
+                                        style={{"fontSize":"15px", "marginLeft": "15px"}}>
+                                    </i>
+                                </Col>
                             </Row>
                         </Col>                        
                     </Row>

@@ -4,9 +4,15 @@ crypto = require('crypto'),
 session = require('express-session');
 moment = require('moment');
 
+// const production = true;
+const production = false;
+
 var Sess,
 Result = {success: false, msg: '', msgBsStyle: ''},
-Body;
+Body,
+password = (production) ? 'Boonhong2015!' : '',
+env = (production) ? 'production' : 'development',
+config = require( __dirname + '/sequelize/config/config.json')[env];
 
 module.exports = function(app){
 
@@ -80,6 +86,9 @@ module.exports = function(app){
         Body     = req.body;
         Sess     = req.session;
 
+
+        console.log(Sess);
+
         if(Sess[Body.email]){
             Result.msg = 'you\'ve already signed in.';
             Result.msgBsStyle = 'danger';
@@ -138,33 +147,47 @@ module.exports = function(app){
     app.get('/orders', (req, res) => {
         var Order     = models.Order;
         // Sess       = req.session;
-        var startDate = moment().add(-30, 'days').toDate();
-        var endDate   = moment().toDate();
+        var startDate = moment().add(-30, 'days').format('YYYY-MM-DD HH:mm');
+        var endDate   = moment().format('YYYY-MM-DD HH:mm');
         var currentFilter = 'sequence';
         var keyword = '';
         var likeQuery = '"%"+ keyword +"%"';
+        var Sequelize = require('sequelize');
+        var sequelize = new Sequelize(config.database, config.username, config.password, config);
 
-        if(req.query.startDate) startDate = moment(req.query.startDate).toDate();
-        if(req.query.endDate) endDate = moment(req.query.endDate).toDate();
+        if(req.query.startDate) startDate = req.query.startDate;
+        if(req.query.endDate) endDate = req.query.endDate;
         if(req.query.keyword) keyword = req.query.keyword;
         if(req.query.currentFilter) currentFilter = req.query.currentFilter;
         if(req.query.currentFilter == 'price') keyword = parseFloat(keyword);
 
+        sequelize.query(
+            "SELECT * FROM Orders WHERE "+
+            currentFilter + " LIKE '%" + keyword + 
+            "%' AND updatedAt >= '" + startDate
+            + "' AND updatedAt <= '" + endDate + "' ORDER BY id DESC",
 
-        Order.findAll({
-            where: {
-                updatedAt:{
-                    $between: [startDate, endDate]
-                },
-                [currentFilter]: {
-                    $like: (typeof keyword == 'number') ? keyword : "%"+ keyword +"%"
-                }
-            },
-            order: [['id', 'DESC']],
-            raw: true
-        }).then((orders) => {
-            res.send(orders);
-        });
+            { type: sequelize.QueryTypes.SELECT})
+
+            .then((orders) => {
+                res.send(orders);
+            })
+
+            // Order.findAll({
+            //     where: {
+            //         updatedAt:{
+            //             $between: [startDate, endDate]
+            //         },
+            //         [currentFilter]: {
+            //             $like: (typeof keyword == 'number') ? keyword : "%"+ keyword +"%"
+            //         }
+            //     },
+            //     order: [['id', 'DESC']],
+            //     raw: true
+            // }).then((orders) => {
+            //     res.send(orders);
+            // });
+
     });  // eo get orders
 
     app.delete('/order', (req, res) => {

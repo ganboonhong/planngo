@@ -2,14 +2,15 @@ import React, { Component } from 'react';
 import Pagination from '../Pagination';
 import TextCenter from '../TextCenter';
 import $ from 'jquery';
-import moment from 'moment'
+import moment from 'moment-timezone'
 import { Table, Button, Glyphicon, Modal, Grid } from 'react-bootstrap';
 import Title from './Title';
 import Filter from './Filter';
 var FilterObj;
+var tz = 'Asia/Taipei';
 
-const production = true;
-// const production = false;
+// const production = true;
+const production = false;
 var domain = (production) ? '' : 'http://127.0.0.1:9000';
 
 export default class List extends Component {
@@ -35,8 +36,6 @@ export default class List extends Component {
         this.setState({ pageOfItems: pageOfItems });
     }
 
-    
-
     getOrders = (filterObj = null) => {
         FilterObj = filterObj;
         var orders = (() => {
@@ -44,8 +43,8 @@ export default class List extends Component {
 
             if(FilterObj){
                 FilterObj = {
-                    startDate: moment.utc(FilterObj.startDate._d).format("YYYY-MM-DD HH:MM"),
-                    endDate: moment.utc(FilterObj.endDate._d).format("YYYY-MM-DD HH:MM"),
+                    startDate: moment.tz(FilterObj.startDate._d, tz).format("YYYY-MM-DD HH:MM"),
+                    endDate: moment.tz(FilterObj.endDate._d, tz).format("YYYY-MM-DD HH:MM"),
                     keyword: FilterObj.keyword,
                     currentFilter: FilterObj.currentFilter,
                 }
@@ -71,15 +70,17 @@ export default class List extends Component {
 
         var orders      = this.getOrders(filterObj);
         var currentPage = parseInt($(".pagination").find(".active").find("a").text(), 10);
+        
         this.setState({orders: orders, pageOfItems: this.state.pageOfItems});
         this.refs['pagination'].setPage(currentPage);
+        this.refs['filter'].toggleSearching(false);
     }
 
     confirmDelete = (id) => {
         this.setState({
-                idToDelete: id,
-                showModal: true
-            });
+            idToDelete: id,
+            showModal: true
+        });
     }
 
     handleDelete = () => {
