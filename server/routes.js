@@ -181,7 +181,9 @@ module.exports = function(app){
             "SELECT * FROM Orders WHERE "+
             currentFilter + " LIKE '%" + keyword + 
             "%' AND updatedAt >= '" + startDate
-            + "' AND updatedAt <= '" + endDate + "' ORDER BY id DESC",
+            + "' AND updatedAt <= '" + endDate + 
+            + " AND deletedAt IS NULL " +
+            "' ORDER BY id DESC",
 
             { type: sequelize.QueryTypes.SELECT})
 
