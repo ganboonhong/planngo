@@ -42,6 +42,8 @@ export default class List extends Component {
             var tmp = null;
 
             if(FilterObj){
+                console.log('startDate' + moment.tz(FilterObj.startDate._d, tz).format("YYYY-MM-DD HH:MM"))
+                console.log('endDate' + moment.tz(FilterObj.endDate._d, tz).format("YYYY-MM-DD HH:MM"))
                 FilterObj = {
                     startDate: moment.tz(FilterObj.startDate._d, tz).format("YYYY-MM-DD HH:MM"),
                     endDate: moment.tz(FilterObj.endDate._d, tz).format("YYYY-MM-DD HH:MM"),
@@ -57,7 +59,6 @@ export default class List extends Component {
                 dataType: 'json',
                 data: FilterObj
             }).done((result) => {
-                console.log(result)
                 if (result.message) {
                     window.location.href = './login';
                     return;
