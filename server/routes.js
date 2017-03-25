@@ -1,20 +1,21 @@
-const models  = require('./sequelize/models'),
-bodyParser = require('body-parser'),
-crypto = require('crypto'),
+const models = require('./sequelize/models'),
+bodyParser   = require('body-parser'),
+crypto       = require('crypto'),
 cookieParser = require('cookie-parser'),
-session = require('express-session'),
-moment = require('moment');
+session      = require('express-session'),
+moment       = require('moment-timezone'),
+tz           = 'Asia/Taipei';
 
 // const production = true;
 const production = false;
 
 var Sess,
-Result = {success: false, msg: '', msgBsStyle: ''},
-Body,
+Result     = {success: false, msg: '', msgBsStyle: ''},
+Body       = {},
 cookieLife = 60*1000,
-password = (production) ? 'Boonhong2015!' : '',
-env = (production) ? 'production' : 'development',
-config = require( __dirname + '/sequelize/config/config.json')[env];
+password   = (production) ? 'Boonhong2015!' : '',
+env        = (production) ? 'production' : 'development',
+config     = require( __dirname + '/sequelize/config/config.json')[env];
 
 module.exports = function(app){
 
@@ -156,15 +157,13 @@ module.exports = function(app){
     })
 
     app.get('/orders', (req, res) => {
-        
-        console.log(req.cookies.email);
 
-        if(!req.cookies.email) res.send({message: 'error'});
+        // if(!req.cookies.email) res.send({message: 'error'});
 
         var Order     = models.Order;
         // Sess       = req.session;
-        var startDate = moment().add(-30, 'days').format('YYYY-MM-DD HH:mm');
-        var endDate   = moment().format('YYYY-MM-DD HH:mm');
+        var startDate = moment().tz(tz).add(-30, 'days').format('YYYY-MM-DD HH:mm');
+        var endDate   = moment().tz(tz).format('YYYY-MM-DD HH:mm');
         var currentFilter = 'sequence';
         var keyword = '';
         var likeQuery = '"%"+ keyword +"%"';
