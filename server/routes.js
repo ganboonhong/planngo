@@ -151,7 +151,10 @@ module.exports = function(app){
     })  // eo post order
 
     app.get('/orders', (req, res) => {
-        console.log(req.cookies);
+        console.log(req.cookies.email);
+
+        if(!req.cookies.email) res.send({message: 'error'});
+
         var Order     = models.Order;
         // Sess       = req.session;
         var startDate = moment().add(-30, 'days').format('YYYY-MM-DD HH:mm');

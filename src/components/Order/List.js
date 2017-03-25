@@ -57,6 +57,12 @@ export default class List extends Component {
                 dataType: 'json',
                 data: FilterObj
             }).done((result) => {
+                console.log(result)
+                if (result.message) {
+                    window.location.href = './login';
+                    return;
+                }
+                // if (typeof result !== 'object') window.location.href = './login'
                 tmp = result;
             });
             
