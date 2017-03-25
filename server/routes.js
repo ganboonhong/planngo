@@ -159,7 +159,7 @@ module.exports = function(app){
 
     app.get('/orders', (req, res) => {
 
-        if(!req.cookies.email && production) res.send({message: 'error'}); 
+        if(!req.cookies.email) res.send({message: 'error'}); 
 
         var Order     = models.Order;
         // Sess       = req.session;
