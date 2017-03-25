@@ -158,8 +158,8 @@ module.exports = function(app){
     })
 
     app.get('/orders', (req, res) => {
-        console.log(req.cookies.email)
-        if(!req.cookies.email) res.send({message: 'error'});
+
+        if(!req.cookies.email && production) res.send({message: 'error'}); 
 
         var Order     = models.Order;
         // Sess       = req.session;
@@ -186,7 +186,7 @@ module.exports = function(app){
             { type: sequelize.QueryTypes.SELECT})
 
             .then((orders) => {
-                res.send(orders);
+                res.send({list: orders, user: req.cookies.email});
             })
 
             // Order.findAll({

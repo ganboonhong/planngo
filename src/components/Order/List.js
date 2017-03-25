@@ -4,7 +4,7 @@ import TextCenter from '../TextCenter';
 import $ from 'jquery';
 import moment from 'moment-timezone'
 import { Table, Button, Glyphicon, Modal, Grid } from 'react-bootstrap';
-import Title from './Title';
+import TitleList from './TitleList';
 import Filter from './Filter';
 var FilterObj;
 var tz = 'Asia/Taipei';
@@ -25,6 +25,7 @@ export default class List extends Component {
             showModal: false,
             idToDelete: '',
             idToEdit: '',
+            user: ''
         };
  
         // bind function in constructor instead of render
@@ -61,8 +62,10 @@ export default class List extends Component {
                     window.location.href = './login';
                     return;
                 }
-                // if (typeof result !== 'object') window.location.href = './login'
-                tmp = result;
+                setTimeout(() => {
+                    this.setState({'user': result.user})
+                }, 500)
+                tmp = result.list;
             });
             
             return tmp;
@@ -118,7 +121,7 @@ export default class List extends Component {
         var buttonStyle = {margin: "2px"};
         return (
             <div>
-                <Title title="Order List" />
+                <TitleList title="Order List" user={this.state.user}/>
                 <Filter ref="filter" reloadOrderList={this.reloadOrderList}/>
                 <Table striped bordered condensed hover>
                     <thead>

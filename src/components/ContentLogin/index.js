@@ -71,7 +71,7 @@ export default class ContentLogin extends Component {
             if(result.success){
                 setTimeout(() => {
                     window.location.href = "/order"
-                }, 3000);
+                }, 1000);
             }
         });
 
