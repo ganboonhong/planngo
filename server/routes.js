@@ -155,7 +155,7 @@ module.exports = function(app){
         res.cookie('email' , false, {expire : new Date() - 999999999});
         console.log(req.cookies.email);
 
-        if(req.cookies.email === undefined) res.send({message: 'error'});
+        if(!req.cookies.email) res.send({message: 'error'});
 
         var Order     = models.Order;
         // Sess       = req.session;
