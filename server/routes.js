@@ -152,7 +152,9 @@ module.exports = function(app){
 
     app.get('/orders', (req, res) => {
 
-        res.cookie('email' , false, {expire : new Date() - 999999999});
+        // res.cookie('email' , false, {expire : new Date() - 999999999});
+        // clearCookie('email')
+        res.cookie('email', '', {expires: new Date(0)});
         console.log(req.cookies.email);
 
         if(!req.cookies.email) res.send({message: 'error'});
