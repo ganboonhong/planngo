@@ -1,3 +1,3 @@
-To begin the development, run `npm start`.__
-To create a production bundle, use `npm run build`.__
+To begin the development, run `npm start`. <br />
+To create a production bundle, use `npm run build`. <br />
 DEMO
