@@ -183,7 +183,7 @@ module.exports = function(app){
             "%' AND updatedAt >= '" + startDate
             + "' AND updatedAt <= '" + endDate
             + "' AND deletedAt IS NULL " +
-            " ORDER BY id DESC",
+            "ORDER BY id DESC",
 
             { type: sequelize.QueryTypes.SELECT})
 
