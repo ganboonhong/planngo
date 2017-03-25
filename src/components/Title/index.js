@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import TextCenter from '../TextCenter';
 import { Grid } from 'react-bootstrap';
 
-class Header extends Component {
+export default class Title extends Component {
   render() {
     return (
         <Grid>
@@ -11,5 +11,3 @@ class Header extends Component {
     );
   }
 }
-
-export default Header;

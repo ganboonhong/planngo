@@ -120,5 +120,5 @@ Password.propTypes = {
 }
 
 Password.defaultProps = {
-    minimumLength: 3
+    minimumLength: 8
 };

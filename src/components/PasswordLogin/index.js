@@ -59,5 +59,5 @@ PasswordLogin.propTypes = {
 }
 
 PasswordLogin.defaultProps = {
-    minimumLength: 3
+    minimumLength: 8
 };
