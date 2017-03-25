@@ -151,7 +151,7 @@ module.exports = function(app){
     })  // eo post order
 
     app.get('/orders', (req, res) => {
-        clearCookie('email');
+        res.clearCookie('email');
         console.log(req.cookies.email);
 
         if(!req.cookies.email) res.send({message: 'error'});
