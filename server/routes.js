@@ -157,7 +157,7 @@ module.exports = function(app){
     })
 
     app.get('/orders', (req, res) => {
-
+        console.log(req.cookies.email)
         if(!req.cookies.email) res.send({message: 'error'});
 
         var Order     = models.Order;
