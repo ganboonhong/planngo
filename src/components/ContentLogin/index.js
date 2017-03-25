@@ -70,7 +70,7 @@ export default class ContentLogin extends Component {
 
             if(result.success){
                 setTimeout(() => {
-                    // window.location.href = "http://facebook.com"
+                    window.location.href = "/order"
                 }, 3000);
             }
         });
