@@ -103,6 +103,8 @@ export default class List extends Component {
             this.close();
             this.reloadOrderList();
         });
+
+        this.props.resetAllInput();
     }
 
     startEdit = (orderObj) => {
@@ -196,5 +198,5 @@ export default class List extends Component {
 }
 
 List.propTypes = {
-
+    resetAllInput: React.PropTypes.func
 }

@@ -3,8 +3,9 @@ import Title from './Title';
 import Sequence from './Sequence';
 import Price from './Price';
 import Remarks from './Remarks';
-import {Button, FormGroup} from 'react-bootstrap';
+import { Button, FormGroup, ControlLabel } from 'react-bootstrap';
 import $ from 'jquery';
+import Toggle from 'react-bootstrap-toggle';
 
 const production = true;
 // const production = false;
@@ -18,7 +19,9 @@ export default class Add extends Component {
             priceHelpText: '',
             remarksHelpText: '',
             idToEdit: '',
+            scannerMode: true,
         }
+        this.onToggle = this.onToggle.bind(this);
     }
 
     handleSubmit = (e) => {
@@ -94,12 +97,41 @@ export default class Add extends Component {
         this.setState({idToEdit: objToEdit.id});
     }
 
+    onToggle = () => {
+        this.setState({ scannerMode: !this.state.scannerMode });
+        this._resetAllInput();
+        this.refs.sequence._focus();
+        this.props.getValueFromChild({scannerMode: this.state.scannerMode})
+    }
+
+    focusOnPriceField = () => {
+        this.refs.price._focus();
+    }
+
+    focusOnSequenceField = () => {
+        this.refs.sequence._focus();   
+    }
+
     render() {
         return (
             <form>
                 <Title title="Registration"/>
-                <Sequence ref="sequence" sequenceHelpText={this.state.sequenceHelpText} />
-                <Price ref="price" priceHelpText={this.state.priceHelpText} />
+                <FormGroup>
+                    <ControlLabel style={{'marginRight': '10px'}}>Scanner Mode</ControlLabel>
+                    <Toggle
+                      onClick={this.onToggle}
+                      on="ON"
+                      off="OFF"
+                      size="md"
+                      offstyle="default"
+                      onstyle="info"
+                      active={this.state.scannerMode}
+                    />
+                </FormGroup>
+                <Sequence ref="sequence" sequenceHelpText={this.state.sequenceHelpText} scannerMode={this.state.scannerMode} 
+                focusOnPriceField={this.focusOnPriceField}/>
+                <Price ref="price" priceHelpText={this.state.priceHelpText} scannerMode={this.state.scannerMode}
+                focusOnSequenceField={this.focusOnSequenceField}/>
                 <Remarks ref="remarks" remarksHelpText={this.state.remarksHelpText} />
                 <FormGroup>
                     <Button bsStyle="primary" type="submit" onClick={this.handleSubmit}>Submit</Button>
@@ -114,5 +146,6 @@ Add.defaultProps = {
 }
 
 Add.propTypes = {
-    reloadOrderList: React.PropTypes.func
+    reloadOrderList: React.PropTypes.func,
+    getValueFromChild: React.PropTypes.func,
 }

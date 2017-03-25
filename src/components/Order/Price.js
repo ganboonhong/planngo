@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Col, Row, FormGroup, FormControl, ControlLabel, HelpBlock } from 'react-bootstrap';
+import ReactDOM from 'react-dom';
 
 export default class Price extends Component {
 
@@ -27,6 +28,10 @@ export default class Price extends Component {
             validPrice: price.length >= this.props.minimumCharacter,
             showHelpText: (price.length >= this.props.minimumCharacter) ? 'hide' : '',
         });
+
+        setTimeout(() => {
+            if(this.props.scannerMode) this.props.focusOnSequenceField();
+        }, 500)
     }
 
     clearState = () => {
@@ -41,6 +46,10 @@ export default class Price extends Component {
         });
     }
 
+    _focus = () => {
+        ReactDOM.findDOMNode(this.refs.price).focus();
+    }
+
     render() {
         return (
                 <Row>
@@ -50,6 +59,7 @@ export default class Price extends Component {
                               <FormControl
                                 type="text"
                                 required={true}
+                                ref="price"
                                 value={this.state.price}
                                 placeholder="Price No"
                                 onChange={this.handleChange}
@@ -66,6 +76,7 @@ export default class Price extends Component {
 
 Price.propTypes = {
   checkValid: React.PropTypes.func,
+  focusOnSequenceField: React.PropTypes.func,
 };
 
 Price.defaultProps = {

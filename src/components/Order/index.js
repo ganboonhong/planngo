@@ -22,6 +22,14 @@ export default class Order extends Component {
     this.refs['add'].populateData(objToEdit)
   }
 
+  resetAllInput = () => {
+    this.refs['add']._resetAllInput();
+  }
+
+  getValueFromChild = (val) => {
+    console.log(val)
+  }
+
 
   render () {
     return (
@@ -33,12 +41,14 @@ export default class Order extends Component {
                             ref="add" 
                             reloadOrderList={this.reloadOrderList}
                             idToEdit={this.state.idToEdit}
+                            getValueFromChild={this.getValueFromChild}
                         />
                     </Col>
                     <Col md={9} sm={9}>
                         <List 
                             ref="list" 
                             getObjFromList={this.getObjFromList} 
+                            resetAllInput={this.resetAllInput}
                         />
                     </Col>
                 </Row>

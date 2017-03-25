@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Col, Row, FormGroup, FormControl, ControlLabel, HelpBlock } from 'react-bootstrap';
+import ReactDOM from 'react-dom';
 
 export default class Sequence extends Component {
 
@@ -31,6 +32,10 @@ export default class Sequence extends Component {
             validSequence: sequence.length >= this.props.minimumCharacter,
             showHelpText: (sequence.length >= this.props.minimumCharacter) ? 'hide' : '',
         });
+
+        setTimeout(() => {
+            if(this.props.scannerMode) this.props.focusOnPriceField();
+        }, 500)
     }
 
     populateData = (objToEdit) => {
@@ -39,6 +44,10 @@ export default class Sequence extends Component {
             validSequence: true,
             showHelpText: '',
         });
+    }
+
+    _focus = () => {
+        ReactDOM.findDOMNode(this.refs.sequence).focus();
     }
 
     render() {
@@ -50,6 +59,7 @@ export default class Sequence extends Component {
                               <FormControl
                                 type="text"
                                 required={true}
+                                ref="sequence"
                                 value={this.state.sequence}
                                 placeholder="Sequence No"
                                 onChange={this.handleChange}
@@ -67,6 +77,7 @@ export default class Sequence extends Component {
 
 Sequence.propTypes = {
   checkValid: React.PropTypes.func,
+  focusOnPriceField: React.PropTypes.func,
 };
 
 Sequence.defaultProps = {

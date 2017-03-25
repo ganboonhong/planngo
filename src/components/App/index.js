@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './style.css';
 var Bio = React.createClass({
   render: function() {
@@ -8,7 +7,7 @@ var Bio = React.createClass({
         <div className="wrapper">
           <div className="sidebar-wrapper">
             <div className="profile-container">
-              <img className="profile" src="bio/images/profile.JPG" alt width="150px"/>
+              <img className="profile" src="bio/images/profile.JPG" alt="profile" width="150px"/>
               <h1 className="name">Francis</h1>
               <h3 className="tagline">Full Stack Developer</h3>
             </div>{/*//profile-container*/}

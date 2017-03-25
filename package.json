@@ -17,6 +17,7 @@
     "react-addons-css-transition-group": "^15.0.0",
     "react-addons-transition-group": "^15.4.2",
     "react-bootstrap": "^0.30.7",
+    "react-bootstrap-toggle": "^2.0.5",
     "react-bootstrap-validation": "^0.1.11",
     "react-date-range": "^0.9.3",
     "react-dom": "^15.4.2",
