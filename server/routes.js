@@ -69,6 +69,9 @@ module.exports = function(app){
                                     ).then(
                                         (user) => {
                                             var tmpUser       = user.get({plain: true});
+
+                                            res.cookie('email' , tmpUser.email, {expire : new Date() + cookieLife});
+
                                             Result.success    = true;
                                             Result.msg        = 'Congratulations, '+tmpUser.name+' ! You\'ve signed up successfully.'
                                             Result.msgBsStyle = 'success';
@@ -90,10 +93,7 @@ module.exports = function(app){
         Body     = req.body;
         Sess     = req.session;
 
-
-        console.log(Sess);
-
-        if(Sess[Body.email]){
+        if(req.cookies.email){
             Result.msg = 'you\'ve already signed in.';
             Result.msgBsStyle = 'danger';
             res.send(Result);
@@ -119,6 +119,7 @@ module.exports = function(app){
                     }else{
                         Result.msg        = 'Wrong email or password.'
                         Result.msgBsStyle = 'danger';
+                        Result.success    = false;
                         res.send(Result);
                     }
                 }
