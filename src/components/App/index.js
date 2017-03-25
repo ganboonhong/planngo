@@ -49,7 +49,17 @@ var Bio = React.createClass({
             <section className="section summary-section">
               <h2 className="section-title"><i className="fa fa-user" />Career Profile</h2>
               <div className="summary">
-                <p>Summarise your career here lorem ipsum dolor sit amet, consectetuer adipiscing elit. You can <a href="http://themes.3rdwavemedia.com/website-templates/orbit-free-resume-cv-template-for-developers/" target="_blank">download this free resume/CV template here</a>. Aenean commodo ligula eget dolor aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu.</p>
+                <p>
+                I was being an intern in a web design company at the last semester of university in Taiwan and 
+                I joined the company after graduated. 
+                I was incharge of maintaining the existing projects and assisting senior developers for new projects. 
+                In my current company in Singapore, I am incharge of specific modules of an ERP system for different
+                companies. Besides, I also handle ticketing system for customer support and do the human testings for 
+                those complicated functions currently without unit test to ensure our system is robust. Being in a
+                fast-paced environment, I need to keep finding more effective ways to complete the tasks within limited
+                time. Instead of solving an issue with a temporary solution, I prefer to spend time on finding the root
+                causes of the issues and solve it permanently.
+                </p>
               </div>{/*//summary*/}
             </section>{/*//section*/}
             <section className="section experiences-section">
@@ -57,48 +67,73 @@ var Bio = React.createClass({
               <div className="item">
                 <div className="meta">
                   <div className="upper-row">
-                    <h3 className="job-title">Lead Developer</h3>
-                    <div className="time">2015 - Present</div>
+                    <h3 className="job-title">Web Developer</h3>
+                    <div className="time">2016 - Present</div>
                   </div>{/*//upper-row*/}
-                  <div className="company">Startup Hubs, San Francisco</div>
+                  <div className="company">Singapore</div>
                 </div>{/*//meta*/}
                 <div className="details">
-                  <p>Describe your role here lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo.</p>  
-                  <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. </p>
+                  <p>
+                    We use Cakephp & jQuery to develop our ERP system for different companies.
+                  </p>  
                 </div>{/*//details*/}
               </div>{/*//item*/}
               <div className="item">
                 <div className="meta">
                   <div className="upper-row">
-                    <h3 className="job-title">Senior Software Engineer</h3>
-                    <div className="time">2014 - 2015</div>
+                    <h3 className="job-title">Microsoft-Intel IoT Hackathon</h3>
+                    <div className="time">2016 Dec.</div>
                   </div>{/*//upper-row*/}
-                  <div className="company">Google, London</div>
+                  <div className="company">Singapore</div>
                 </div>{/*//meta*/}
                 <div className="details">
-                  <p>Describe your role here lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.</p>  
+                  <p>
+                    We won the first price among the teams from Thailand and Indonesia.
+                  </p>  
                 </div>{/*//details*/}
               </div>{/*//item*/}
               <div className="item">
                 <div className="meta">
                   <div className="upper-row">
-                    <h3 className="job-title">UI Developer</h3>
-                    <div className="time">2012 - 2014</div>
+                    <h3 className="job-title">Web Developer</h3>
+                    <div className="time">2015 - 2016</div>
                   </div>{/*//upper-row*/}
-                  <div className="company">Amazon, London</div>
+                  <div className="company">Taipei, Taiwan</div>
                 </div>{/*//meta*/}
                 <div className="details">
-                  <p>Describe your role here lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.</p>  
+                  <p>
+                    We used plain PHP and jQuery to handle most of the customized websites.
+                  </p>  
+                </div>{/*//details*/}
+              </div>{/*//item*/}
+              <div className="item">
+                <div className="meta">
+                  <div className="upper-row">
+                    <h3 className="job-title">Work and Travel</h3>
+                    <div className="time">2013 Jul. - Sep.</div>
+                  </div>{/*//upper-row*/}
+                  <div className="company">Ohio, United States</div>
+                </div>{/*//meta*/}
+                <div className="details">
+                  <p>
+                    I was being a food attendant in Cedar Point Amusement Park.
+                  </p>  
                 </div>{/*//details*/}
               </div>{/*//item*/}
             </section>{/*//section*/}
             <section className="section projects-section">
               <h2 className="section-title"><i className="fa fa-archive" />Projects</h2>
-              <div className="intro">
-                <p>You can list your side projects or open source libraries in this section. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum et ligula in nunc bibendum fringilla a eu lectus.</p>
-              </div>{/*//intro*/}
               <div className="item">
-                <span className="project-title"><a href="#hook">Velocity</a></span> - <span className="project-tagline">A responsive website template designed to help startups promote, market and sell their products.</span>
+                <span className="project-title"><a href="http://y-note.tk/blog/2/17/0" target="_blank">Personal Blog</a></span> 
+                <p> I use Laravel and React to implement my first (SPA) blog to log down the things I have learned.</p>
+                <p><b>Demo:</b> <a href="http://y-note.tk" target="_blank">y-note.tk</a>
+                    <span style={{'marginLeft': '20px' }}>(<b>username</b>: ganboonhong@gmail.com</span> 
+                    <span style={{'margin': '0px 5px 0px 5px' }}> <b>/</b> </span>    
+                    <span style={{'marginLeft': '10px' }}> <b>password</b>: 111111)</span>
+                </p>
+                <p><b>Source Code:</b> <a href="https://github.com/ganboonhong/ynote" target="_blank">github.com/ganboonhong/ynote</a></p>
+                <span className="project-tagline">
+                </span>
               </div>{/*//item*/}
               <div className="item">
                 <span className="project-title"><a href="http://themes.3rdwavemedia.com/website-templates/responsive-bootstrap-theme-web-development-agencies-devstudio/" target="_blank">DevStudio</a></span> - 
