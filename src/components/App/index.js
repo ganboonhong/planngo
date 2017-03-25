@@ -25,7 +25,7 @@ var Bio = React.createClass({
               <div className="item">
                 <h4 className="degree">Agricultural Economics</h4>
                 <h5 className="meta">National Taiwan University</h5>
-                <div className="time">2011 - 2015</div>
+                <div className="time">2012 - 2015</div>
               </div>{/*//item*/}
             </div>{/*//education-container*/}
             <div className="languages-container container-block">
@@ -62,8 +62,12 @@ var Bio = React.createClass({
                 </p>
               </div>{/*//summary*/}
             </section>{/*//section*/}
+            <hr />
             <section className="section experiences-section">
               <h2 className="section-title"><i className="fa fa-briefcase" />Experiences</h2>
+
+              <hr />
+
               <div className="item">
                 <div className="meta">
                   <div className="upper-row">
@@ -74,24 +78,31 @@ var Bio = React.createClass({
                 </div>{/*//meta*/}
                 <div className="details">
                   <p>
-                    We use Cakephp & jQuery to develop our ERP system for different companies.
+                    I use Cakephp & jQuery to develop our ERP system for different companies.
                   </p>  
                 </div>{/*//details*/}
               </div>{/*//item*/}
+
+              <hr />
+
               <div className="item">
                 <div className="meta">
                   <div className="upper-row">
                     <h3 className="job-title">Microsoft-Intel IoT Hackathon</h3>
-                    <div className="time">2016 Dec.</div>
+                    <div className="time">2016 Dec. 15 - 16</div>
                   </div>{/*//upper-row*/}
                   <div className="company">Singapore</div>
                 </div>{/*//meta*/}
                 <div className="details">
                   <p>
-                    We won the first price among the teams from Thailand and Indonesia.
+                    Our team won the first price among the teams from Thailand and Indonesia.
                   </p>  
                 </div>{/*//details*/}
               </div>{/*//item*/}
+
+              <hr />
+
+
               <div className="item">
                 <div className="meta">
                   <div className="upper-row">
@@ -102,10 +113,13 @@ var Bio = React.createClass({
                 </div>{/*//meta*/}
                 <div className="details">
                   <p>
-                    We used plain PHP and jQuery to handle most of the customized websites.
+                    I used plain PHP and jQuery to handle most of our content management systems (CMS) and customized E-commerce websites.
                   </p>  
                 </div>{/*//details*/}
               </div>{/*//item*/}
+
+              <hr />
+
               <div className="item">
                 <div className="meta">
                   <div className="upper-row">
@@ -121,10 +135,15 @@ var Bio = React.createClass({
                 </div>{/*//details*/}
               </div>{/*//item*/}
             </section>{/*//section*/}
+
+            <hr />
+
             <section className="section projects-section">
               <h2 className="section-title"><i className="fa fa-archive" />Projects</h2>
+              <hr />
+
               <div className="item">
-                <span className="project-title"><a href="http://y-note.tk/blog/2/17/0" target="_blank">Personal Blog</a></span> 
+                <p><span className="project-title"><a href="http://y-note.tk/blog/2/17/0" target="_blank">Personal Blog</a></span></p>
                 <p> I use Laravel and React to implement my first (SPA) blog to log down the things I have learned.</p>
                 <p><b>Demo:</b> <a href="http://y-note.tk" target="_blank">y-note.tk</a>
                     <span style={{'marginLeft': '20px' }}>(<b>username</b>: ganboonhong@gmail.com</span> 
@@ -135,19 +154,20 @@ var Bio = React.createClass({
                 <span className="project-tagline">
                 </span>
               </div>{/*//item*/}
+
+              <hr />
+
               <div className="item">
-                <span className="project-title"><a href="http://themes.3rdwavemedia.com/website-templates/responsive-bootstrap-theme-web-development-agencies-devstudio/" target="_blank">DevStudio</a></span> - 
-                <span className="project-tagline">A responsive website template designed to help web developers/designers market their services. </span>
+                <p><span className="project-title"><a href="http://demowebsite.ddns.net:9000/order" target="_blank">Mini POS system (Work In Progress)</a></span></p>
+                <p>I use Node.js and React to create a mini POS system for a photography studio to replace the tool (Excel) they are using.</p>
+                <p><b>Demo:</b> <a href="http://demowebsite.ddns.net:9000/order" target="_blank">demowebsite.ddns.net:9000/order</a></p>
+                <p><b>Source Code:</b> <a href="https://github.com/ganboonhong/planngo" target="_blank">github.com/ganboonhong/planngo</a></p>
+                <span className="project-tagline">
+                </span>
               </div>{/*//item*/}
-              <div className="item">
-                <span className="project-title"><a href="http://themes.3rdwavemedia.com/website-templates/responsive-bootstrap-theme-for-startups-tempo/" target="_blank">Tempo</a></span> - <span className="project-tagline">A responsive website template designed to help startups promote their products or services and to attract users &amp; investors</span>
-              </div>{/*//item*/}
-              <div className="item">
-                <span className="project-title"><a href="hhttp://themes.3rdwavemedia.com/website-templates/responsive-bootstrap-theme-mobile-apps-atom/" target="_blank">Atom</a></span> - <span className="project-tagline">A comprehensive website template solution for startups/developers to market their mobile apps. </span>
-              </div>{/*//item*/}
-              <div className="item">
-                <span className="project-title"><a href="http://themes.3rdwavemedia.com/website-templates/responsive-bootstrap-theme-for-mobile-apps-delta/" target="_blank">Delta</a></span> - <span className="project-tagline">A responsive Bootstrap one page theme designed to help app developers promote their mobile apps</span>
-              </div>{/*//item*/}
+
+              <hr />
+              
             </section>{/*//section*/}
             <section className="skills-section section">
               <h2 className="section-title"><i className="fa fa-rocket" />Skills &amp; Proficiency</h2>
@@ -236,14 +256,9 @@ var Bio = React.createClass({
   }
 });
 
-
 class App extends Component {
   render() {
-    return (
-      
-        <Bio />
-
-    );
+    return <Bio />;
   }
 }
 
