@@ -150,11 +150,13 @@ module.exports = function(app){
         }
     })  // eo post order
 
-    app.get('/orders', (req, res) => {
-
-        // res.cookie('email' , false, {expire : new Date() - 999999999});
-        // clearCookie('email')
+    app.get('/logout', (req, res) => {
         res.cookie('email', '', {expires: new Date(0)});
+        res.redirect('./login');
+    })
+
+    app.get('/orders', (req, res) => {
+        
         console.log(req.cookies.email);
 
         if(!req.cookies.email) res.send({message: 'error'});
