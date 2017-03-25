@@ -1,7 +1,8 @@
 const models  = require('./sequelize/models'),
 bodyParser = require('body-parser'),
 crypto = require('crypto'),
-session = require('express-session');
+cookieParser = require('cookie-parser'),
+session = require('express-session'),
 moment = require('moment');
 
 // const production = true;
@@ -10,6 +11,7 @@ const production = false;
 var Sess,
 Result = {success: false, msg: '', msgBsStyle: ''},
 Body,
+cookieLife = 60*1000,
 password = (production) ? 'Boonhong2015!' : '',
 env = (production) ? 'production' : 'development',
 config = require( __dirname + '/sequelize/config/config.json')[env];
@@ -23,6 +25,7 @@ module.exports = function(app){
       next();
     });
 
+    app.use(cookieParser());
     app.use( bodyParser.json() );       // to support JSON-encoded bodies
     app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
       extended: false
@@ -30,7 +33,7 @@ module.exports = function(app){
 
     app.use(session({
         secret: 'eodigital', 
-        cookie:{maxAge:60*1000},
+        cookie:{maxAge:cookieLife},
         resave: false,
         saveUninitialized: true,
     }));
@@ -107,7 +110,10 @@ module.exports = function(app){
                         Result.msg          = 'Login successfully! Welcome back ' + tmpUser.name + '.';
                         Result.msgBsStyle   = 'success';
                         Result.success      = true;
-                        Sess[tmpUser.email] = true;
+
+                        res.cookie('email' , tmpUser.email, {expire : new Date() + cookieLife});
+
+                        Sess['email'] = true;
                         res.send(Result);
                     }else{
                         Result.msg        = 'Wrong email or password.'
@@ -145,6 +151,7 @@ module.exports = function(app){
     })  // eo post order
 
     app.get('/orders', (req, res) => {
+        console.log(req.cookies);
         var Order     = models.Order;
         // Sess       = req.session;
         var startDate = moment().add(-30, 'days').format('YYYY-MM-DD HH:mm');

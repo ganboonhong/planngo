@@ -9,8 +9,8 @@ import Filter from './Filter';
 var FilterObj;
 var tz = 'Asia/Taipei';
 
-// const production = true;
-const production = false;
+const production = true;
+// const production = false;
 var domain = (production) ? '' : 'http://127.0.0.1:9000';
 
 export default class List extends Component {
