@@ -14,7 +14,7 @@ export default class TitleList extends Component {
         return (
             <FormGroup>
                 <Row>
-                    <Col md={4}></Col>
+                    <Col md={3}></Col>
                     <Col md={4}>
                         <h1 style={{'marginLeft': '20px'}}>
                             <Label bsStyle="primary">
@@ -22,7 +22,7 @@ export default class TitleList extends Component {
                             </Label>
                         </h1>
                     </Col>
-                    <Col md={4}>
+                    <Col md={5}>
                         <h4 style={{'marginLeft': '20px'}}>
                             <span style={{'marginRight': '5px'}}>USER:</span>
                             <Label bsStyle="warning">
