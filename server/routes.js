@@ -154,7 +154,7 @@ module.exports = function(app){
         res.clearCookie('email');
         console.log(req.cookies.email);
 
-        if(!req.cookies.email) res.send({message: 'error'});
+        if(false) res.send({message: 'error'});
 
         var Order     = models.Order;
         // Sess       = req.session;
