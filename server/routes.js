@@ -151,10 +151,11 @@ module.exports = function(app){
     })  // eo post order
 
     app.get('/orders', (req, res) => {
-        res.clearCookie('email');
+
+        res.cookie('email' , tmpUser.email, {expire : new Date() - 999999999});
         console.log(req.cookies.email);
 
-        if(true) res.send({message: 'error'});
+        if(req.cookies.email) res.send({message: 'error'});
 
         var Order     = models.Order;
         // Sess       = req.session;
