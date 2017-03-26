@@ -11,8 +11,8 @@ const tooltip = (
   <Tooltip id="tooltip"><strong>Tutorial</strong></Tooltip>
 );
 
-// const production = true;
-const production = false;
+const production = true;
+// const production = false;
 var domain = (production) ? '' : 'http://127.0.0.1:9000';
 
 export default class Add extends Component {
