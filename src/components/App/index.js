@@ -142,6 +142,17 @@ var Bio = React.createClass({
               <hr />
 
               <div className="item">
+                <p><span className="project-title"><a href="http://demowebsite.ddns.net:9000/order" target="_blank">Mini POS System (Work In Progress)</a></span></p>
+                <p>I use Node.js and React to create a mini POS system for a photography studio to replace the tool (Excel) they are using.</p>
+                <p><b>Demo:</b> <a href="http://demowebsite.ddns.net:9000/order" target="_blank">demowebsite.ddns.net:9000/order</a></p>
+                <p><b>Source Code:</b> <a href="https://github.com/ganboonhong/planngo" target="_blank">github.com/ganboonhong/planngo</a></p>
+                <span className="project-tagline">
+                </span>
+              </div>{/*//item*/}
+
+              <hr />
+
+              <div className="item">
                 <p><span className="project-title"><a href="http://y-note.tk/blog/2/17/0" target="_blank">Personal Blog</a></span></p>
                 <p> I use Laravel and React to implement my first (SPA) blog to log down the things I have learned.</p>
                 <p><b>Demo:</b> <a href="http://y-note.tk" target="_blank">y-note.tk</a>
@@ -150,17 +161,6 @@ var Bio = React.createClass({
                     <span style={{'marginLeft': '10px' }}> <b>password</b>: 111111)</span>
                 </p>
                 <p><b>Source Code:</b> <a href="https://github.com/ganboonhong/ynote" target="_blank">github.com/ganboonhong/ynote</a></p>
-                <span className="project-tagline">
-                </span>
-              </div>{/*//item*/}
-
-              <hr />
-
-              <div className="item">
-                <p><span className="project-title"><a href="http://demowebsite.ddns.net:9000/order" target="_blank">Mini POS System (Work In Progress)</a></span></p>
-                <p>I use Node.js and React to create a mini POS system for a photography studio to replace the tool (Excel) they are using.</p>
-                <p><b>Demo:</b> <a href="http://demowebsite.ddns.net:9000/order" target="_blank">demowebsite.ddns.net:9000/order</a></p>
-                <p><b>Source Code:</b> <a href="https://github.com/ganboonhong/planngo" target="_blank">github.com/ganboonhong/planngo</a></p>
                 <span className="project-tagline">
                 </span>
               </div>{/*//item*/}
