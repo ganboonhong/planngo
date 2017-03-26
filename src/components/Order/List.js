@@ -145,7 +145,7 @@ export default class List extends Component {
                             <td>{item.remarks}</td>
                             <td style={{"width": "160px"}}>{
                                 (() => { 
-                                      return moment(item.updatedAt).format("YYYY/MM/DD/ HH:mm");  // inline function
+                                      return moment(item.updatedAt).format("YYYY/MM/DD HH:mm");  // inline function
                                 })()
                             }
                             </td>
