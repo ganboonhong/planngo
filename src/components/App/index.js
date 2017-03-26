@@ -51,9 +51,9 @@ var Bio = React.createClass({
                 <p>
                 I was being an intern in a web design company at the last semester of university in Taiwan and 
                 I joined the company after graduated. 
-                I was incharge of maintaining the existing projects and assisting senior developers for new projects. 
-                In my current company in Singapore, I am incharge of specific modules of an ERP system for different
-                companies. Besides, I also handle ticketing system for customer support and do the human testings for 
+                I was in charge of maintaining the existing projects and assisting senior developers for new projects. 
+                In my current company in Singapore, I am in charge of specific modules of an ERP system for different
+                companies. Besides, I also handle ticketing system for customer support and do the human testing for 
                 those complicated functions currently without unit test to ensure our system is robust. Being in a
                 fast-paced environment, I need to keep finding more effective ways to complete the tasks within limited
                 time. Instead of solving an issue with a temporary solution, I prefer to spend time on finding the root
