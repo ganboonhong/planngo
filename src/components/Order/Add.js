@@ -3,12 +3,16 @@ import Title from './Title';
 import Sequence from './Sequence';
 import Price from './Price';
 import Remarks from './Remarks';
-import { Button, FormGroup, ControlLabel } from 'react-bootstrap';
+import { Button, FormGroup, ControlLabel, OverlayTrigger, Glyphicon, Tooltip } from 'react-bootstrap';
 import $ from 'jquery';
 import Toggle from 'react-bootstrap-toggle';
 
-const production = true;
-// const production = false;
+const tooltip = (
+  <Tooltip id="tooltip"><strong>Tutorial</strong></Tooltip>
+);
+
+// const production = true;
+const production = false;
 var domain = (production) ? '' : 'http://127.0.0.1:9000';
 
 export default class Add extends Component {
@@ -112,11 +116,22 @@ export default class Add extends Component {
         this.refs.sequence._focus();   
     }
 
+    goToTutorial = () => {
+        window.open('https://www.youtube.com/watch?v=X6q-tYV0G-Y&feature=em-upload_owner', '_blank');
+    }
+
     render() {
         return (
             <form>
                 <Title title="Registration"/>
                 <FormGroup>
+                    <OverlayTrigger placement="top" overlay={tooltip}>
+                              <Glyphicon 
+                              glyph="info-sign" 
+                              style={{"marginRight" : '10px'}}
+                              onClick={this.goToTutorial}
+                              />
+                            </OverlayTrigger>
                     <ControlLabel style={{'marginRight': '10px'}}>Scanner Mode</ControlLabel>
                     <Toggle
                       onClick={this.onToggle}

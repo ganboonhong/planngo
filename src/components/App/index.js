@@ -146,6 +146,7 @@ var Bio = React.createClass({
                 <p>I am using Node.js and React to create a mini POS system for a photography studio to replace the tool (Excel) they are using.</p>
                 <p><b>Demo:</b> <a href="http://demowebsite.ddns.net:9000/order" target="_blank">demowebsite.ddns.net:9000/order</a></p>
                 <p><b>Source Code:</b> <a href="https://github.com/ganboonhong/planngo" target="_blank">github.com/ganboonhong/planngo</a></p>
+                <p><b>Tutorial:</b> <a href="https://www.youtube.com/watch?v=X6q-tYV0G-Y&feature=em-upload_owner" target="_blank">youtube.com/watch?v=X6q-tYV0G-Y&feature=em-upload_owner</a></p>
                 <span className="project-tagline">
                 </span>
               </div>{/*//item*/}
