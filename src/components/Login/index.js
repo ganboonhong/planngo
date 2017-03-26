@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ContentLogin from '../ContentLogin';
 import Footer from '../Footer';
-import { Grid, Col, Row, Label, FormGroup, Glyphicon, Tooltip, OverlayTrigger } from 'react-bootstrap';
+import { Label, Glyphicon, Tooltip, OverlayTrigger } from 'react-bootstrap';
 const tooltip = (
   <Tooltip id="tooltip"><strong>Create New Account</strong></Tooltip>
 );

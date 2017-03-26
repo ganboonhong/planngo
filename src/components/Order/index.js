@@ -27,9 +27,8 @@ export default class Order extends Component {
   }
 
   getValueFromChild = (val) => {
-    console.log(val)
+    // console.log(val)
   }
-
 
   render () {
     return (
