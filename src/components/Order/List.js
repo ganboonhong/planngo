@@ -44,8 +44,8 @@ export default class List extends Component {
 
             if(FilterObj){
                 FilterObj = {
-                    startDate: moment.tz(FilterObj.startDate._d, tz).format("YYYY-MM-DD HH:MM"),
-                    endDate: moment.tz(FilterObj.endDate._d, tz).format("YYYY-MM-DD HH:MM"),
+                    startDate: moment.tz(FilterObj.startDate._d, tz).add(1, 'hours').format("YYYY-MM-DD HH:MM"),
+                    endDate: moment.tz(FilterObj.endDate._d, tz).add(1, 'hours').format("YYYY-MM-DD HH:MM"),
                     keyword: FilterObj.keyword,
                     currentFilter: FilterObj.currentFilter,
                 }
