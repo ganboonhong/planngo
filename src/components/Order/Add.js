@@ -23,7 +23,7 @@ export default class Add extends Component {
             priceHelpText: '',
             remarksHelpText: '',
             idToEdit: '',
-            scannerMode: true,
+            scannerMode: false,
         }
         this.onToggle = this.onToggle.bind(this);
     }
