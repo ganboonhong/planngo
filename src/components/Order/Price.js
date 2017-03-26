@@ -61,7 +61,7 @@ export default class Price extends Component {
                                 required={true}
                                 ref="price"
                                 value={this.state.price}
-                                placeholder="Price No"
+                                placeholder="Price"
                                 onChange={this.handleChange}
                               />
                               <HelpBlock className={this.state.showHelpText}>{`${this.props.priceHelpText}`}</HelpBlock>
@@ -82,7 +82,7 @@ Price.propTypes = {
 Price.defaultProps = {
     minimumCharacter: 1,
     initState: {
-        price: '',
+        price: 0,
         validPrice: false,
         showHelpText: '',
     }
