@@ -94,7 +94,7 @@ var Bio = React.createClass({
                 </div>{/*//meta*/}
                 <div className="details">
                   <p>
-                    Our team won the first price among the teams from Thailand and Indonesia.
+                    Our team won first prize among the teams from Thailand and Indonesia.
                   </p>  
                 </div>{/*//details*/}
               </div>{/*//item*/}
