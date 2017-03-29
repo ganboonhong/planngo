@@ -8,9 +8,9 @@ import RowCenter from '../RowCenter';
 import { Grid, Button, FormGroup, ProgressBar, Modal } from 'react-bootstrap';
 import $ from 'jquery';
 
-const production = true;
-// const production = false;
-var domain = (production) ? '' : 'http://127.0.0.1:9000';
+var Global     = require('../Global');
+var production = Global.production;
+var domain     = (production) ? '' : Global.localDomain;
 
 export default class Content extends Component {
 

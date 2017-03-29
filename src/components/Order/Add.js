@@ -11,9 +11,9 @@ const tooltip = (
   <Tooltip id="tooltip"><strong>Tutorial</strong></Tooltip>
 );
 
-const production = true;
-// const production = false;
-var domain = (production) ? '' : 'http://127.0.0.1:9000';
+var Global     = require('../Global');
+var production = Global.production;
+var domain     = (production) ? '' : Global.localDomain;
 
 export default class Add extends Component {
     constructor(){

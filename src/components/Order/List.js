@@ -6,12 +6,12 @@ import moment from 'moment-timezone'
 import { Table, Button, Glyphicon, Modal, Grid } from 'react-bootstrap';
 import TitleList from './TitleList';
 import Filter from './Filter';
-var FilterObj;
-var tz = 'Asia/Taipei';
 
-const production = true;
-// const production = false;
-var domain = (production) ? '' : 'http://127.0.0.1:9000';
+var FilterObj;
+var Global     = require('../Global');
+var production = Global.production;
+var tz         = Global.tz;
+var domain     = (production) ? '' : Global.localDomain;
 
 export default class List extends Component {
     constructor() {
