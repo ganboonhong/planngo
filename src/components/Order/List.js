@@ -1,3 +1,4 @@
+'use strict';
 import React, { Component } from 'react';
 import Pagination from '../Pagination';
 import TextCenter from '../TextCenter';
@@ -7,20 +8,19 @@ import { Table, Button, Glyphicon, Modal, Grid } from 'react-bootstrap';
 import TitleList from './TitleList';
 import Filter from './Filter';
 
-var FilterObj;
-var Global     = require('../Global');
-var production = Global.production;
-var tz         = Global.tz;
-var domain     = (production) ? '' : Global.localDomain;
+const Global = require('../Global'),
+production   = Global.production,
+tz           = Global.tz,
+domain       = (production) ? '' : Global.localDomain;
+
+let FilterObj;
 
 export default class List extends Component {
     constructor() {
         super();
 
-        var orders = this.getOrders();
-
         this.state = {
-            orders: orders,
+            orders: this.getOrders(),
             pageOfItems: [],
             showModal: false,
             idToDelete: '',
@@ -39,8 +39,8 @@ export default class List extends Component {
 
     getOrders = (filterObj = null) => {
         FilterObj = filterObj;
-        var orders = (() => {
-            var tmp = null;
+        const orders = (() => {
+            let tmp = null;
 
             if(FilterObj){
                 FilterObj = {
@@ -76,8 +76,8 @@ export default class List extends Component {
 
     reloadOrderList = (filterObj = null) => {
 
-        var orders      = this.getOrders(filterObj);
-        var currentPage = parseInt($(".pagination").find(".active").find("a").text(), 10);
+        const orders = this.getOrders(filterObj),
+        currentPage  = parseInt($(".pagination").find(".active").find("a").text(), 10);
         
         this.setState({orders: orders, pageOfItems: this.state.pageOfItems});
         this.refs['pagination'].setPage(currentPage);
@@ -92,7 +92,7 @@ export default class List extends Component {
     }
 
     handleDelete = () => {
-        var obj = {id: this.state.idToDelete};
+        const obj = {id: this.state.idToDelete};
 
         $.ajax({
             url: domain + '/order',
@@ -120,7 +120,7 @@ export default class List extends Component {
     }
  
     render() {
-        var buttonStyle = {margin: "2px"};
+        const buttonStyle = {margin: "2px"};
         return (
             <div>
                 <TitleList title="Order List" user={this.state.user}/>

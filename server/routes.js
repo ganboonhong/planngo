@@ -1,21 +1,21 @@
+"use strict";
 const models = require('./sequelize/models'),
 bodyParser   = require('body-parser'),
 crypto       = require('crypto'),
 cookieParser = require('cookie-parser'),
 session      = require('express-session'),
 moment       = require('moment-timezone'),
-tz           = 'Asia/Taipei';
+Global       = require('../src/components/Global'),
+cookieLife   = 60*1000,
+production   = Global.production,
+tz           = Global.tz,
+password     = (production) ? 'Boonhong2015!' : '',
+env          = (production) ? 'production' : 'development',
+config       = require( __dirname + '/sequelize/config/config.json')[env];
 
-// const production = true;
-const production = false;
-
-var Sess,
-Result     = {success: false, msg: '', msgBsStyle: ''},
-Body       = {},
-cookieLife = 60*1000,
-password   = (production) ? 'Boonhong2015!' : '',
-env        = (production) ? 'production' : 'development',
-config     = require( __dirname + '/sequelize/config/config.json')[env];
+let Sess,
+Result = {success: false, msg: '', msgBsStyle: ''},
+Body   = {};
 
 module.exports = function(app){
 
@@ -57,7 +57,7 @@ module.exports = function(app){
 
     app.post('/join', function(req, res){
         
-        var User = models.User;
+        const User = models.User;
         Body     = req.body;
 
         User.findOne({where: {email: Body.email}}
@@ -65,10 +65,10 @@ module.exports = function(app){
                         (user) => {
                             if(!user){
                                 Body.password = crypto.createHmac('sha256', Body.password).digest('hex');
-                                var promise   = User.create(Body
+                                User.create(Body
                                     ).then(
                                         (user) => {
-                                            var tmpUser       = user.get({plain: true});
+                                            const tmpUser       = user.get({plain: true});
 
                                             res.cookie('email' , tmpUser.email, {expire : new Date() + cookieLife});
 
@@ -89,7 +89,7 @@ module.exports = function(app){
 
     app.post('/login', (req, res) => {
 
-        var User = models.User;
+        const User = models.User;
         Body     = req.body;
         Sess     = req.session;
 
@@ -107,7 +107,7 @@ module.exports = function(app){
             ).then(
                 (user) => {
                     if(user){
-                        var tmpUser         = user.get({plain: true});
+                        const tmpUser         = user.get({plain: true});
                         Result.msg          = 'Login successfully! Welcome back ' + tmpUser.name + '.';
                         Result.msgBsStyle   = 'success';
                         Result.success      = true;
@@ -128,7 +128,7 @@ module.exports = function(app){
     }) // eo post login
 
     app.post('/order', (req, res) => {
-        var Order = models.Order;
+        const Order = models.Order;
         Body      = req.body;
         // Sess      = req.session;
         // TODO: check session
@@ -141,7 +141,7 @@ module.exports = function(app){
                 }
             )
         }else{
-            var id = Body.id;
+            const id = Body.id;
             delete Body.id;
 
             // edit
@@ -159,17 +159,19 @@ module.exports = function(app){
 
     app.get('/orders', (req, res) => {
 
-        if(!req.cookies.email) res.send({message: 'error'}); 
+        if(!req.cookies.email && production) {
+            // in development env, cookie can't be set between different port, hence there's no need to check authority
+            res.send({message: 'error'}); return;
+        }
 
-        var Order     = models.Order;
+        const Order   = models.Order,
+        Sequelize     = require('sequelize'),
+        sequelize     = new Sequelize(config.database, config.username, config.password, config);
         // Sess       = req.session;
-        var startDate = moment().tz(tz).add(-30, 'days').format('YYYY-MM-DD HH:mm');
-        var endDate   = moment().tz(tz).add(1, 'hours').format('YYYY-MM-DD HH:mm');
-        var currentFilter = 'sequence';
-        var keyword = '';
-        var likeQuery = '"%"+ keyword +"%"';
-        var Sequelize = require('sequelize');
-        var sequelize = new Sequelize(config.database, config.username, config.password, config);
+        let startDate = moment().tz(tz).add(-30, 'days').format('YYYY-MM-DD HH:mm'),
+        endDate       = moment().tz(tz).add(1, 'hours').format('YYYY-MM-DD HH:mm'),
+        currentFilter = 'sequence',
+        keyword       = '';
 
         if(req.query.startDate) startDate = req.query.startDate;
         if(req.query.endDate) endDate = req.query.endDate;
@@ -209,7 +211,7 @@ module.exports = function(app){
     });  // eo get orders
 
     app.delete('/order', (req, res) => {
-        var Order = models.Order;
+        const Order = models.Order;
         Body      = req.body;
 
         Order.destroy({
