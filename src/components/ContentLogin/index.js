@@ -1,3 +1,4 @@
+'use strict';
 import React, { Component } from 'react';
 import PasswordLogin from '../PasswordLogin';
 import TextCenter from '../TextCenter';

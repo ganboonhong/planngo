@@ -1,3 +1,4 @@
+'use strict';
 import React, { Component } from 'react';
 import { Col, Row, FormGroup, FormControl, ControlLabel, HelpBlock } from 'react-bootstrap';
 import ReactDOM from 'react-dom';
