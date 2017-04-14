@@ -10,7 +10,7 @@ export default class Price extends Component {
     }
     
     checkValid = () => {
-        var obj = {
+        const obj = {
             result: false,
             value: this.state.price
         }
@@ -21,7 +21,7 @@ export default class Price extends Component {
     }
   
     handleChange = (e) => {
-        var price = e.target.value;
+        const price = e.target.value;
         
         this.setState({
             price: price,

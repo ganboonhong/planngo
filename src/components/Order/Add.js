@@ -9,11 +9,10 @@ import Toggle from 'react-bootstrap-toggle';
 
 const tooltip = (
   <Tooltip id="tooltip"><strong>Tutorial</strong></Tooltip>
-);
-
-var Global     = require('../Global');
-var production = Global.production;
-var domain     = (production) ? '' : Global.localDomain;
+),
+Global     = require('../Global'),
+production = Global.production,
+domain     = (production) ? '' : Global.localDomain;
 
 export default class Add extends Component {
     constructor(){
@@ -31,10 +30,10 @@ export default class Add extends Component {
     handleSubmit = (e) => {
         e.preventDefault();
 
-        var result = this._validateData();
+        const result = this._validateData();
 
         if(result.isValidData) {
-            var formData = {
+            const formData = {
                 sequence: result.dataTmp.sequence,
                 price: result.dataTmp.price,
                 remarks: result.dataTmp.remarks,
@@ -56,13 +55,13 @@ export default class Add extends Component {
     }
 
     _validateData = () => {
-        var result = {};
-        var isValidData = true;
-        var dataTmp     = {};
+        let result  = {},
+        isValidData = true,
+        dataTmp     = {};
 
-        for(var key = 0; key < Object.keys(this.props.validateFields).length; key++){
-            var field = this.props.validateFields[key];
-            var obj   = {};
+        for(let key = 0; key < Object.keys(this.props.validateFields).length; key++){
+            let field = this.props.validateFields[key],
+            obj = {};
 
             if(!this.refs[field].checkValid().result) {
                 obj[field+'HelpText'] = 'Please check this field.';
@@ -81,8 +80,8 @@ export default class Add extends Component {
     }
 
     _resetAllInput = () => {
-        for(var key = 0; key < Object.keys(this.props.validateFields).length; key++){
-            var field = this.props.validateFields[key];
+        for(let key = 0; key < Object.keys(this.props.validateFields).length; key++){
+            let field = this.props.validateFields[key];
             this.refs[field].clearState();
         }
         this.setState({idToEdit: ''});
@@ -93,8 +92,8 @@ export default class Add extends Component {
     }
 
     populateData = (objToEdit) => {
-        for(var key = 0; key < Object.keys(this.props.validateFields).length; key++){
-            var field = this.props.validateFields[key];
+        for(let key = 0; key < Object.keys(this.props.validateFields).length; key++){
+            let field = this.props.validateFields[key];
             this.refs[field].populateData(objToEdit);
         }
 

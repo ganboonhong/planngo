@@ -10,7 +10,7 @@ export default class Sequence extends Component {
     }
     
     checkValid = () => {
-        var obj = {
+        const obj = {
             result: false,
             value: this.state.sequence
         }
@@ -25,7 +25,7 @@ export default class Sequence extends Component {
     }
   
     handleChange = (e) => {
-        var sequence = e.target.value;
+        const sequence = e.target.value;
         
         this.setState({
             sequence: sequence,

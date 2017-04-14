@@ -8,9 +8,9 @@ import RowCenter from '../RowCenter';
 import { Grid, Button, FormGroup, ProgressBar, Modal } from 'react-bootstrap';
 import $ from 'jquery';
 
-var Global     = require('../Global');
-var production = Global.production;
-var domain     = (production) ? '' : Global.localDomain;
+const Global = require('../Global'),
+production   = Global.production,
+domain       = (production) ? '' : Global.localDomain;
 
 export default class Content extends Component {
 
@@ -32,12 +32,12 @@ export default class Content extends Component {
 
   handleSubmit(e) {
     e.preventDefault()
-    var isValidData = true;
-    var dataTmp = {};
+    let isValidData = true,
+    dataTmp = {};
 
-    for(var key = 0; key < Object.keys(this.props.validateFields).length; key++){
-        var field = this.props.validateFields[key];
-        var obj = {};
+    for(let key = 0; key < Object.keys(this.props.validateFields).length; key++){
+        let field = this.props.validateFields[key],
+        obj = {};
 
         if(!this.refs[field].checkValid().result) {
             obj[field+'HelpText'] = 'Please check this field.';
@@ -51,7 +51,7 @@ export default class Content extends Component {
 
     if(isValidData) {
 
-        var formData = {
+        const formData = {
             name: dataTmp.username,
             email: dataTmp.email,
             password: dataTmp.password,
@@ -84,11 +84,11 @@ export default class Content extends Component {
   }
 
   checkProgress = () => {
-        var progress = 0;
+        let progress = 0;
 
-        for(var key = 0; key < Object.keys(this.props.validateFields).length; key++){
-            var field = this.props.validateFields[key];
-            var r = this.refs[field].checkValid();
+        for(let key = 0; key < Object.keys(this.props.validateFields).length; key++){
+            let field = this.props.validateFields[key],
+            r = this.refs[field].checkValid();
             if(r.score) progress += r.score;
         }
         this.setState({progress: (progress/4 * 100)});
