@@ -1,4 +1,3 @@
-'use strict';
 import React, { Component } from 'react';
 import Title from './Title';
 import Sequence from './Sequence';

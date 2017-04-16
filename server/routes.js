@@ -13,9 +13,8 @@ password     = (production) ? 'Boonhong2015!' : '',
 env          = (production) ? 'production' : 'development',
 config       = require( __dirname + '/sequelize/config/config.json')[env];
 
-let Sess,
-Result = {success: false, msg: '', msgBsStyle: ''},
-Body   = {};
+let Result = {success: false, msg: '', msgBsStyle: ''},
+Body       = {};
 
 module.exports = function(app){
 
@@ -27,10 +26,7 @@ module.exports = function(app){
     });
 
     app.use(cookieParser());
-    app.use( bodyParser.json() );       // to support JSON-encoded bodies
-    app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
-      extended: false
-    }));
+    app.use(bodyParser.json());       // to support JSON-encoded bodies
 
     app.use(session({
         secret: 'eodigital', 
@@ -91,7 +87,6 @@ module.exports = function(app){
 
         const User = models.User;
         Body     = req.body;
-        Sess     = req.session;
 
         if(req.cookies.email){
             Result.msg = 'you\'ve already signed in.';
@@ -113,8 +108,6 @@ module.exports = function(app){
                         Result.success      = true;
 
                         res.cookie('email' , tmpUser.email, {expire : new Date() + cookieLife});
-
-                        Sess['email'] = true;
                         res.send(Result);
                     }else{
                         Result.msg        = 'Wrong email or password.'
@@ -130,8 +123,7 @@ module.exports = function(app){
     app.post('/order', (req, res) => {
         const Order = models.Order;
         Body      = req.body;
-        // Sess      = req.session;
-        // TODO: check session
+        console.log(Body);
 
         if(!Body.id){
             // create
@@ -167,7 +159,6 @@ module.exports = function(app){
         const Order   = models.Order,
         Sequelize     = require('sequelize'),
         sequelize     = new Sequelize(config.database, config.username, config.password, config);
-        // Sess       = req.session;
         let startDate = moment().tz(tz).add(-30, 'days').format('YYYY-MM-DD HH:mm'),
         endDate       = moment().tz(tz).add(1, 'hours').format('YYYY-MM-DD HH:mm'),
         currentFilter = 'sequence',
