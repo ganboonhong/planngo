@@ -90,6 +90,10 @@ export default class List extends Component {
         });
     }
 
+    downloadReceipt = (id) => {
+        window.open(domain + '/receipt/' + id,)
+    }
+
     handleDelete = () => {
         const obj = {id: this.state.idToDelete};
 
@@ -148,7 +152,7 @@ export default class List extends Component {
                                 })()
                             }
                             </td>
-                            <td style={{"width": "70px"}}>
+                            <td style={{"width": "100px"}}>
                                 <Button 
                                     bsSize="xsmall" 
                                     bsStyle="success" 
@@ -164,6 +168,14 @@ export default class List extends Component {
                                     style={buttonStyle}
                                 >
                                     <Glyphicon glyph="trash" />
+                                </Button>
+                                <Button 
+                                    bsSize="xsmall" 
+                                    bsStyle="info" 
+                                    onClick={() => this.downloadReceipt(item.id)}
+                                    style={buttonStyle}
+                                >
+                                    <Glyphicon glyph="download-alt" />
                                 </Button>
                             </td>
                           </tr>

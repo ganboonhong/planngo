@@ -143,7 +143,12 @@ var Bio = React.createClass({
 
               <div className="item">
                 <p><span className="project-title"><a href="http://demowebsite.ddns.net:9000/order" target="_blank">Mini POS System (Work In Progress)</a></span></p>
-                <p>I am using Node.js and React to create a mini POS system for a photography studio to replace the tool (Excel) they are using.</p>
+                <p>I am using Node.js and React to create a mini POS system for a photography studio.</p>
+                <p>They are able to</p>
+                <ul>
+                    <li>Record customers order ID and order total amount.</li>
+                    <li>Print out receipt in PDF file.</li>
+                </ul>                
                 <p><b>Demo:</b> <a href="http://demowebsite.ddns.net:9000/order" target="_blank">demowebsite.ddns.net:9000/order</a></p>
                 <p><b>Source Code:</b> <a href="https://github.com/ganboonhong/planngo" target="_blank">github.com/ganboonhong/planngo</a></p>
                 <p><b>Tutorial:</b> <a href="https://www.youtube.com/watch?v=X6q-tYV0G-Y&feature=em-upload_owner" target="_blank">youtube.com/watch?v=X6q-tYV0G-Y&feature=em-upload_owner</a></p>
