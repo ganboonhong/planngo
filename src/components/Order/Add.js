@@ -47,9 +47,11 @@ export default class Add extends Component {
                 dataType: 'json',
                 contentType: 'application/json',
                 crossDomain: true,
-            }).done((result) => {
+            }).then((result) => {
                 this._resetAllInput();
                 this._reloadOrderList();
+            }).catch((error) => {
+                console.error('Error on adding new record: ' + error);
             });
         }
     }

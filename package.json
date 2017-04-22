@@ -32,13 +32,14 @@
     "mz": "^2.6.0",
     "react-scripts": "0.9.2",
     "sequelize-cli": "^2.5.1",
+    "should": "^11.2.1",
     "supertest": "^3.0.0",
     "supertest-as-promised": "^4.0.2"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
+    "test": "./node_modules/mocha/bin/mocha ./test/order.js",
     "eject": "react-scripts eject"
   }
 }

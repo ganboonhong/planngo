@@ -121,26 +121,27 @@ module.exports = function(app){
     }) // eo post login
 
     app.post('/order', (req, res) => {
-        const Order = models.Order;
-        Body      = req.body;
-        console.log(Body);
+        const 
+        Order = models.Order,
+        Body  = req.body;
 
         if(!Body.id){
             // create
-            Order.create(Body).then(
-                (order) => {
-                    res.send(Body);
-                }
-            )
-        }else{
-            const id = Body.id;
-            delete Body.id;
-
-            // edit
-            Order.update(Body,{
-                where: {id: id}
+            Order.create(Body)
+            .then((order) => {
+                res.send(Body);
+            }).catch((err) => {
+                console.log("Error when creating order: " + err)
             })
-            res.send(Body);
+        }else{
+            // update
+            Order.update(Body,{
+                where: {id: Body.id}
+            }).then((order) => {
+                res.send(Body);
+            }).catch((err) => {
+                console.log("Error when updating order: " + err)
+            })
         }
     })  // eo post order
 
