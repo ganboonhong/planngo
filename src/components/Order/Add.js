@@ -75,10 +75,10 @@ export default class Add extends Component {
     }
 
     _resetAllInput = () => {
-        for(let key = 0; key < Object.keys(this.props.validateFields).length; key++){
-            let field = this.props.validateFields[key];
-            this.refs[field].clearState();
-        }
+        $.map(this.props.validateFields, (fieldName, idx) => {
+            this.refs[fieldName].clearState();
+        });
+
         this.setState({idToEdit: ''});
     }
 
@@ -87,10 +87,9 @@ export default class Add extends Component {
     }
 
     populateData = (objToEdit) => {
-        for(let key = 0; key < Object.keys(this.props.validateFields).length; key++){
-            let field = this.props.validateFields[key];
-            this.refs[field].populateData(objToEdit);
-        }
+        $.map(this.props.validateFields, (fieldName, idx) => {
+            this.refs[fieldName].populateData(objToEdit);
+        });
 
         this.setState({idToEdit: objToEdit.id});
     }
@@ -137,10 +136,16 @@ export default class Add extends Component {
                       active={this.state.scannerMode}
                     />
                 </FormGroup>
-                <Sequence ref="sequence"  scannerMode={this.state.scannerMode} 
-                focusOnPriceField={this.focusOnPriceField}/>
-                <Price ref="price" scannerMode={this.state.scannerMode}
-                focusOnSequenceField={this.focusOnSequenceField}/>
+                <Sequence 
+                    ref="sequence"  
+                    scannerMode={this.state.scannerMode} 
+                    focusOnPriceField={this.focusOnPriceField}
+                />
+                <Price 
+                    ref="price" 
+                    scannerMode={this.state.scannerMode}
+                    focusOnSequenceField={this.focusOnSequenceField}
+                />
                 <Remarks ref="remarks" />
                 <FormGroup>
                     <Button bsStyle="primary" type="submit" onClick={this.handleSubmit}>Submit</Button>

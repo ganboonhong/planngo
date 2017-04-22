@@ -5,6 +5,9 @@ const path = require('path');
 const app = express();
 require('./routes')(app);
 
+app.set('views', __dirname + '/../views');
+app.set('view engine', 'jade');
+
 // Setup logger
 app.use(morgan(':remote-addr - :remote-user [:date[clf]] ":method :url HTTP/:http-version" :status :res[content-length] :response-time ms'));
 

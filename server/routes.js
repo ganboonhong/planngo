@@ -216,4 +216,29 @@ module.exports = function(app){
         });
     })  // eo delete order
 
+    app.get('/pdf', (req, res) => {
+
+        const 
+        fs   = require('fs'),
+        pdf  = require('html-pdf'),
+        jade = require('jade'),
+        htmlString = jade.renderFile(__dirname + '/../views/test.jade', {title: 'yaya'});
+        fs.writeFileSync( __dirname + '/../views/htmls/test.html', htmlString);
+        console.log(htmlString);
+
+        const html = fs.readFileSync( __dirname + '/../views/htmls/test.html', 'utf8'),
+        options = {format: 'A4'};
+
+
+        pdf.create(html, options).toFile(__dirname + '/../views/pdfs/test.pdf', (err, res) => {
+            if (err) console.log(err)
+            console.log(res);
+        })
+
+
+        res.render('test', {
+            title: 'Yoyo'
+        })
+    })
+
 }
