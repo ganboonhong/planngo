@@ -212,10 +212,8 @@ module.exports = function(app){
             },
             paranoid: true
         }).then( () => {
-            // delete callback
+            res.send(Body);
         });
-
-        res.send(Body);
     })  // eo delete order
 
 }

@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import { Col, Row, FormGroup, FormControl, ControlLabel, HelpBlock } from 'react-bootstrap';
 import ReactDOM from 'react-dom';
 
+const
+Global = require('../Global'),
+commonHint = Global.commonHint;
+
 export default class Sequence extends Component {
 
     constructor(props) {
@@ -20,17 +24,22 @@ export default class Sequence extends Component {
         return obj;
     }
 
+    showHint = (show) => {
+        this.setState({ showHelpText: (show) ? '' : 'hide'});
+    }
+
     clearState = () => {
         this.setState(this.props.initState);
     }
   
     handleChange = (e) => {
-        const sequence = e.target.value;
+        const sequence = e.target.value,
+        validSequence = sequence.length >= this.props.minimumCharacter;
         
         this.setState({
             sequence: sequence,
-            validSequence: sequence.length >= this.props.minimumCharacter,
-            showHelpText: (sequence.length >= this.props.minimumCharacter) ? 'hide' : '',
+            validSequence: validSequence,
+            showHelpText: (validSequence) ? 'hide' : '',
         });
 
         setTimeout(() => {
@@ -42,7 +51,7 @@ export default class Sequence extends Component {
         this.setState({
             sequence: objToEdit.sequence,
             validSequence: true,
-            showHelpText: '',
+            showHelpText: 'hide',
         });
     }
 
@@ -65,7 +74,7 @@ export default class Sequence extends Component {
                                 onChange={this.handleChange}
                                 autoFocus
                               />
-                              <HelpBlock className={this.state.showHelpText}>{`${this.props.sequenceHelpText}`}</HelpBlock>
+                              <HelpBlock className={this.state.showHelpText}>{`${commonHint}`}</HelpBlock>
                               <FormControl.Feedback />
                         </FormGroup>
                     </Col>
@@ -85,6 +94,6 @@ Sequence.defaultProps = {
     initState: {
         sequence: '',
         validSequence: false,
-        showHelpText: '',
+        showHelpText: 'hide',
     }
 }

@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import { Col, Row, FormGroup, FormControl, ControlLabel, HelpBlock } from 'react-bootstrap';
 
+const
+Global = require('../Global'),
+commonHint = Global.commonHint;
+
 export default class Remarks extends Component {
 
     constructor(props) {
@@ -17,6 +21,10 @@ export default class Remarks extends Component {
             obj.result = true;
         }
         return obj;
+    }
+
+    showHint = (show) => {
+        this.setState({ showHelpText: (show) ? '' : 'hide'});
     }
   
     handleChange = (e) => {
@@ -55,7 +63,7 @@ export default class Remarks extends Component {
                                 placeholder="Remarks"
                                 onChange={this.handleChange}
                               />
-                              <HelpBlock className={this.state.showHelpText}>{`${this.props.remarksHelpText}`}</HelpBlock>
+                              <HelpBlock className={this.state.showHelpText}>{`${commonHint}`}</HelpBlock>
                               <FormControl.Feedback />
                         </FormGroup>
                     </Col>
@@ -74,6 +82,6 @@ Remarks.defaultProps = {
     initState: {
         remarks: '',
         validRemarks: true, // remarks is not compulsary
-        showHelpText: '',
+        showHelpText: 'hide',
     }
 }

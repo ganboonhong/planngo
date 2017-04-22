@@ -18,9 +18,6 @@ export default class Add extends Component {
     constructor(){
         super();
         this.state = {
-            sequenceHelpText: '',
-            priceHelpText: '',
-            remarksHelpText: '',
             idToEdit: '',
             scannerMode: false,
         }
@@ -61,19 +58,15 @@ export default class Add extends Component {
         isValidData = true,
         dataTmp     = {};
 
-        for(let key = 0; key < Object.keys(this.props.validateFields).length; key++){
-            let field = this.props.validateFields[key],
-            obj = {};
-
-            if(!this.refs[field].checkValid().result) {
-                obj[field+'HelpText'] = 'Please check this field.';
-                isValidData           = false;
+        $.map(this.props.validateFields, (fieldName, idx) => {
+            const result = this.refs[fieldName].checkValid().result;
+            if(!result) {  
+                isValidData = false;
             }else{
-                dataTmp[field] = this.refs[field].checkValid().value;
-                obj[field+'HelpText']= '';
+                dataTmp[fieldName] = this.refs[fieldName].checkValid().value;
             }
-            this.setState(obj);
-        }
+            this.refs[fieldName].showHint(!result);
+        })
 
         result.isValidData = isValidData;
         result.dataTmp     = dataTmp;
@@ -127,12 +120,12 @@ export default class Add extends Component {
                 <Title title="Registration"/>
                 <FormGroup>
                     <OverlayTrigger placement="top" overlay={tooltip}>
-                              <Glyphicon 
-                              glyph="info-sign" 
-                              style={{"marginRight" : '10px'}}
-                              onClick={this.goToTutorial}
-                              />
-                            </OverlayTrigger>
+                          <Glyphicon 
+                          glyph="info-sign" 
+                          style={{"marginRight" : '10px'}}
+                          onClick={this.goToTutorial}
+                          />
+                    </OverlayTrigger>
                     <ControlLabel style={{'marginRight': '10px'}}>Scanner Mode</ControlLabel>
                     <Toggle
                       onClick={this.onToggle}
@@ -144,11 +137,11 @@ export default class Add extends Component {
                       active={this.state.scannerMode}
                     />
                 </FormGroup>
-                <Sequence ref="sequence" sequenceHelpText={this.state.sequenceHelpText} scannerMode={this.state.scannerMode} 
+                <Sequence ref="sequence"  scannerMode={this.state.scannerMode} 
                 focusOnPriceField={this.focusOnPriceField}/>
-                <Price ref="price" priceHelpText={this.state.priceHelpText} scannerMode={this.state.scannerMode}
+                <Price ref="price" scannerMode={this.state.scannerMode}
                 focusOnSequenceField={this.focusOnSequenceField}/>
-                <Remarks ref="remarks" remarksHelpText={this.state.remarksHelpText} />
+                <Remarks ref="remarks" />
                 <FormGroup>
                     <Button bsStyle="primary" type="submit" onClick={this.handleSubmit}>Submit</Button>
                 </FormGroup>

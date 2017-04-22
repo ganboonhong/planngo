@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import { Col, Row, FormGroup, FormControl, ControlLabel, HelpBlock } from 'react-bootstrap';
 import ReactDOM from 'react-dom';
 
+const
+Global = require('../Global'),
+commonHint = Global.commonHint;
+
 export default class Price extends Component {
 
     constructor(props) {
@@ -18,6 +22,10 @@ export default class Price extends Component {
             obj.result = true;
         }
         return obj;
+    }
+
+    showHint = (show) => {
+        this.setState({ showHelpText: (show) ? '' : 'hide'});
     }
   
     handleChange = (e) => {
@@ -64,7 +72,7 @@ export default class Price extends Component {
                                 placeholder="Price"
                                 onChange={this.handleChange}
                               />
-                              <HelpBlock className={this.state.showHelpText}>{`${this.props.priceHelpText}`}</HelpBlock>
+                              <HelpBlock className={this.state.showHelpText}>{`${commonHint}`}</HelpBlock>
                               <FormControl.Feedback />
                         </FormGroup>
                     </Col>
@@ -84,6 +92,6 @@ Price.defaultProps = {
     initState: {
         price: 0,
         validPrice: false,
-        showHelpText: '',
+        showHelpText: 'hide',
     }
 }

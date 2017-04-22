@@ -40,7 +40,7 @@ describe('CREATE new order', () => {
 
 describe('UPDATE new order', () => {
     it('should return updated order', (done) => {
-        const order = { sequence: 'updated value', price: '12', remarks: '', id: '1' };
+        const order = { sequence: 'updated value', price: '12', remarks: '', id: '134' };
 
         server
         .post('/order')
