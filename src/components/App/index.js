@@ -45,6 +45,11 @@ var Bio = React.createClass({
             </div>{/*//interests*/}
           </div>{/*//sidebar-wrapper*/}
           <div className="main-wrapper">
+            <a href="/zh">
+                <section className="summary-section">
+                  <h1 className="section-title"><i className="fa fa-language" /></h1>
+                </section>{/*//section*/}
+            </a>
             <section className="section summary-section">
               <h2 className="section-title"><i className="fa fa-user" />Career Profile</h2>
               <div className="summary">

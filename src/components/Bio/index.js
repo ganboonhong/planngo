@@ -45,6 +45,12 @@ var BioZh = React.createClass({
             </div>{/*//interests*/}
           </div>{/*//sidebar-wrapper*/}
           <div className="main-wrapper">
+            <a href="/">
+                <section className="summary-section">
+                  <h2 className="section-title"><i className="fa fa-language" /></h2>
+                </section>{/*//section*/}
+            </a>
+
             <section className="section summary-section">
               <h2 className="section-title"><i className="fa fa-user" />職業發展</h2>
               <div className="summary">
