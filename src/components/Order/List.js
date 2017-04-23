@@ -3,15 +3,14 @@ import Pagination from '../Pagination';
 import TextCenter from '../TextCenter';
 import $ from 'jquery';
 import moment from 'moment-timezone'
-import { Table, Button, Glyphicon, Modal, Grid, OverlayTrigger } from 'react-bootstrap';
+import { Table, Button, Glyphicon, Modal, Grid, OverlayTrigger, Tooltip } from 'react-bootstrap';
 import TitleList from './TitleList';
 import Filter from './Filter';
 
 const Global = require('../Global'),
 production   = Global.production,
 tz           = Global.tz,
-domain       = (production) ? '' : Global.localDomain,
-toolTip      = Global.toolTip;
+domain       = (production) ? '' : Global.localDomain;
 
 
 let FilterObj;
@@ -36,6 +35,10 @@ export default class List extends Component {
     onChangePage(pageOfItems) {
         // update state with new page of items
         this.setState({ pageOfItems: pageOfItems });
+    }
+
+    toolTip = (str) => {
+        return  <Tooltip id="tooltip"><strong>{str}</strong></Tooltip>;
     }
 
     getOrders = (filterObj = null) => {
@@ -155,7 +158,7 @@ export default class List extends Component {
                             }
                             </td>
                             <td style={{"width": "100px"}}>
-                                <OverlayTrigger placement="top" overlay={toolTip('Edit')}>
+                                <OverlayTrigger placement="top" overlay={this.toolTip('Edit')}>
                                     <Button 
                                         bsSize="xsmall" 
                                         bsStyle="success" 
@@ -165,7 +168,7 @@ export default class List extends Component {
                                         <Glyphicon glyph="pencil" />
                                     </Button>
                                 </OverlayTrigger>
-                                <OverlayTrigger placement="top" overlay={toolTip('Delete')}>
+                                <OverlayTrigger placement="top" overlay={this.toolTip('Delete')}>
                                     <Button 
                                         bsSize="xsmall" 
                                         bsStyle="danger" 
@@ -175,7 +178,7 @@ export default class List extends Component {
                                         <Glyphicon glyph="trash" />
                                     </Button>
                                 </OverlayTrigger>
-                                <OverlayTrigger placement="top" overlay={toolTip('Download Receipt')}>
+                                <OverlayTrigger placement="top" overlay={this.toolTip('Download Receipt')}>
                                     <Button 
                                         bsSize="xsmall" 
                                         bsStyle="info" 
