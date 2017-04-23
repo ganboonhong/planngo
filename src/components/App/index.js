@@ -57,7 +57,7 @@ var Bio = React.createClass({
                 I  was an intern at a web design company during the last semester in National Taiwan University, and I joined the company after graduated. 
                 I was in charge of maintaining the existing projects and assisting senior developers for new projects. In my current company in Singapore, 
                 I am in charge of specific modules of an ERP system for different companies. 
-                In addition, I am responsible of handling the ticketing system for customer support and the testing for those complicated functions currently without unit test 
+                In addition, I am responsible of handling the ticketing system for customer support and the doing the integration testing for those complicated functions currently without unit test 
                 to ensure our system is robust. 
                 Being in a fast-paced environment, I need to keep finding more effective ways to complete the tasks within limited time. Instead of solving an issue with a temporary solution, I prefer to spend time on finding the root causes of the issues and solve it permanently.
                 </p>
