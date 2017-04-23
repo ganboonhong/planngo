@@ -3,14 +3,16 @@ import Pagination from '../Pagination';
 import TextCenter from '../TextCenter';
 import $ from 'jquery';
 import moment from 'moment-timezone'
-import { Table, Button, Glyphicon, Modal, Grid } from 'react-bootstrap';
+import { Table, Button, Glyphicon, Modal, Grid, OverlayTrigger } from 'react-bootstrap';
 import TitleList from './TitleList';
 import Filter from './Filter';
 
 const Global = require('../Global'),
 production   = Global.production,
 tz           = Global.tz,
-domain       = (production) ? '' : Global.localDomain;
+domain       = (production) ? '' : Global.localDomain,
+toolTip      = Global.toolTip;
+
 
 let FilterObj;
 
@@ -153,30 +155,36 @@ export default class List extends Component {
                             }
                             </td>
                             <td style={{"width": "100px"}}>
-                                <Button 
-                                    bsSize="xsmall" 
-                                    bsStyle="success" 
-                                    onClick={() => this.startEdit(item)}
-                                    style={buttonStyle}
-                                >
-                                    <Glyphicon glyph="pencil" />
-                                </Button>
-                                <Button 
-                                    bsSize="xsmall" 
-                                    bsStyle="danger" 
-                                    onClick={() => this.confirmDelete(item.id)}
-                                    style={buttonStyle}
-                                >
-                                    <Glyphicon glyph="trash" />
-                                </Button>
-                                <Button 
-                                    bsSize="xsmall" 
-                                    bsStyle="info" 
-                                    onClick={() => this.downloadReceipt(item.id)}
-                                    style={buttonStyle}
-                                >
-                                    <Glyphicon glyph="download-alt" />
-                                </Button>
+                                <OverlayTrigger placement="top" overlay={toolTip('Edit')}>
+                                    <Button 
+                                        bsSize="xsmall" 
+                                        bsStyle="success" 
+                                        onClick={() => this.startEdit(item)}
+                                        style={buttonStyle}
+                                    >
+                                        <Glyphicon glyph="pencil" />
+                                    </Button>
+                                </OverlayTrigger>
+                                <OverlayTrigger placement="top" overlay={toolTip('Delete')}>
+                                    <Button 
+                                        bsSize="xsmall" 
+                                        bsStyle="danger" 
+                                        onClick={() => this.confirmDelete(item.id)}
+                                        style={buttonStyle}
+                                    >
+                                        <Glyphicon glyph="trash" />
+                                    </Button>
+                                </OverlayTrigger>
+                                <OverlayTrigger placement="top" overlay={toolTip('Download Receipt')}>
+                                    <Button 
+                                        bsSize="xsmall" 
+                                        bsStyle="info" 
+                                        onClick={() => this.downloadReceipt(item.id)}
+                                        style={buttonStyle}
+                                    >
+                                        <Glyphicon glyph="download-alt" />
+                                    </Button>
+                                </OverlayTrigger>
                             </td>
                           </tr>
                         )}

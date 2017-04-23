@@ -242,21 +242,19 @@ module.exports = function(app){
                 content: order.sequence,
             });
 
-            console.log(htmlString)
+            fs.unlinkSync(htmlPath);
+            fs.writeFileSync( htmlPath, htmlString);
 
-            fs.truncate(htmlPath, 0, () => {
-                fs.writeFileSync( htmlPath, htmlString);
-
-                pdf.create(html, options).toFile(pdfPath, (err, res) => {
-                    if (err) console.log(err)
-                })
-
-                const fileName = 'EO Digital Receipt.pdf';
-
-                res.download(pdfPath, fileName, (err) => {
-                    // error handler
-                });
+            pdf.create(html, options).toFile(pdfPath, (err, res) => {
+                if (err) console.log(err)
             })
+
+            const fileName = 'EO Digital Receipt.pdf';
+
+            res.download(pdfPath, fileName, (err) => {
+                // error handler
+            });
+
 
         })
 
