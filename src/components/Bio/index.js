@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import './style.css';
-var Bio = React.createClass({
+
+var BioZh = React.createClass({
   render: function() {
     return (
       <div>
@@ -8,8 +8,8 @@ var Bio = React.createClass({
           <div className="sidebar-wrapper">
             <div className="profile-container">
               <img className="profile" src="bio/images/profile.JPG" alt="profile" width="150px"/>
-              <h1 className="name">Francis</h1>
-              <h3 className="tagline">Full Stack Developer</h3>
+              <h1 className="name">顏文豐</h1>
+              <h3 className="tagline">全端網頁工程師</h3>
             </div>{/*//profile-container*/}
             <div className="contact-container container-block">
               <ul className="list-unstyled contact-list">
@@ -20,64 +20,59 @@ var Bio = React.createClass({
               </ul>
             </div>{/*//contact-container*/}
             <div className="education-container container-block">
-              <h2 className="container-block-title">Education</h2>
+              <h2 className="container-block-title">教育背景</h2>
               <div className="item">
-                <h4 className="degree">Agricultural Economics</h4>
-                <h5 className="meta">National Taiwan University</h5>
+                <h4 className="degree">農業經濟學系</h4>
+                <h5 className="meta">國立臺灣大學</h5>
                 <div className="time">2012 - 2015</div>
               </div>{/*//item*/}
             </div>{/*//education-container*/}
             <div className="languages-container container-block">
-              <h2 className="container-block-title">Languages</h2>
+              <h2 className="container-block-title">善用語言</h2>
               <ul className="list-unstyled interests-list">
-                <li>Chinese <span className="lang-desc">(Native)</span></li>
-                <li>English <span className="lang-desc">(Intermediate)</span></li>
-                <li>Malay <span className="lang-desc">(Intermediate)</span></li>
+                <li>中文 <span className="lang-desc">(流利)</span></li>
+                <li>英文 <span className="lang-desc">(中等)</span></li>
+                <li>馬來文 <span className="lang-desc">(中等)</span></li>
               </ul>
             </div>{/*//interests*/}
             <div className="interests-container container-block">
-              <h2 className="container-block-title">Interests</h2>
+              <h2 className="container-block-title">興趣</h2>
               <ul className="list-unstyled interests-list">
-                <li>Swimming</li>
-                <li>Playing Basketball</li>
-                <li>Coding</li>
+                <li>游泳</li>
+                <li>籃球</li>
+                <li>寫程式</li>
               </ul>
             </div>{/*//interests*/}
           </div>{/*//sidebar-wrapper*/}
           <div className="main-wrapper">
             <section className="section summary-section">
-              <h2 className="section-title"><i className="fa fa-user" />Career Profile</h2>
+              <h2 className="section-title"><i className="fa fa-user" />職業發展</h2>
               <div className="summary">
                 <p>
-                I was being an intern in a web design company at the last semester of university in Taiwan and 
-                I joined the company after graduated. 
-                I was in charge of maintaining the existing projects and assisting senior developers for new projects. 
-                In my current company in Singapore, I am in charge of specific modules of an ERP system for different
-                companies. Besides, I also handle ticketing system for customer support and do the human testing for 
-                those complicated functions currently without unit test to ensure our system is robust. Being in a
-                fast-paced environment, I need to keep finding more effective ways to complete the tasks within limited
-                time. Instead of solving an issue with a temporary solution, I prefer to spend time on finding the root
-                causes of the issues and solve it permanently.
+                大學畢業前我曾在臺灣的一家網頁設計公司實習，畢業後即轉為正職。主要的任務是負責維護現有的專案以及協助其他程式設計師開發新專案。
+                目前正在新加坡工作，主要是負責不同客戶ERP系統的部份模組、回覆客戶在我們的諮詢系統中所提出的疑問及要求、對一些設計比較複雜的
+                功能進行人工測試以確保系統的穩定性。在一個節奏比較快的工作環境裡，我必須不斷找出更有效率的方式來處理問題，與其使用臨時的解決方案來解決問題，
+                我選擇花時間找出問題的根源並測底解決。
                 </p>
               </div>{/*//summary*/}
             </section>{/*//section*/}
             <hr />
             <section className="section experiences-section">
-              <h2 className="section-title"><i className="fa fa-briefcase" />Experiences</h2>
+              <h2 className="section-title"><i className="fa fa-briefcase" />工作經驗</h2>
 
               <hr />
 
               <div className="item">
                 <div className="meta">
                   <div className="upper-row">
-                    <h3 className="job-title">Web Developer</h3>
-                    <div className="time">2016 - Present</div>
+                    <h3 className="job-title">全端網頁設計師</h3>
+                    <div className="time">2016 - 現在</div>
                   </div>{/*//upper-row*/}
-                  <div className="company">Singapore</div>
+                  <div className="company">新加坡</div>
                 </div>{/*//meta*/}
                 <div className="details">
                   <p>
-                    I use Cakephp & jQuery to develop our ERP system for different companies.
+                    我目前使用 Cakephp 和 jQuery 來開發多家公司的 ERP 系統。
                   </p>  
                 </div>{/*//details*/}
               </div>{/*//item*/}
@@ -90,11 +85,11 @@ var Bio = React.createClass({
                     <h3 className="job-title">Microsoft-Intel IoT Hackathon</h3>
                     <div className="time">2016 Dec. 15 - 16</div>
                   </div>{/*//upper-row*/}
-                  <div className="company">Singapore</div>
+                  <div className="company">新加坡</div>
                 </div>{/*//meta*/}
                 <div className="details">
                   <p>
-                    Our team won first prize among the teams from Thailand and Indonesia.
+                    我們的團隊在此次 Hackathon中，從印尼和泰國的隊伍中脫穎而出，得到了冠軍。
                   </p>  
                 </div>{/*//details*/}
               </div>{/*//item*/}
@@ -105,14 +100,14 @@ var Bio = React.createClass({
               <div className="item">
                 <div className="meta">
                   <div className="upper-row">
-                    <h3 className="job-title">Web Developer</h3>
+                    <h3 className="job-title">全端網頁設計師</h3>
                     <div className="time">2015 - 2016</div>
                   </div>{/*//upper-row*/}
-                  <div className="company">Taipei, Taiwan</div>
+                  <div className="company">台北, 台灣</div>
                 </div>{/*//meta*/}
                 <div className="details">
                   <p>
-                    I used plain PHP and jQuery to handle most of our content management systems (CMS) and customized E-commerce websites.
+                    使用PHP語言及jQuery來開發一些内容管理系统(CMS)及客製化的電商網站。
                   </p>  
                 </div>{/*//details*/}
               </div>{/*//item*/}
@@ -122,14 +117,14 @@ var Bio = React.createClass({
               <div className="item">
                 <div className="meta">
                   <div className="upper-row">
-                    <h3 className="job-title">Work and Travel</h3>
+                    <h3 className="job-title">打工旅遊</h3>
                     <div className="time">2013 Jul. - Sep.</div>
                   </div>{/*//upper-row*/}
-                  <div className="company">Ohio, United States</div>
+                  <div className="company">俄亥俄州, 美國</div>
                 </div>{/*//meta*/}
                 <div className="details">
                   <p>
-                    I was being a food attendant in Cedar Point Amusement Park.
+                    曾在2013年曾到美國俄亥俄州的參加打工旅遊計畫。
                   </p>  
                 </div>{/*//details*/}
               </div>{/*//item*/}
@@ -138,20 +133,20 @@ var Bio = React.createClass({
             <hr />
 
             <section className="section projects-section">
-              <h2 className="section-title"><i className="fa fa-archive" />Projects</h2>
+              <h2 className="section-title"><i className="fa fa-archive" />個人專案</h2>
               <hr />
 
               <div className="item">
-                <p><span className="project-title"><a href="http://demowebsite.ddns.net:9000/order" target="_blank">Mini POS System (Work In Progress)</a></span></p>
-                <p>I am using Node.js and React to create a mini POS system for a photography studio.</p>
-                <p>They are able to</p>
+                <p><span className="project-title"><a href="http://demowebsite.ddns.net:9000/order" target="_blank">POS 銷售時點情報系統(專案仍在進行中)</a></span></p>
+                <p>我使用 Node.js 作為後端的語言，  React 作為前端的語言，來為一家攝影社建置一個 POS 銷售時點情報系統。</p>
+                <p>他們能夠使用此系統來</p>
                 <ul>
-                    <li>Record customers order ID and order total amount.</li>
-                    <li>Print out receipt in PDF file.</li>
+                    <li>紀錄客戶訂單的流水號以及訂單總金額</li>
+                    <li>列印PDF發票</li>
                 </ul>                
-                <p><b>Demo:</b> <a href="http://demowebsite.ddns.net:9000/order" target="_blank">demowebsite.ddns.net:9000/order</a></p>
-                <p><b>Source Code:</b> <a href="https://github.com/ganboonhong/planngo" target="_blank">github.com/ganboonhong/planngo</a></p>
-                <p><b>Tutorial:</b> <a href="https://www.youtube.com/watch?v=X6q-tYV0G-Y&feature=em-upload_owner" target="_blank">youtube.com/watch?v=X6q-tYV0G-Y&feature=em-upload_owner</a></p>
+                <p><b>網站:</b> <a href="http://demowebsite.ddns.net:9000/order" target="_blank">demowebsite.ddns.net:9000/order</a></p>
+                <p><b>源碼:</b> <a href="https://github.com/ganboonhong/planngo" target="_blank">github.com/ganboonhong/planngo</a></p>
+                <p><b>教學影片:</b> <a href="https://www.youtube.com/watch?v=X6q-tYV0G-Y&feature=em-upload_owner" target="_blank">youtube.com/watch?v=X6q-tYV0G-Y&feature=em-upload_owner</a></p>
                 <span className="project-tagline">
                 </span>
               </div>{/*//item*/}
@@ -159,14 +154,14 @@ var Bio = React.createClass({
               <hr />
 
               <div className="item">
-                <p><span className="project-title"><a href="http://y-note.ddns.net/blog/2/9/1" target="_blank">Personal Blog</a></span></p>
-                <p> I use Laravel and React to implement my first (SPA) blog to log down the things I have learned.</p>
-                <p><b>Demo:</b> <a href="http://y-note.ddns.net" target="_blank">y-note.ddns.net</a>
-                    <span style={{'marginLeft': '20px' }}>(<b>username</b>: ganboonhong@gmail.com</span> 
+                <p><span className="project-title"><a href="http://y-note.ddns.net/blog/2/9/1" target="_blank">個人部落格</a></span></p>
+                <p>我使用PHP (Laravel)作為後端處理API的語言，React作為開發前端的語言來建置一個部落格(單頁應用程式, SPA)來記錄我開發過程中所學的要點</p>
+                <p><b>網站:</b> <a href="http://y-note.ddns.net" target="_blank">y-note.ddns.net</a>
+                    <span style={{'marginLeft': '20px' }}>(<b>使用者名稱</b>: ganboonhong@gmail.com</span> 
                     <span style={{'margin': '0px 5px 0px 5px' }}> <b>/</b> </span>    
-                    <span style={{'marginLeft': '10px' }}> <b>password</b>: 111111)</span>
+                    <span style={{'marginLeft': '10px' }}> <b>密碼</b>: 111111)</span>
                 </p>
-                <p><b>Source Code:</b> <a href="https://github.com/ganboonhong/ynote" target="_blank">github.com/ganboonhong/ynote</a></p>
+                <p><b>源碼:</b> <a href="https://github.com/ganboonhong/ynote" target="_blank">github.com/ganboonhong/ynote</a></p>
                 <span className="project-tagline">
                 </span>
               </div>{/*//item*/}
@@ -175,7 +170,7 @@ var Bio = React.createClass({
               
             </section>{/*//section*/}
             <section className="skills-section section">
-              <h2 className="section-title"><i className="fa fa-rocket" />Skills &amp; Proficiency</h2>
+              <h2 className="section-title"><i className="fa fa-rocket" />技能及其熟悉度</h2>
               <div className="skillset">        
                 <div className="item">
                   <h3 className="level-title">React</h3>
@@ -261,10 +256,10 @@ var Bio = React.createClass({
   }
 });
 
-class App extends Component {
+class Bio extends Component {
   render() {
-    return <Bio />;
+    return <BioZh />;
   }
 }
 
-export default App;
+export default Bio;
