@@ -50,8 +50,9 @@ var BioZh = React.createClass({
               <div className="summary">
                 <p>
                 大學畢業前我曾在臺灣的一家網頁設計公司實習，畢業後即轉為正職。主要的任務是負責維護現有的專案以及協助其他程式設計師開發新專案。
-                目前正在新加坡工作，主要是負責不同客戶ERP系統的部份模組、回覆客戶在我們的諮詢系統中所提出的疑問及要求、對一些設計比較複雜的
-                功能進行人工測試以確保系統的穩定性。在一個節奏比較快的工作環境裡，我必須不斷找出更有效率的方式來處理問題，與其使用臨時的解決方案來解決問題，
+                目前正在新加坡工作，主要是負責不同客戶ERP系統的部份模組、回覆客戶在我們的諮詢系統中所提出的疑問及需求、
+                對一些設計比較複雜的功能進行人工測試以確保系統的穩定性。
+                在一個節奏比較快的工作環境裡，我必須不斷找出更有效率的方式來處理問題，與其使用臨時的解決方案來解決問題，
                 我選擇花時間找出問題的根源並測底解決。
                 </p>
               </div>{/*//summary*/}
@@ -124,7 +125,7 @@ var BioZh = React.createClass({
                 </div>{/*//meta*/}
                 <div className="details">
                   <p>
-                    曾在2013年曾到美國俄亥俄州的參加打工旅遊計畫。
+                    曾在2013年曾到美國俄亥俄州參加打工旅遊計畫。
                   </p>  
                 </div>{/*//details*/}
               </div>{/*//item*/}
@@ -137,9 +138,9 @@ var BioZh = React.createClass({
               <hr />
 
               <div className="item">
-                <p><span className="project-title"><a href="http://demowebsite.ddns.net:9000/order" target="_blank">POS 銷售時點情報系統(專案仍在進行中)</a></span></p>
-                <p>我使用 Node.js 作為後端的語言，  React 作為前端的語言，來為一家攝影社建置一個 POS 銷售時點情報系統。</p>
-                <p>他們能夠使用此系統來</p>
+                <p><span className="project-title"><a href="http://demowebsite.ddns.net:9000/order" target="_blank">銷售時點情報系統(POS) (專案仍在進行中)</a></span></p>
+                <p>我使用 Node.js 作為後端的語言，  React 作為前端的語言，來為一家攝影社建置一個銷售時點情報系統(POS)。</p>
+                <p>他們能夠使用此系統</p>
                 <ul>
                     <li>紀錄客戶訂單的流水號以及訂單總金額</li>
                     <li>列印PDF發票</li>
@@ -170,7 +171,7 @@ var BioZh = React.createClass({
               
             </section>{/*//section*/}
             <section className="skills-section section">
-              <h2 className="section-title"><i className="fa fa-rocket" />技能及其熟悉度</h2>
+              <h2 className="section-title"><i className="fa fa-rocket" />程式語言</h2>
               <div className="skillset">        
                 <div className="item">
                   <h3 className="level-title">React</h3>
