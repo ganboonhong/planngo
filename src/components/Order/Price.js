@@ -50,7 +50,7 @@ export default class Price extends Component {
         this.setState({
             price: objToEdit.price,
             validPrice: true,
-            showHelpText: '',
+            showHelpText: 'hide',
         });
     }
 
@@ -71,6 +71,7 @@ export default class Price extends Component {
                                 value={this.state.price}
                                 placeholder="Price"
                                 onChange={this.handleChange}
+                                bsSize="small"
                               />
                               <HelpBlock className={this.state.showHelpText}>{`${commonHint}`}</HelpBlock>
                               <FormControl.Feedback />

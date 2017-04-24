@@ -16,11 +16,11 @@ export default class TitleList extends Component {
                 <Row>
                     <Col md={3}></Col>
                     <Col md={4}>
-                        <h1 style={{'marginLeft': '20px'}}>
+                        <h3 style={{'textAlign': 'center'}}>
                             <Label bsStyle="primary">
                                 {this.props.title}
                             </Label>
-                        </h1>
+                        </h3>
                     </Col>
                     <Col md={5}>
                         <h4 style={{'marginLeft': '20px'}}>

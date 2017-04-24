@@ -130,7 +130,7 @@ export default class Add extends Component {
                       onClick={this.onToggle}
                       on="ON"
                       off="OFF"
-                      size="md"
+                      size="sm"
                       offstyle="default"
                       onstyle="info"
                       active={this.state.scannerMode}
@@ -148,7 +148,7 @@ export default class Add extends Component {
                 />
                 <Remarks ref="remarks" />
                 <FormGroup>
-                    <Button bsStyle="primary" type="submit" onClick={this.handleSubmit}>Submit</Button>
+                    <Button bsSize="sm" bsStyle="primary" type="submit" onClick={this.handleSubmit}>Submit</Button>
                 </FormGroup>
             </form>
         );

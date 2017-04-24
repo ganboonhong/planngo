@@ -45,7 +45,7 @@ export default class Remarks extends Component {
         this.setState({
             remarks: objToEdit.remarks,
             validRemarks: true,
-            showHelpText: '',
+            showHelpText: 'hide',
         });
     }
 

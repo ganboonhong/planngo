@@ -103,16 +103,19 @@ export default class Filter extends Component {
                     <Row>
                         <Col md={3} sm={5} xs={8} className="filter">
                             <Row>
-                                <Col md={6} sm={6} xs={6}><Button onClick={this.open} bsStyle="info">{this.state.startDate.format("YYYY-MM-DD")}</Button></Col>
-                                <Col md={6} sm={6} xs={6}><Button onClick={this.open} bsStyle="info">{this.state.endDate.format("YYYY-MM-DD")}</Button></Col>
+                                <Col md={6} sm={6} xs={6}><Button onClick={this.open} bsStyle="info" bsSize="small">{this.state.startDate.format("YYYY-MM-DD")}</Button></Col>
+                                <Col md={6} sm={6} xs={6}><Button onClick={this.open} bsStyle="info" bsSize="small">{this.state.endDate.format("YYYY-MM-DD")}</Button></Col>
                             </Row>
                         </Col>
 
                         <Col md={9} sm={12} xs={12} className="filter">
                             <Row>
                                 <Col md={3} sm={5} xs={12}>
-                                    <SplitButton title={this.state.filterLabel} onSelect={this.handleFilterSelect}
+                                    <SplitButton 
+                                        title={this.state.filterLabel} 
+                                        onSelect={this.handleFilterSelect}
                                         id="filterButton"
+                                        bsSize="small"
                                     >
                                          <MenuItem eventKey="id">ID</MenuItem>
                                          <MenuItem eventKey="sequence">Sequence</MenuItem>
@@ -126,13 +129,14 @@ export default class Filter extends Component {
                                         ref="keyword"
                                         type="text"
                                         // value={this.state.sequence}
+                                        bsSize="small"
                                         placeholder={"Search "+this.state.filterLabel}
                                         onChange={this.handleKeywordChange}
                                       />
                                 </Col>
 
                                 <Col md={3} sm={2} xs={12} className="filter">
-                                    <Button onClick={this.handleSubmit}>Search</Button>
+                                    <Button bsSize="small" onClick={this.handleSubmit}>Search</Button>
                                     <i className={this.state.showSearching} 
                                         style={{"fontSize":"15px", "marginLeft": "15px"}}>
                                     </i>

@@ -72,6 +72,7 @@ export default class Sequence extends Component {
                                 value={this.state.sequence}
                                 placeholder="Sequence No"
                                 onChange={this.handleChange}
+                                bsSize="small"
                                 autoFocus
                               />
                               <HelpBlock className={this.state.showHelpText}>{`${commonHint}`}</HelpBlock>
