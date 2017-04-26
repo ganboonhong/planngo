@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './style.css';
+import './style.scss';
 import Password from '../Password';
 import Username from '../Username';
 import TextCenter from '../TextCenter';
