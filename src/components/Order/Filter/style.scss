@@ -1,0 +1,69 @@
+@import '../../mixin';
+
+/*background-color is for debug use*/
+.filter {
+    @include md-bp {
+        background-color: blue;
+        margin: 3px;
+    }
+    @include sm-bp {
+        background-color: yellow;
+    }
+    @include xs-bp {
+        background-color: red;
+    }
+}
+
+.dateRangeBtn {
+    @include md-bp {
+        width: 100%;
+    }
+}
+
+.dateRangeCol {
+    @include md-bp {
+        width: 100%;
+    }
+}
+
+#filterButton {
+    @include sm-bp {
+        width: 100%;
+    }
+    @include xs-bp {
+        width: 100%;
+    }
+}
+
+.dropdownButtonCol {
+    @include sm-bp {
+        width: 50%;
+    }
+}
+
+.searchInput {
+    @include sm-bp {
+        width: 50%;
+    }
+}
+
+.dropdown{
+    @include xs-bp {
+        width: 100%;
+        margin: 3px;
+    }
+    @include sm-bp {
+        width: 100%;
+    }
+
+}
+
+.searchBtn{
+    @include md-bp {
+        width: 160%
+    }   
+
+    @include sm-bp {
+        width: 100%;
+    }
+}

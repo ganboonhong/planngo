@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { DateRange } from 'react-date-range';
-import { Modal, Grid, Button, FormGroup, SplitButton, 
+import { Modal, Grid, Button, FormGroup, DropdownButton, 
     Row, Col, MenuItem, FormControl } from 'react-bootstrap';
 import TextCenter from '../../TextCenter';
 import moment from 'moment'
-import './style.css'
+import './style.scss'
 import ReactDOM from 'react-dom';
 
 export default class Filter extends Component {
@@ -101,17 +101,17 @@ export default class Filter extends Component {
             <form onSubmit={this.handleSubmit}>
                 <FormGroup>
                     <Row>
-                        <Col md={3} sm={5} xs={8} className="filter">
+                        <Col md={3} sm={5} xs={8} className="filter dateRangeCol">
                             <Row>
-                                <Col md={6} sm={6} xs={6}><Button onClick={this.open} bsStyle="info" bsSize="small">{this.state.startDate.format("YYYY-MM-DD")}</Button></Col>
-                                <Col md={6} sm={6} xs={6}><Button onClick={this.open} bsStyle="info" bsSize="small">{this.state.endDate.format("YYYY-MM-DD")}</Button></Col>
+                                <Col md={6} sm={6} xs={6}><Button className="dateRangeBtn" onClick={this.open} bsStyle="info" bsSize="small">{this.state.startDate.format("YYYY-MM-DD")}</Button></Col>
+                                <Col md={6} sm={6} xs={6}><Button className="dateRangeBtn" onClick={this.open} bsStyle="info" bsSize="small">{this.state.endDate.format("YYYY-MM-DD")}</Button></Col>
                             </Row>
                         </Col>
 
                         <Col md={9} sm={12} xs={12} className="filter">
                             <Row>
-                                <Col md={3} sm={5} xs={12}>
-                                    <SplitButton 
+                                <Col md={2} sm={3} xs={12} className="dropdownButtonCol">
+                                    <DropdownButton 
                                         title={this.state.filterLabel} 
                                         onSelect={this.handleFilterSelect}
                                         id="filterButton"
@@ -121,10 +121,10 @@ export default class Filter extends Component {
                                          <MenuItem eventKey="sequence">Sequence</MenuItem>
                                          <MenuItem eventKey="price">Price</MenuItem>
                                          <MenuItem eventKey="remarks">Remarks</MenuItem>
-                                    </SplitButton>
+                                    </DropdownButton>
                                 </Col>
 
-                                <Col md={6} sm={5} xs={12} className="filter">
+                                <Col md={8} sm={6} xs={12} className="filter" className="searchInput">
                                     <FormControl
                                         ref="keyword"
                                         type="text"
@@ -135,8 +135,8 @@ export default class Filter extends Component {
                                       />
                                 </Col>
 
-                                <Col md={3} sm={2} xs={12} className="filter">
-                                    <Button bsSize="small" onClick={this.handleSubmit}>Search</Button>
+                                <Col md={2} sm={2} xs={12} className="filter">
+                                    <Button className="searchBtn" bsSize="small" onClick={this.handleSubmit}>Search</Button>
                                     <i className={this.state.showSearching} 
                                         style={{"fontSize":"15px", "marginLeft": "15px"}}>
                                     </i>
