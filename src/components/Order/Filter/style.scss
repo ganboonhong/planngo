@@ -3,14 +3,14 @@
 /*background-color is for debug use*/
 .filter {
     @include md-bp {
-        background-color: blue;
+        /*background-color: blue;*/
         margin: 3px;
     }
     @include sm-bp {
-        background-color: yellow;
+        /*background-color: yellow;*/
     }
     @include xs-bp {
-        background-color: red;
+        /*background-color: red;*/
     }
 }
 
