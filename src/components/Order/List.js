@@ -6,6 +6,7 @@ import moment from 'moment-timezone'
 import { Table, Button, Glyphicon, Modal, Grid, OverlayTrigger, Tooltip } from 'react-bootstrap';
 import TitleList from './TitleList';
 import Filter from './Filter';
+import './list.scss';
 
 const Global = require('../Global'),
 production   = Global.production,
@@ -148,16 +149,16 @@ export default class List extends Component {
                         {this.state.pageOfItems.map((item, key) =>
                           <tr key={item.id}>
                             <td style={{"width": "30px"}}>{item.id}</td>
-                            <td style={{"width": "180px"}}>{item.sequence}</td>
+                            <td style={{"width": "130px"}}>{item.sequence}</td>
                             <td style={{"width": "100px"}}>{item.price}</td>
                             <td>{item.remarks}</td>
-                            <td style={{"width": "160px"}}>{
+                            <td style={{"width": "100px"}}>{
                                 (() => { 
-                                      return moment(item.updatedAt).format("YYYY/MM/DD HH:mm");  // inline function
+                                      return moment(item.updatedAt).format("YYYY/MM/DD");  // inline function
                                 })()
                             }
                             </td>
-                            <td style={{"width": "100px"}}>
+                            <td className="actionTd">
                                 <OverlayTrigger placement="top" overlay={this.toolTip('Edit')}>
                                     <Button 
                                         bsSize="xsmall" 

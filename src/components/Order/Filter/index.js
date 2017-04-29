@@ -124,7 +124,7 @@ export default class Filter extends Component {
                                     </DropdownButton>
                                 </Col>
 
-                                <Col md={8} sm={6} xs={12} className="filter" className="searchInput">
+                                <Col md={8} sm={6} xs={12} className="filter searchInput">
                                     <FormControl
                                         ref="keyword"
                                         type="text"
