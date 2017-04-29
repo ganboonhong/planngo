@@ -1,3 +1,4 @@
+"use strict";
 const
 ServerGlobal    = require('../global.js'),
 Global          = require('../../src/components/Global'),
