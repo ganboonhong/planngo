@@ -46,8 +46,6 @@ module.exports = function(app){
     });
     // eo middlewares
 
-    console.log(process.env.NODE_ENV)
-
     require('./routes/order.js')(app);
     require('./routes/member.js')(app);
     require('./routes/pdf.js')(app);
