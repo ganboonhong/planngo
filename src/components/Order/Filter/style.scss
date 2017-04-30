@@ -73,3 +73,12 @@
         display: none;
     }
 }
+
+.actions {
+    @include  lg-bp {
+        width: 15%;
+    }
+    @include  md-bp {
+        width: 25%;
+    }
+}
