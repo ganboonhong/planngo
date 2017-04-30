@@ -148,17 +148,17 @@ export default class List extends Component {
                     <tbody>
                         {this.state.pageOfItems.map((item, key) =>
                           <tr key={item.id}>
-                            <td style={{"width": "30px"}}>{item.id}</td>
-                            <td style={{"width": "130px"}}>{item.sequence}</td>
-                            <td style={{"width": "100px"}}>{item.price}</td>
-                            <td className="remarks">{item.remarks}</td>
-                            <td  className="lastUpdate" style={{"width": "100px"}}>{
+                            <td style={{"width": "5%"}}>{item.id}</td>
+                            <td style={{"width": "30%"}}>{item.sequence}</td>
+                            <td style={{"width": "10%"}}>{item.price}</td>
+                            <td style={{"width": "20%"}} className="remarks">{item.remarks}</td>
+                            <td style={{"width": "10%"}} className="lastUpdate" style={{"width": "100px"}}>{
                                 (() => { 
                                       return moment(item.updatedAt).format("YYYY/MM/DD");  // inline function
                                 })()
                             }
                             </td>
-                            <td className="actionTd">
+                            <td style={{"width": "25%"}} className="actionTd">
                                 <OverlayTrigger placement="top" overlay={this.toolTip('Edit')}>
                                     <Button 
                                         bsSize="xsmall" 
