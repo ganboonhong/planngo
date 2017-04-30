@@ -65,21 +65,6 @@ module.exports = (app) => {
                 res.send({list: orders, user: req.cookies.email});
             })
 
-            // Order.findAll({
-            //     where: {
-            //         updatedAt:{
-            //             $between: [startDate, endDate]
-            //         },
-            //         [currentFilter]: {
-            //             $like: (typeof keyword == 'number') ? keyword : "%"+ keyword +"%"
-            //         }
-            //     },
-            //     order: [['id', 'DESC']],
-            //     raw: true
-            // }).then((orders) => {
-            //     res.send(orders);
-            // });
-
     });  // eo get orders
 
     app.post('/order', (req, res) => {

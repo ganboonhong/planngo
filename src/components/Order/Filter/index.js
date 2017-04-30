@@ -19,7 +19,8 @@ export default class Filter extends Component {
             filterLabel: 'Sequence',
             currentFilter: 'sequence',
             keyword: '',
-            showSearching: 'fa fa-refresh fa-spin hide'
+            showSearchText: '',
+            showLoadingIcon: 'hide',
         }
 
 
@@ -84,8 +85,11 @@ export default class Filter extends Component {
     }
 
     toggleSearching = (show) => {
-        if(show) this.setState({showSearching: 'fa fa-refresh fa-spin'})
-        else this.setState({showSearching: 'fa fa-refresh fa-spin hide'})
+        if(show){
+            this.setState({showSearchText: 'hide', showLoadingIcon: ''})
+        }else{
+            this.setState({showSearchText: '', showLoadingIcon: 'hide'})
+        }
     }
 
     handleSubmit = (e) => {
@@ -136,10 +140,12 @@ export default class Filter extends Component {
                                 </Col>
 
                                 <Col md={2} sm={2} xs={12} className="filter">
-                                    <Button className="searchBtn" bsSize="small" onClick={this.handleSubmit}>Search</Button>
-                                    <i className={this.state.showSearching} 
-                                        style={{"fontSize":"15px", "marginLeft": "15px"}}>
+                                    <Button className="searchBtn" bsSize="small" onClick={this.handleSubmit} style={{"width": "100%"}}>
+                                    <span className={this.state.showSearchText} >Search</span>
+                                    <i className={"fa fa-refresh fa-spin " + this.state.showLoadingIcon}
+                                        style={{"fontSize":"15px"}}>
                                     </i>
+                                    </Button>
                                 </Col>
                             </Row>
                         </Col>                        

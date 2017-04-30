@@ -67,3 +67,9 @@
         width: 100%;
     }
 }
+
+.remarks, .lastUpdate{
+    @include xs-bp {
+        display: none;
+    }
+}

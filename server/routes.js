@@ -1,12 +1,11 @@
 "use strict";
-const models = require('./sequelize/models'),
+const
 bodyParser   = require('body-parser'),
-
 cookieParser = require('cookie-parser'),
 session      = require('express-session'),
-moment       = require('moment-timezone'),
 Global       = require('../src/components/Global'),
-cookieLife = Global.cookieLife;
+production   = Global.production,
+cookieLife   = Global.cookieLife;
 
 module.exports = function(app){
 

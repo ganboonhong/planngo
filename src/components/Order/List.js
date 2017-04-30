@@ -140,8 +140,8 @@ export default class List extends Component {
                         <th>#</th>
                         <th>Sequence No.</th>
                         <th>Price</th>
-                        <th>Remarks</th>
-                        <th>Last Update</th>
+                        <th className="remarks">Remarks</th>
+                        <th className="lastUpdate">Last Update</th>
                         <th>Actions</th>
                       </tr>
                     </thead>
@@ -151,8 +151,8 @@ export default class List extends Component {
                             <td style={{"width": "30px"}}>{item.id}</td>
                             <td style={{"width": "130px"}}>{item.sequence}</td>
                             <td style={{"width": "100px"}}>{item.price}</td>
-                            <td>{item.remarks}</td>
-                            <td style={{"width": "100px"}}>{
+                            <td className="remarks">{item.remarks}</td>
+                            <td  className="lastUpdate" style={{"width": "100px"}}>{
                                 (() => { 
                                       return moment(item.updatedAt).format("YYYY/MM/DD");  // inline function
                                 })()
