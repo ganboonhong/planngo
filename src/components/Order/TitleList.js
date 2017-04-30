@@ -25,14 +25,8 @@ export default class TitleList extends Component {
                     </Col>
                     <Col md={3} sm={3} xs={3}>
                         <h3 style={{'textAlign': 'right'}}>
-                            <OverlayTrigger placement="bottom" overlay={this.toolTip(this.props.user)}>
-                              <Glyphicon 
-                              glyph="user" 
-                              style={{"marginLeft" : '10px'}}
-                              />
-                            </OverlayTrigger>
 
-                            <OverlayTrigger placement="bottom" overlay={this.toolTip("Log out")}>
+                            <OverlayTrigger placement="left" overlay={this.toolTip("Log out " + this.props.user)}>
                               <Glyphicon 
                               glyph="log-out" 
                               style={{"marginLeft" : '10px'}}
