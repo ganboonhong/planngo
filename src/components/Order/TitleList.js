@@ -15,21 +15,18 @@ export default class TitleList extends Component {
         return (
             <FormGroup>
                 <Row>
-                    <Col md={3} sm={3} xs={3}></Col>
-                    <Col md={6} sm={6} xs={6}>
-                        <h3 style={{'textAlign': 'center'}}>
+                    <Col md={10} sm={10} xs={10}>
+                        <h3 style={{'textAlign': 'center', 'margin-left': '25%'}}>
                             <Label bsStyle="primary">
                                 {this.props.title}
                             </Label>
                         </h3>
                     </Col>
-                    <Col md={3} sm={3} xs={3}>
+                    <Col md={2} sm={2} xs={2}>
                         <h3 style={{'textAlign': 'right'}}>
-
                             <OverlayTrigger placement="left" overlay={this.toolTip("Log out " + this.props.user)}>
                               <Glyphicon 
                               glyph="log-out" 
-                              style={{"marginLeft" : '10px'}}
                               onClick={this.logout}
                               />
                             </OverlayTrigger>
