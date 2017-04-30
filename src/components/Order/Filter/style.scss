@@ -83,6 +83,7 @@
     }
 }
 
+/* disable horizontal scroll on small devices */
 html, body {
     @include xs-bp {
         overflow-x: hidden;
@@ -93,3 +94,4 @@ body {
         position: relative;
     }
 }
+/* eo disable horizontal scroll on small devices */
