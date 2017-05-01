@@ -137,22 +137,22 @@ export default class List extends Component {
                 <Table striped bordered condensed hover>
                     <thead>
                       <tr>
-                        <th>#</th>
-                        <th>Sequence No.</th>
-                        <th>Price</th>
-                        <th className="remarks">Remarks</th>
-                        <th className="lastUpdate">Last Update</th>
-                        <th className="actions">Actions</th>
+                        <th className="text-center">#</th>
+                        <th className="text-center">Sequence No.</th>
+                        <th className="text-center">Price</th>
+                        <th className="remarks text-center">Remarks</th>
+                        <th className="lastUpdate text-center">Last Update</th>
+                        <th className="actions text-center">Actions</th>
                       </tr>
                     </thead>
-                    <tbody>
+                    <tbody style={{"textAlign" : "center"}}>
                         {this.state.pageOfItems.map((item, key) =>
                           <tr key={item.id}>
                             <td style={{"width": "5%"}}>{item.id}</td>
                             <td style={{"width": "25%"}}>{item.sequence}</td>
                             <td style={{"width": "10%"}}>{item.price}</td>
                             <td style={{"width": "20%"}} className="remarks">{item.remarks}</td>
-                            <td style={{"width": "10%"}} className="lastUpdate" style={{"width": "100px"}}>{
+                            <td style={{"width": "10%"}} className="lastUpdate">{
                                 (() => { 
                                       return moment(item.updatedAt).format("YYYY/MM/DD");  // inline function
                                 })()

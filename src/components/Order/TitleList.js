@@ -16,7 +16,7 @@ export default class TitleList extends Component {
             <FormGroup>
                 <Row>
                     <Col md={10} sm={10} xs={10}>
-                        <h3 style={{'textAlign': 'center', 'margin-left': '25%'}}>
+                        <h3 style={{'textAlign': 'center', 'marginLeft': '25%'}}>
                             <Label bsStyle="primary">
                                 {this.props.title}
                             </Label>
