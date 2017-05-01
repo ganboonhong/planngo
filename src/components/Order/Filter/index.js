@@ -4,7 +4,7 @@ import { Modal, Grid, Button, FormGroup, DropdownButton,
     Row, Col, MenuItem, FormControl } from 'react-bootstrap';
 import TextCenter from '../../TextCenter';
 import moment from 'moment'
-import './style.scss'
+import './index.scss'
 import ReactDOM from 'react-dom';
 
 const 

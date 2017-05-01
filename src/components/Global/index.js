@@ -12,6 +12,6 @@ obj    = {
 }
 
 obj.env = (obj.production) ? 'production' : 'development';
-obj.ajaxLoaderGiF = (obj.production) ?  '/ajax-loader.gif' : obj.localReactDomain + '/ajax-loader.gif';
+obj.ajaxLoaderGiF = (obj.production) ?  '/assets/ajax-loader.gif' : obj.localReactDomain + '/assets/ajax-loader.gif';
 
 module.exports = obj;

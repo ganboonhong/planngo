@@ -147,7 +147,7 @@ var BioZh = React.createClass({
                 <p>我使用 Node.js 作為後端的語言，  React 作為前端的語言，來為一家攝影社建置一個銷售時點情報系統(POS)。</p>
                 <p>他們能夠使用此系統</p>
                 <ul>
-                    <li>紀錄客戶訂單的流水號以及訂單總金額</li>
+                    <li>紀錄訂單相關資訊d</li>
                     <li>列印PDF發票</li>
                 </ul>                
                 <p><b>網站:</b> <a href="http://demowebsite.ddns.net:9000/order" target="_blank">demowebsite.ddns.net:9000/order</a></p>

@@ -3,7 +3,7 @@ const
 bodyParser   = require('body-parser'),
 cookieParser = require('cookie-parser'),
 session      = require('express-session'),
-Global       = require('../src/components/Global'),
+Global       = require('../../src/components/Global'),
 production   = Global.production,
 cookieLife   = Global.cookieLife;
 
@@ -45,8 +45,8 @@ module.exports = function(app){
     });
     // eo middlewares
 
-    require('./routes/order.js')(app);
-    require('./routes/member.js')(app);
-    require('./routes/pdf.js')(app);
+    require('./order.js')(app);
+    require('./member.js')(app);
+    require('./pdf.js')(app);
 
 }

@@ -1,4 +1,4 @@
-@import '../../mixin';
+@import '../../../stylesheets/mixin';
 
 /*background-color is for debug use*/
 .filter {
@@ -82,16 +82,3 @@
         width: 25%;
     }
 }
-
-/* disable horizontal scroll on small devices */
-html, body {
-    @include xs-bp {
-        overflow-x: hidden;
-    }
-}
-body {
-    @include xs-bp {
-        position: relative;
-    }
-}
-/* eo disable horizontal scroll on small devices */

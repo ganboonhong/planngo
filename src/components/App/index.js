@@ -148,7 +148,7 @@ var Bio = React.createClass({
                 <p>I am using Node.js and React to create a mini POS system for a photography studio.</p>
                 <p>They are able to</p>
                 <ul>
-                    <li>Record customers order ID and order total amount.</li>
+                    <li>Log down order related information</li>
                     <li>Print out receipt in PDF file.</li>
                 </ul>                
                 <p><b>Demo:</b> <a href="http://demowebsite.ddns.net:9000/order" target="_blank">demowebsite.ddns.net:9000/order</a></p>
