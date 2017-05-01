@@ -7,6 +7,10 @@ import moment from 'moment'
 import './style.scss'
 import ReactDOM from 'react-dom';
 
+const 
+Global = require('../../Global'),
+ajaxLoaderGiF = Global.ajaxLoaderGiF;
+
 export default class Filter extends Component {
 
     constructor(){
@@ -142,9 +146,8 @@ export default class Filter extends Component {
                                 <Col md={2} sm={2} xs={12} className="filter">
                                     <Button className="searchBtn" bsSize="small" onClick={this.handleSubmit} style={{"width": "100%"}}>
                                     <span className={this.state.showSearchText} >Search</span>
-                                    <i className={"fa fa-refresh fa-spin " + this.state.showLoadingIcon}
-                                        style={{"fontSize":"15px"}}>
-                                    </i>
+                                    
+                                    <img src={ajaxLoaderGiF} className={this.state.showLoadingIcon} alt="loading"/>
                                     </Button>
                                 </Col>
                             </Row>
