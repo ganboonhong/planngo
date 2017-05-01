@@ -11,8 +11,8 @@ import './list.scss';
 const Global = require('../Global'),
 production   = Global.production,
 tz           = Global.tz,
-domain       = (production) ? '' : Global.localDomain;
-
+domain       = (production) ? '' : Global.localDomain,
+ajaxLoaderGiF = Global.ajaxLoaderGiF;
 
 let FilterObj;
 
@@ -20,13 +20,15 @@ export default class List extends Component {
     constructor() {
         super();
 
+        const orders = [{"id":0,"sequence":"Loading","price":'Loading',"remarks":"Loading","updatedAt":"2017-04-19T07:49:36.000Z"}];
         this.state = {
-            orders: this.getOrders(),
+            orders: orders,
             pageOfItems: [],
             showModal: false,
             idToDelete: '',
             idToEdit: '',
-            user: ''
+            user: '',
+            isInitializing: true
         };
  
         // bind function in constructor instead of render
@@ -57,7 +59,7 @@ export default class List extends Component {
             }
 
             $.ajax({
-                async: false,
+                async: true,
                 url: domain + '/orders',
                 type: 'GET',
                 dataType: 'json',
@@ -68,7 +70,19 @@ export default class List extends Component {
                     return;
                 }
                 setTimeout(() => {
-                    this.setState({'user': result.user})
+
+                    let currentPage  = parseInt($(".pagination").find(".active").find("a").text(), 10);
+                    
+                    this.setState({
+                        orders: result.list, 
+                        pageOfItems: this.state.pageOfItems,
+                        user: result.user,
+                        isInitializing: false
+                    });
+
+                    this.refs['pagination'].setPage(currentPage, true);
+                    this.refs['filter'].toggleSearching(false);
+
                 }, 500)
                 tmp = result.list;
             });
@@ -79,14 +93,12 @@ export default class List extends Component {
         return orders;
     }
 
-    reloadOrderList = (filterObj = null) => {
+    componentDidMount = () => {
+        this.reloadOrderList()
+    }
 
-        const orders = this.getOrders(filterObj),
-        currentPage  = parseInt($(".pagination").find(".active").find("a").text(), 10);
-        
-        this.setState({orders: orders, pageOfItems: this.state.pageOfItems});
-        this.refs['pagination'].setPage(currentPage);
-        this.refs['filter'].toggleSearching(false);
+    reloadOrderList = (filterObj = null) => {
+        this.getOrders(filterObj);
     }
 
     confirmDelete = (id) => {
@@ -130,6 +142,7 @@ export default class List extends Component {
  
     render() {
         const buttonStyle = {margin: "2px"};
+
         return (
             <div>
                 <TitleList title="Order List" user={this.state.user}/>
@@ -148,15 +161,42 @@ export default class List extends Component {
                     <tbody style={{"textAlign" : "center"}}>
                         {this.state.pageOfItems.map((item, key) =>
                           <tr key={item.id}>
-                            <td style={{"width": "5%"}}>{item.id}</td>
-                            <td style={{"width": "25%"}}>{item.sequence}</td>
-                            <td style={{"width": "10%"}}>{item.price}</td>
-                            <td style={{"width": "20%"}} className="remarks">{item.remarks}</td>
-                            <td style={{"width": "10%"}} className="lastUpdate">{
-                                (() => { 
-                                      return moment(item.updatedAt).format("YYYY/MM/DD");  // inline function
-                                })()
-                            }
+                            <td style={{"width": "5%"}}>
+                                {
+                                    this.state.isInitializing 
+                                    ? <img src={ajaxLoaderGiF} alt="loading"/>
+                                    : item.id
+                                }
+                            </td>
+                            <td style={{"width": "25%"}}>
+                                {
+                                    this.state.isInitializing 
+                                    ? <img src={ajaxLoaderGiF} alt="loading"/>
+                                    : item.sequence
+                                }
+                            </td>
+                            <td style={{"width": "10%"}}>
+                                {
+                                    this.state.isInitializing 
+                                    ? <img src={ajaxLoaderGiF} alt="loading"/>
+                                    : item.price
+                                }
+                            </td>
+                            <td style={{"width": "20%"}} className="remarks">
+                                {
+                                    this.state.isInitializing 
+                                    ? <img src={ajaxLoaderGiF} alt="loading"/>
+                                    : item.remarks
+                                }
+                            </td>
+                            <td style={{"width": "10%"}} className="lastUpdate">
+                                {
+                                    this.state.isInitializing 
+                                    ? <img src={ajaxLoaderGiF} alt="loading"/>
+                                    : (() => { 
+                                          return moment(item.updatedAt).format("YYYY/MM/DD");  // inline function
+                                    })()
+                                }
                             </td>
                             <td className="actions">
                                 <OverlayTrigger placement="top" overlay={this.toolTip('Edit')}>
