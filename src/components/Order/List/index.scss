@@ -1,0 +1,9 @@
+@import '../../../stylesheets/mixin';
+
+.actionBtn {
+    margin: 2px;
+    @include xs-bp {
+        width: 65%;
+    }
+}
+

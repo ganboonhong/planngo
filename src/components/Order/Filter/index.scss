@@ -81,4 +81,7 @@
     @include  md-bp {
         width: 25%;
     }
+    @include  xs-bp {
+        width: 30%;
+    }
 }

@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
-import Pagination from '../Pagination';
-import TextCenter from '../TextCenter';
+import Pagination from '../../Pagination/';
+import TextCenter from '../../TextCenter';
 import $ from 'jquery';
 import moment from 'moment-timezone'
 import { Table, Button, Glyphicon, Modal, Grid, OverlayTrigger, Tooltip } from 'react-bootstrap';
-import TitleList from './TitleList';
-import Filter from './Filter';
-import './list.scss';
+import TitleList from '../TitleList';
+import Filter from '../Filter';
+import './index.scss';
 
-const Global = require('../Global'),
+const Global = require('../../Global'),
 production   = Global.production,
 tz           = Global.tz,
 domain       = (production) ? '' : Global.localDomain,
@@ -141,8 +141,6 @@ export default class List extends Component {
     }
  
     render() {
-        const buttonStyle = {margin: "2px"};
-
         return (
             <div>
                 <TitleList title="Order List" user={this.state.user}/>
@@ -204,7 +202,7 @@ export default class List extends Component {
                                         bsSize="xsmall" 
                                         bsStyle="success" 
                                         onClick={() => this.startEdit(item)}
-                                        style={buttonStyle}
+                                        className="actionBtn"
                                     >
                                         <Glyphicon glyph="pencil" />
                                     </Button>
@@ -214,7 +212,7 @@ export default class List extends Component {
                                         bsSize="xsmall" 
                                         bsStyle="danger" 
                                         onClick={() => this.confirmDelete(item.id)}
-                                        style={buttonStyle}
+                                        className="actionBtn"
                                     >
                                         <Glyphicon glyph="trash" />
                                     </Button>
@@ -224,7 +222,7 @@ export default class List extends Component {
                                         bsSize="xsmall" 
                                         bsStyle="info" 
                                         onClick={() => this.downloadReceipt(item.id)}
-                                        style={buttonStyle}
+                                        className="actionBtn"
                                     >
                                         <Glyphicon glyph="download-alt" />
                                     </Button>
