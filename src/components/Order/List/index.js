@@ -156,38 +156,38 @@ export default class List extends Component {
                         <th className="actions text-center">Actions</th>
                       </tr>
                     </thead>
-                    <tbody style={{"textAlign" : "center"}}>
+                    <tbody>
                         {this.state.pageOfItems.map((item, key) =>
                           <tr key={item.id}>
-                            <td style={{"width": "5%"}}>
+                            <td className="tdContent">
                                 {
                                     this.state.isInitializing 
                                     ? <img src={ajaxLoaderGiF} alt="loading"/>
                                     : item.id
                                 }
                             </td>
-                            <td style={{"width": "25%"}}>
+                            <td className="tdContent">
                                 {
                                     this.state.isInitializing 
                                     ? <img src={ajaxLoaderGiF} alt="loading"/>
                                     : item.sequence
                                 }
                             </td>
-                            <td style={{"width": "10%"}}>
+                            <td className="tdContent">
                                 {
                                     this.state.isInitializing 
                                     ? <img src={ajaxLoaderGiF} alt="loading"/>
                                     : item.price
                                 }
                             </td>
-                            <td style={{"width": "20%"}} className="remarks">
+                            <td className="remarks tdContent">
                                 {
                                     this.state.isInitializing 
                                     ? <img src={ajaxLoaderGiF} alt="loading"/>
                                     : item.remarks
                                 }
                             </td>
-                            <td style={{"width": "10%"}} className="lastUpdate">
+                            <td className="lastUpdate tdContent">
                                 {
                                     this.state.isInitializing 
                                     ? <img src={ajaxLoaderGiF} alt="loading"/>
@@ -196,7 +196,7 @@ export default class List extends Component {
                                     })()
                                 }
                             </td>
-                            <td className="actions">
+                            <td className="actions tdContent">
                                 <OverlayTrigger placement="top" overlay={this.toolTip('Edit')}>
                                     <Button 
                                         bsSize="xsmall" 
