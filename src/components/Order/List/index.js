@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Pagination from '../../Pagination/';
 import TextCenter from '../../TextCenter';
 import $ from 'jquery';
-import moment from 'moment-timezone'
+import moment from 'moment'
 import { Table, Button, Glyphicon, Modal, Grid, OverlayTrigger, Tooltip } from 'react-bootstrap';
 import TitleList from '../TitleList';
 import Filter from '../Filter';
@@ -10,7 +10,6 @@ import './index.scss';
 
 const Global = require('../../Global'),
 production   = Global.production,
-tz           = Global.tz,
 domain       = (production) ? '' : Global.localDomain,
 ajaxLoaderGiF = Global.ajaxLoaderGiF;
 
@@ -51,8 +50,8 @@ export default class List extends Component {
 
             if(FilterObj){
                 FilterObj = {
-                    startDate: moment.tz(FilterObj.startDate._d, tz).add(1, 'hours').format("YYYY-MM-DD HH:MM"),
-                    endDate: moment.tz(FilterObj.endDate._d, tz).add(1, 'hours').format("YYYY-MM-DD HH:MM"),
+                    startDate: moment(FilterObj.startDate._d).format("YYYY-MM-DD"),
+                    endDate: moment(FilterObj.endDate._d).add(1, 'days').format("YYYY-MM-DD"),
                     keyword: FilterObj.keyword,
                     currentFilter: FilterObj.currentFilter,
                 }
@@ -158,12 +157,12 @@ export default class List extends Component {
                     </thead>
                     <tbody>
                         {this.state.pageOfItems.map((item, key) =>
-                          <tr key={item.id}>
+                          <tr key={key + 1}>
                             <td className="tdContent">
                                 {
                                     this.state.isInitializing 
                                     ? <img src={ajaxLoaderGiF} alt="loading"/>
-                                    : item.id
+                                    : key + 1
                                 }
                             </td>
                             <td className="tdContent">
@@ -192,7 +191,7 @@ export default class List extends Component {
                                     this.state.isInitializing 
                                     ? <img src={ajaxLoaderGiF} alt="loading"/>
                                     : (() => { 
-                                          return moment(item.updatedAt).format("YYYY/MM/DD");  // inline function
+                                          return moment(item.updatedAt).format("YYYY/MM/DD HH:mm");  // inline function
                                     })()
                                 }
                             </td>
@@ -211,7 +210,7 @@ export default class List extends Component {
                                     <Button 
                                         bsSize="xsmall" 
                                         bsStyle="danger" 
-                                        onClick={() => this.confirmDelete(item.id)}
+                                        onClick={() => this.confirmDelete(item._id)}
                                         className="actionBtn"
                                     >
                                         <Glyphicon glyph="trash" />
@@ -221,7 +220,7 @@ export default class List extends Component {
                                     <Button 
                                         bsSize="xsmall" 
                                         bsStyle="info" 
-                                        onClick={() => this.downloadReceipt(item.id)}
+                                        onClick={() => this.downloadReceipt(item._id)}
                                         className="actionBtn"
                                     >
                                         <Glyphicon glyph="download-alt" />

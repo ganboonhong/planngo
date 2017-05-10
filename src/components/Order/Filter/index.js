@@ -125,7 +125,6 @@ export default class Filter extends Component {
                                         id="filterButton"
                                         bsSize="small"
                                     >
-                                         <MenuItem eventKey="id">ID</MenuItem>
                                          <MenuItem eventKey="sequence">Sequence</MenuItem>
                                          <MenuItem eventKey="price">Price</MenuItem>
                                          <MenuItem eventKey="remarks">Remarks</MenuItem>
@@ -187,7 +186,6 @@ Filter.propTypes = {
 
 Filter.defaultProps = {
     filterLabel: {
-        id: 'ID',
         sequence: 'Sequence',
         price: 'Price',
         remarks: 'Remarks',

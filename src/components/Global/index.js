@@ -1,9 +1,9 @@
 const 
-moment = require('moment-timezone'),
+moment = require('moment'),
 obj    = {
     production: (process.env.NODE_ENV === 'development') ? false : true,
     // production: false,
-    tz: 'Asia/Taipei',
+    // tz: 'Asia/Taipei',
     localDomain: 'http://127.0.0.1:9000',
     localReactDomain: 'http://127.0.0.1:3000',
     commonHint: 'Please check this field.',

@@ -1,9 +1,13 @@
 const 
 ViewGlobal      = require('../src/components/Global'),
-models          = require('./sequelize/models'),
-sequelizeConfig = require( __dirname + '/sequelize/config/config.json')[ViewGlobal.env];
+// models          = require('./sequelize/models'),
+// sequelizeConfig = require( __dirname + '/sequelize/config/config.json')[ViewGlobal.env],
+moment          = ViewGlobal.moment,
+utcHr           = 8*60*60*1000;
 
 module.exports = {
-    models: models,
-    sequelizeConfig: sequelizeConfig
+    // models: models,
+    // sequelizeConfig: sequelizeConfig,
+    moment: moment,
+    utcHr: utcHr
 }

@@ -1,33 +1,23 @@
 "use strict";
 const
-ServerGlobal    = require('../global.js'),
-Global          = require('../../src/components/Global'),
-models          = ServerGlobal.models,
-production      = Global.production,
-cookieLife      = Global.cookieLife,
-env             = Global.env,
-moment          = Global.moment,
-tz              = Global.tz,
-sequelizeConfig = ServerGlobal.sequelizeConfig;
+Global       = require('../../src/components/Global'),
+Order        = require('../mongo/models/order'),
+production   = Global.production,
+moment       = Global.moment;
 
-let Result = {success: false, msg: '', msgBsStyle: ''},
-Body       = {};
+let Body = {};
 
 module.exports = (app) => {
 
     app.delete('/order', (req, res) => {
-        const Order = models.Order;
-        console.log(typeof req.body)
-        Body      = req.body;
 
-        Order.destroy({
-            where: {
-                id: Body.id
-            },
-            paranoid: true
-        }).then( (promise) => {
+        const Body = req.body;
+
+        Order.delete({_id: Body.id}, (err, result) => {
+            if(err) throw err;
             res.send(Body);
-        });
+        })
+        
     })  // eo delete order
 
     app.get('/orders', (req, res) => {
@@ -37,58 +27,66 @@ module.exports = (app) => {
             res.send({message: 'error'}); return;
         }
 
-        const Order   = models.Order,
-        Sequelize     = require('sequelize'),
-        sequelize     = new Sequelize(sequelizeConfig.database, sequelizeConfig.username, sequelizeConfig.password, sequelizeConfig);
-        let startDate = moment().tz(tz).add(-30, 'days').format('YYYY-MM-DD HH:mm'),
-        endDate       = moment().tz(tz).add(1, 'hours').format('YYYY-MM-DD HH:mm'),
+        let startDate = moment().add(-30, 'days').format('YYYY-MM-DD'),
+        endDate       = moment().add(1, 'days').format('YYYY-MM-DD'),
         currentFilter = 'sequence',
         keyword       = '';
 
-        if(req.query.startDate) startDate = req.query.startDate;
-        if(req.query.endDate) endDate = req.query.endDate;
-        if(req.query.keyword) keyword = req.query.keyword;
+        if(req.query.startDate) startDate         = req.query.startDate;
+        if(req.query.endDate) endDate             = req.query.endDate;
+        if(req.query.keyword) keyword             = req.query.keyword;
         if(req.query.currentFilter) currentFilter = req.query.currentFilter;
-        if(req.query.currentFilter == 'price') keyword = parseFloat(keyword);
 
-        sequelize.query(
-            "SELECT * FROM Orders WHERE "+
-            currentFilter + " LIKE '%" + keyword + 
-            "%' AND updatedAt >= '" + startDate
-            + "' AND updatedAt <= '" + endDate
-            + "' AND deletedAt IS NULL " +
-            "ORDER BY id DESC",
+        if(req.query.currentFilter == 'price') { // search the whole word if it's Number
 
-            { type: sequelize.QueryTypes.SELECT})
+            let toSearch = {};
+            toSearch[currentFilter] = keyword;
+            toSearch['deleted'] = false;
 
-            .then((orders) => {
+            Order.find(toSearch, (err, orders)=>{
+                if(err) throw err;
+
                 res.send({list: orders, user: req.cookies.email});
-            })
+            } )
+
+        }else{
+            let obj = {};
+            let toSearch = keyword.split(" ").map(function(n) {
+                obj[currentFilter] = new RegExp(n.trim(), 'i');
+                obj['createdAt'] = {"$gte": startDate, "$lt": endDate};
+                obj['deleted'] = false;
+
+                return obj;
+            });
+
+            Order.find({$and: toSearch},null, { sort: '-updatedAt'},  (err, orders)=>{
+                if(err) throw err;
+
+                res.send({list: orders, user: req.cookies.email});
+            } )
+        }
 
     });  // eo get orders
 
     app.post('/order', (req, res) => {
-        const 
-        Order = models.Order,
-        Body  = req.body;
+        const Body = req.body;
 
         if(!Body.id){
-            // create
-            Order.create(Body)
-            .then((order) => {
+
+            const order = new Order(Body);
+            order.save((err, order) => {
+                if(err) throw err;
                 res.send(Body);
-            }).catch((err) => {
-                console.log("Error when creating order: " + err)
-            })
+            });
+
         }else{
-            // update
-            Order.update(Body,{
-                where: {id: Body.id}
-            }).then((order) => {
+
+            Order.findOneAndUpdate({_id: Body.id}, {$set: Body}, (err, order) => {
+                if(err) throw err;
                 res.send(Body);
-            }).catch((err) => {
-                console.log("Error when updating order: " + err)
-            })
+            });
+
+
         }
     })  // eo post order
 }

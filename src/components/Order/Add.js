@@ -87,11 +87,12 @@ export default class Add extends Component {
     }
 
     populateData = (objToEdit) => {
+
         $.map(this.props.validateFields, (fieldName, idx) => {
             this.refs[fieldName].populateData(objToEdit);
         });
 
-        this.setState({idToEdit: objToEdit.id});
+        this.setState({idToEdit: objToEdit._id});
     }
 
     onToggle = () => {
