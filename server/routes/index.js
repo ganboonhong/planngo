@@ -46,7 +46,7 @@ module.exports = function(app){
     // eo middlewares
 
     require('./order.js')(app);
-    require('./member.js')(app);
+    require('./user.js')(app);
     require('./pdf.js')(app);
 
 }

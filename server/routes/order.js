@@ -27,7 +27,8 @@ module.exports = (app) => {
             res.send({message: 'error'}); return;
         }
 
-        let startDate = moment().add(-30, 'days').format('YYYY-MM-DD'),
+        let 
+        startDate     = moment().add(-30, 'days').format('YYYY-MM-DD'),
         endDate       = moment().add(1, 'days').format('YYYY-MM-DD'),
         currentFilter = 'sequence',
         keyword       = '';
@@ -45,7 +46,6 @@ module.exports = (app) => {
 
             Order.find(toSearch, (err, orders)=>{
                 if(err) throw err;
-
                 res.send({list: orders, user: req.cookies.email});
             } )
 
@@ -55,13 +55,11 @@ module.exports = (app) => {
                 obj[currentFilter] = new RegExp(n.trim(), 'i');
                 obj['createdAt'] = {"$gte": startDate, "$lt": endDate};
                 obj['deleted'] = false;
-
                 return obj;
             });
 
             Order.find({$and: toSearch},null, { sort: '-updatedAt'},  (err, orders)=>{
                 if(err) throw err;
-
                 res.send({list: orders, user: req.cookies.email});
             } )
         }
@@ -72,21 +70,16 @@ module.exports = (app) => {
         const Body = req.body;
 
         if(!Body.id){
-
             const order = new Order(Body);
             order.save((err, order) => {
                 if(err) throw err;
                 res.send(Body);
             });
-
         }else{
-
             Order.findOneAndUpdate({_id: Body.id}, {$set: Body}, (err, order) => {
                 if(err) throw err;
                 res.send(Body);
             });
-
-
         }
     })  // eo post order
 }

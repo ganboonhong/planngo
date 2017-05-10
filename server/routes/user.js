@@ -1,15 +1,9 @@
 "use strict";
 const
-ServerGlobal    = require('../global.js'),
 Global          = require('../../src/components/Global'),
 crypto          = require('crypto'),
-models          = ServerGlobal.models,
-production      = Global.production,
+User        = require('../mongo/models/user'),
 cookieLife      = Global.cookieLife,
-env             = Global.env,
-moment          = Global.moment,
-tz              = Global.tz,
-sequelizeConfig = ServerGlobal.sequelizeConfig;
 
 let Result = {success: false, msg: '', msgBsStyle: ''},
 Body       = {};
@@ -18,34 +12,33 @@ module.exports = (app) => {
 
     app.post('/join', function(req, res){
         
-        const User = models.User;
-        Body     = req.body;
+        const Body = req.body;
 
-        User.findOne({where: {email: Body.email}}
-                        ).then(
-                        (user) => {
-                            if(!user){
-                                Body.password = crypto.createHmac('sha256', Body.password).digest('hex');
-                                User.create(Body
-                                    ).then(
-                                        (user) => {
-                                            const tmpUser       = user.get({plain: true});
+        User.find({email: Body.email}, (err, user) => {
 
-                                            res.cookie('email' , tmpUser.email, {expire : new Date() + cookieLife});
+            if(!Object.keys(user).length) {
 
-                                            Result.success    = true;
-                                            Result.msg        = 'Congratulations, '+tmpUser.name+' ! You\'ve signed up successfully.'
-                                            Result.msgBsStyle = 'success';
-                                            res.send(Result);
-                                        }
-                                    );
-                            }else{
-                                Result.msg        = 'This email has been used.'
-                                Result.msgBsStyle = 'danger';
-                                Result.success    = false;
-                                res.send(Result);
-                            }
-                        });
+                Body.password = crypto.createHmac('sha256', Body.password).digest('hex');
+                let user = new User(Body);
+
+                user.save((err, user) => {
+                    if(err) throw err;
+
+                    res.cookie('email' , user.email, {expire : new Date() + cookieLife});
+                    Result.success    = true;
+                    Result.msg        = 'Congratulations, '+ user.name +' ! You\'ve signed up successfully.'
+                    Result.msgBsStyle = 'success';
+                    res.send(Result);
+                })
+
+            }else{
+                Result.msg        = 'This email has been used.'
+                Result.msgBsStyle = 'danger';
+                Result.success    = false;
+                res.send(Result);
+            }
+        })
+
     }); // eo post join
 
     app.post('/login', (req, res) => {

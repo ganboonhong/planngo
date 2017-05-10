@@ -1,8 +1,8 @@
 const 
 mongooseDelete = require('mongoose-delete')
-mongoose = require('../config/config');
-// Global = require('../../global'),
-// utcHr = Global.utcHr;
+mongoose       = require('../config/config');
+// Global      = require('../../global'),
+// utcHr       = Global.utcHr;
 
 const Schema = mongoose.Schema;
 
@@ -14,7 +14,7 @@ const orderSchema = new Schema({
     // updatedAt: {type: Date, default: () => +new Date + utcHr},
     // deletedAt: {type: Date, default: null},
 },
-     { timestamps: true }
+     { timestamps: true } // If set timestamps, mongoose assigns createdAt and updatedAt fields to your schema, the type assigned is Date.
 );
 
 orderSchema.plugin(mongooseDelete, { deletedAt : true });
