@@ -1,9 +1,9 @@
 "use strict";
 const
-Global          = require('../../src/components/Global'),
-crypto          = require('crypto'),
-User        = require('../mongo/models/user'),
-cookieLife      = Global.cookieLife;
+Global     = require('../../src/components/Global'),
+crypto     = require('crypto'),
+User       = require('../mongo/models/user'),
+cookieLife = Global.cookieLife;
 
 let Result = {success: false, msg: '', msgBsStyle: ''},
 Body       = {};
@@ -43,8 +43,7 @@ module.exports = (app) => {
 
     app.post('/login', (req, res) => {
 
-        const User = models.User;
-        Body     = req.body;
+        const Body = req.body;
 
         if(req.cookies.email){
             Result.msg = 'you\'ve already signed in.';
@@ -52,20 +51,19 @@ module.exports = (app) => {
             res.send(Result);
         }else{
 
-            User.findOne({where: {
+            User.findOne({
                         email: Body.email,
                         password: crypto.createHmac('sha256', Body.password).digest('hex'),
-                    }
                 }
             ).then(
                 (user) => {
                     if(user){
-                        const tmpUser         = user.get({plain: true});
-                        Result.msg          = 'Login successfully! Welcome back ' + tmpUser.name + '.';
+
+                        Result.msg          = 'Login successfully! Welcome back ' + user.name + '.';
                         Result.msgBsStyle   = 'success';
                         Result.success      = true;
 
-                        res.cookie('email' , tmpUser.email, {expire : new Date() + cookieLife});
+                        res.cookie('email' , user.email, {expire : new Date() + cookieLife});
                         res.send(Result);
                     }else{
                         Result.msg        = 'Wrong email or password.'

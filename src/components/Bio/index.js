@@ -52,7 +52,7 @@ var BioZh = React.createClass({
             </a>
 
             <section className="section summary-section">
-              <h2 className="section-title"><i className="fa fa-user" />職業發展</h2>
+              <h2 className="section-title"><i className="fa fa-user" />職涯發展</h2>
               <div className="summary">
                 <p>
                 大學畢業前曾在臺灣一間網頁設計公司實習，畢業後即轉為正職。當時工作內容主要負責維護現有專案，
@@ -62,6 +62,90 @@ var BioZh = React.createClass({
                 </p>
               </div>{/*//summary*/}
             </section>{/*//section*/}
+
+            <hr />
+
+            <section className="skills-section section">
+              <h2 className="section-title"><i className="fa fa-rocket" />程式語言</h2>
+              <div className="skillset">        
+                <div className="item">
+                  <h3 className="level-title">React</h3>
+                  <div className="level-bar">
+                    <div className="level-bar-inner" data-level="70%">
+                    </div>                                      
+                  </div>{/*//level-bar*/}                                 
+                </div>{/*//item*/}
+                <div className="item">
+                  <h3 className="level-title">jQuery</h3>
+                  <div className="level-bar">
+                    <div className="level-bar-inner" data-level="85%">
+                    </div>                                      
+                  </div>{/*//level-bar*/}                                 
+                </div>{/*//item*/}
+                <div className="item">
+                  <h3 className="level-title">Node.js</h3>
+                  <div className="level-bar">
+                    <div className="level-bar-inner" data-level="60%">
+                    </div>                                      
+                  </div>{/*//level-bar*/}                                 
+                </div>{/*//item*/}
+                <div className="item">
+                  <h3 className="level-title">HTML &amp; CSS</h3>
+                  <div className="level-bar">
+                    <div className="level-bar-inner" data-level="60%">
+                    </div>                                      
+                  </div>{/*//level-bar*/}                                 
+                </div>{/*//item*/}
+                <div className="item">
+                  <h3 className="level-title">Laravel</h3>
+                  <div className="level-bar">
+                    <div className="level-bar-inner" data-level="50%">
+                    </div>                                      
+                  </div>{/*//level-bar*/}                                 
+                </div>{/*//item*/}
+                <div className="item">
+                  <h3 className="level-title">Cakephp</h3>
+                  <div className="level-bar">
+                    <div className="level-bar-inner" data-level="80%">
+                    </div>                                      
+                  </div>{/*//level-bar*/}                                 
+                </div>{/*//item*/}
+
+                <div className="item">
+                  <h3 className="level-title">GIT</h3>
+                  <div className="level-bar">
+                    <div className="level-bar-inner" data-level="70%">
+                    </div>                                      
+                  </div>{/*//level-bar*/}                                 
+                </div>{/*//item*/}
+
+                <div className="item">
+                  <h3 className="level-title">UNIX</h3>
+                  <div className="level-bar">
+                    <div className="level-bar-inner" data-level="65%">
+                    </div>                                      
+                  </div>{/*//level-bar*/}                                 
+                </div>{/*//item*/}
+
+                <div className="item">
+                  <h3 className="level-title">MYSQL</h3>
+                  <div className="level-bar">
+                    <div className="level-bar-inner" data-level="75%">
+                    </div>                                      
+                  </div>{/*//level-bar*/}                                 
+                </div>{/*//item*/}
+
+                <div className="item">
+                  <h3 className="level-title">Mongo</h3>
+                  <div className="level-bar">
+                    <div className="level-bar-inner" data-level="70%">
+                    </div>                                      
+                  </div>{/*//level-bar*/}                                 
+                </div>{/*//item*/}
+              </div>  
+            </section>{/*//skills-section*/}
+
+
             <hr />
             <section className="section experiences-section">
               <h2 className="section-title"><i className="fa fa-briefcase" />工作經驗</h2>
@@ -139,7 +223,7 @@ var BioZh = React.createClass({
             <hr />
 
             <section className="section projects-section">
-              <h2 className="section-title"><i className="fa fa-archive" />個人專案</h2>
+              <h2 className="section-title"><i className="fa fa-archive" />作品集</h2>
               <hr />
 
               <div className="item">
@@ -150,6 +234,7 @@ var BioZh = React.createClass({
                     <li>紀錄訂單相關資訊d</li>
                     <li>列印PDF發票</li>
                 </ul>                
+                <p><b>Stack:</b> React + Node.js (Express) + MongoDB</p>
                 <p><b>網站:</b> <a href="http://demowebsite.ddns.net:9000/order" target="_blank">demowebsite.ddns.net:9000/order</a></p>
                 <p><b>源碼:</b> <a href="https://github.com/ganboonhong/planngo" target="_blank">github.com/ganboonhong/planngo</a></p>
                 <p><b>教學影片:</b> <a href="https://www.youtube.com/watch?v=X6q-tYV0G-Y&feature=em-upload_owner" target="_blank">youtube.com/watch?v=X6q-tYV0G-Y&feature=em-upload_owner</a></p>
@@ -162,6 +247,7 @@ var BioZh = React.createClass({
               <div className="item">
                 <p><span className="project-title"><a href="http://y-note.ddns.net/blog/2/9/1" target="_blank">個人部落格</a></span></p>
                 <p>我使用PHP (Laravel)作為後端處理API的語言，React作為開發前端的語言來建置一個部落格(單頁應用程式, SPA)來記錄我開發過程中所學的要點</p>
+                <p><b>Stack:</b> React + Laravel + MySQL</p>
                 <p><b>網站:</b> <a href="http://y-note.ddns.net" target="_blank">y-note.ddns.net</a>
                     <span style={{'marginLeft': '20px' }}>(<b>使用者名稱</b>: ganboonhong@gmail.com</span> 
                     <span style={{'margin': '0px 5px 0px 5px' }}> <b>/</b> </span>    
@@ -175,77 +261,7 @@ var BioZh = React.createClass({
               <hr />
               
             </section>{/*//section*/}
-            <section className="skills-section section">
-              <h2 className="section-title"><i className="fa fa-rocket" />程式語言</h2>
-              <div className="skillset">        
-                <div className="item">
-                  <h3 className="level-title">React</h3>
-                  <div className="level-bar">
-                    <div className="level-bar-inner" data-level="70%">
-                    </div>                                      
-                  </div>{/*//level-bar*/}                                 
-                </div>{/*//item*/}
-                <div className="item">
-                  <h3 className="level-title">jQuery</h3>
-                  <div className="level-bar">
-                    <div className="level-bar-inner" data-level="85%">
-                    </div>                                      
-                  </div>{/*//level-bar*/}                                 
-                </div>{/*//item*/}
-                <div className="item">
-                  <h3 className="level-title">Node.js</h3>
-                  <div className="level-bar">
-                    <div className="level-bar-inner" data-level="60%">
-                    </div>                                      
-                  </div>{/*//level-bar*/}                                 
-                </div>{/*//item*/}
-                <div className="item">
-                  <h3 className="level-title">HTML &amp; CSS</h3>
-                  <div className="level-bar">
-                    <div className="level-bar-inner" data-level="60%">
-                    </div>                                      
-                  </div>{/*//level-bar*/}                                 
-                </div>{/*//item*/}
-                <div className="item">
-                  <h3 className="level-title">Laravel</h3>
-                  <div className="level-bar">
-                    <div className="level-bar-inner" data-level="50%">
-                    </div>                                      
-                  </div>{/*//level-bar*/}                                 
-                </div>{/*//item*/}
-                <div className="item">
-                  <h3 className="level-title">Cakephp</h3>
-                  <div className="level-bar">
-                    <div className="level-bar-inner" data-level="80%">
-                    </div>                                      
-                  </div>{/*//level-bar*/}                                 
-                </div>{/*//item*/}
-
-                <div className="item">
-                  <h3 className="level-title">GIT</h3>
-                  <div className="level-bar">
-                    <div className="level-bar-inner" data-level="70%">
-                    </div>                                      
-                  </div>{/*//level-bar*/}                                 
-                </div>{/*//item*/}
-
-                <div className="item">
-                  <h3 className="level-title">UNIX</h3>
-                  <div className="level-bar">
-                    <div className="level-bar-inner" data-level="65%">
-                    </div>                                      
-                  </div>{/*//level-bar*/}                                 
-                </div>{/*//item*/}
-
-                <div className="item">
-                  <h3 className="level-title">MYSQL</h3>
-                  <div className="level-bar">
-                    <div className="level-bar-inner" data-level="75%">
-                    </div>                                      
-                  </div>{/*//level-bar*/}                                 
-                </div>{/*//item*/}
-              </div>  
-            </section>{/*//skills-section*/}
+            
           </div>{/*//main-body*/}
         </div>
         <footer className="footer">

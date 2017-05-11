@@ -63,6 +63,90 @@ var Bio = React.createClass({
                 </p>
               </div>{/*//summary*/}
             </section>{/*//section*/}
+
+            <hr />
+
+            <section className="skills-section section">
+              <h2 className="section-title"><i className="fa fa-rocket" />Skills &amp; Proficiency</h2>
+              <div className="skillset">        
+                <div className="item">
+                  <h3 className="level-title">React</h3>
+                  <div className="level-bar">
+                    <div className="level-bar-inner" data-level="70%">
+                    </div>                                      
+                  </div>{/*//level-bar*/}                                 
+                </div>{/*//item*/}
+                <div className="item">
+                  <h3 className="level-title">jQuery</h3>
+                  <div className="level-bar">
+                    <div className="level-bar-inner" data-level="85%">
+                    </div>                                      
+                  </div>{/*//level-bar*/}                                 
+                </div>{/*//item*/}
+                <div className="item">
+                  <h3 className="level-title">Node.js</h3>
+                  <div className="level-bar">
+                    <div className="level-bar-inner" data-level="60%">
+                    </div>                                      
+                  </div>{/*//level-bar*/}                                 
+                </div>{/*//item*/}
+                <div className="item">
+                  <h3 className="level-title">HTML &amp; CSS</h3>
+                  <div className="level-bar">
+                    <div className="level-bar-inner" data-level="60%">
+                    </div>                                      
+                  </div>{/*//level-bar*/}                                 
+                </div>{/*//item*/}
+                <div className="item">
+                  <h3 className="level-title">Laravel</h3>
+                  <div className="level-bar">
+                    <div className="level-bar-inner" data-level="50%">
+                    </div>                                      
+                  </div>{/*//level-bar*/}                                 
+                </div>{/*//item*/}
+                <div className="item">
+                  <h3 className="level-title">Cakephp</h3>
+                  <div className="level-bar">
+                    <div className="level-bar-inner" data-level="80%">
+                    </div>                                      
+                  </div>{/*//level-bar*/}                                 
+                </div>{/*//item*/}
+
+                <div className="item">
+                  <h3 className="level-title">GIT</h3>
+                  <div className="level-bar">
+                    <div className="level-bar-inner" data-level="70%">
+                    </div>                                      
+                  </div>{/*//level-bar*/}                                 
+                </div>{/*//item*/}
+
+                <div className="item">
+                  <h3 className="level-title">UNIX</h3>
+                  <div className="level-bar">
+                    <div className="level-bar-inner" data-level="65%">
+                    </div>                                      
+                  </div>{/*//level-bar*/}                                 
+                </div>{/*//item*/}
+
+                <div className="item">
+                  <h3 className="level-title">MYSQL</h3>
+                  <div className="level-bar">
+                    <div className="level-bar-inner" data-level="75%">
+                    </div>                                      
+                  </div>{/*//level-bar*/}                                 
+                </div>{/*//item*/}
+
+                <div className="item">
+                  <h3 className="level-title">Mongo</h3>
+                  <div className="level-bar">
+                    <div className="level-bar-inner" data-level="70%">
+                    </div>                                      
+                  </div>{/*//level-bar*/}                                 
+                </div>{/*//item*/}
+
+              </div>  
+            </section>{/*//skills-section*/}
+
             <hr />
             <section className="section experiences-section">
               <h2 className="section-title"><i className="fa fa-briefcase" />Experiences</h2>
@@ -151,6 +235,7 @@ var Bio = React.createClass({
                     <li>Log down order related information</li>
                     <li>Print out receipt in PDF file.</li>
                 </ul>                
+                <p><b>Project Stack:</b> React + Node.js (Express) + MongoDB</p>
                 <p><b>Demo:</b> <a href="http://demowebsite.ddns.net:9000/order" target="_blank">demowebsite.ddns.net:9000/order</a></p>
                 <p><b>Source Code:</b> <a href="https://github.com/ganboonhong/planngo" target="_blank">github.com/ganboonhong/planngo</a></p>
                 <p><b>Tutorial:</b> <a href="https://www.youtube.com/watch?v=X6q-tYV0G-Y&feature=em-upload_owner" target="_blank">youtube.com/watch?v=X6q-tYV0G-Y&feature=em-upload_owner</a></p>
@@ -163,6 +248,7 @@ var Bio = React.createClass({
               <div className="item">
                 <p><span className="project-title"><a href="http://y-note.ddns.net/blog/2/9/1" target="_blank">Personal Blog</a></span></p>
                 <p> I use Laravel and React to implement my first (SPA) blog to log down the things I have learned.</p>
+                <p><b>Project Stack:</b> React + Laravel + MySQL</p>
                 <p><b>Demo:</b> <a href="http://y-note.ddns.net" target="_blank">y-note.ddns.net</a>
                     <span style={{'marginLeft': '20px' }}>(<b>username</b>: ganboonhong@gmail.com</span> 
                     <span style={{'margin': '0px 5px 0px 5px' }}> <b>/</b> </span>    
@@ -176,77 +262,7 @@ var Bio = React.createClass({
               <hr />
               
             </section>{/*//section*/}
-            <section className="skills-section section">
-              <h2 className="section-title"><i className="fa fa-rocket" />Skills &amp; Proficiency</h2>
-              <div className="skillset">        
-                <div className="item">
-                  <h3 className="level-title">React</h3>
-                  <div className="level-bar">
-                    <div className="level-bar-inner" data-level="70%">
-                    </div>                                      
-                  </div>{/*//level-bar*/}                                 
-                </div>{/*//item*/}
-                <div className="item">
-                  <h3 className="level-title">jQuery</h3>
-                  <div className="level-bar">
-                    <div className="level-bar-inner" data-level="85%">
-                    </div>                                      
-                  </div>{/*//level-bar*/}                                 
-                </div>{/*//item*/}
-                <div className="item">
-                  <h3 className="level-title">Node.js</h3>
-                  <div className="level-bar">
-                    <div className="level-bar-inner" data-level="60%">
-                    </div>                                      
-                  </div>{/*//level-bar*/}                                 
-                </div>{/*//item*/}
-                <div className="item">
-                  <h3 className="level-title">HTML &amp; CSS</h3>
-                  <div className="level-bar">
-                    <div className="level-bar-inner" data-level="60%">
-                    </div>                                      
-                  </div>{/*//level-bar*/}                                 
-                </div>{/*//item*/}
-                <div className="item">
-                  <h3 className="level-title">Laravel</h3>
-                  <div className="level-bar">
-                    <div className="level-bar-inner" data-level="50%">
-                    </div>                                      
-                  </div>{/*//level-bar*/}                                 
-                </div>{/*//item*/}
-                <div className="item">
-                  <h3 className="level-title">Cakephp</h3>
-                  <div className="level-bar">
-                    <div className="level-bar-inner" data-level="80%">
-                    </div>                                      
-                  </div>{/*//level-bar*/}                                 
-                </div>{/*//item*/}
 
-                <div className="item">
-                  <h3 className="level-title">GIT</h3>
-                  <div className="level-bar">
-                    <div className="level-bar-inner" data-level="70%">
-                    </div>                                      
-                  </div>{/*//level-bar*/}                                 
-                </div>{/*//item*/}
-
-                <div className="item">
-                  <h3 className="level-title">UNIX</h3>
-                  <div className="level-bar">
-                    <div className="level-bar-inner" data-level="65%">
-                    </div>                                      
-                  </div>{/*//level-bar*/}                                 
-                </div>{/*//item*/}
-
-                <div className="item">
-                  <h3 className="level-title">MYSQL</h3>
-                  <div className="level-bar">
-                    <div className="level-bar-inner" data-level="75%">
-                    </div>                                      
-                  </div>{/*//level-bar*/}                                 
-                </div>{/*//item*/}
-              </div>  
-            </section>{/*//skills-section*/}
           </div>{/*//main-body*/}
         </div>
         <footer className="footer">
