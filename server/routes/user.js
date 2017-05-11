@@ -3,7 +3,7 @@ const
 Global          = require('../../src/components/Global'),
 crypto          = require('crypto'),
 User        = require('../mongo/models/user'),
-cookieLife      = Global.cookieLife,
+cookieLife      = Global.cookieLife;
 
 let Result = {success: false, msg: '', msgBsStyle: ''},
 Body       = {};
