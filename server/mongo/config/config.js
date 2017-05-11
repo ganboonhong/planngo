@@ -1,8 +1,7 @@
 const 
 mongoose   = require('mongoose'),
 Global     = require('../../global'),
-production = Global.production,
-url = (production) ? 'mongodb://eodigital:eodigital@ds137271.mlab.com:37271/mlab_eodigital' : 'mongodb://localhost/eodigital';
+production = Global.production,url = (production) ? 'mongodb://eodigital:eodigital@ds137271.mlab.com:37271/mlab_eodigital' : 'mongodb://localhost/eodigital';
 
 mongoose.connect(url);
 // mongoose.connect('mongodb://localhost/eodigital');

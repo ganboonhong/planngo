@@ -2,13 +2,7 @@
 const
 ServerGlobal    = require('../global.js'),
 Global          = require('../../src/components/Global'),
-models          = ServerGlobal.models,
-production      = Global.production,
-cookieLife      = Global.cookieLife,
-env             = Global.env,
-moment          = Global.moment,
-tz              = Global.tz,
-sequelizeConfig = ServerGlobal.sequelizeConfig;
+Order           = require('../mongo/models/order');
 
 let Result = {success: false, msg: '', msgBsStyle: ''},
 Body       = {};
@@ -21,19 +15,16 @@ module.exports = (app) => {
         fs         = require('fs'),
         pdf        = require('html-pdf'),
         jade       = require('jade'),
-        Order      = models.Order,
         orderId    = req.params.id;
 
         Order.findOne({
-            where: {id: orderId}
-        }).then((orderRaw) => {
+            _id: orderId
+        }).then((order) => {
             
-
             const 
             htmlPath   = __dirname + '/../../views/htmls/receipt.html',
             pdfPath    = __dirname + '/../../views/pdfs/receipt.pdf',
             html       = fs.readFileSync( htmlPath, 'utf8'),
-            order      = orderRaw.get({plain: true}),
             options    = {format: 'A4'},
             htmlString = jade.renderFile(__dirname + '/../../views/receipt.jade', {
                 title: order.sequence,
