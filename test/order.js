@@ -4,6 +4,8 @@ supertest = require('supertest'),
 expect    = require('chai').expect
 server    = supertest.agent('http://localhost:9000');
 
+let id;
+
 describe('orders', () => {
   it('should return JSON object with values', function (done) {
     server
@@ -12,9 +14,9 @@ describe('orders', () => {
         const 
         jsonObj  = JSON.parse(res.text),
         sequence = jsonObj.list[0].sequence,
-        id       = jsonObj.list[0].id;
+        price    = jsonObj.list[0].price;
 
-        expect(id).to.be.a('number');
+        expect(price).to.be.a('number');
         expect(sequence).to.be.a('string');
 
         done();
@@ -32,6 +34,7 @@ describe('CREATE new order', () => {
         .send(order)
         .end( (err, res) => {
             expect(order.sequence).equal(res.body.sequence);
+            id = res.body._id;
             done();
         } )
 
@@ -40,7 +43,8 @@ describe('CREATE new order', () => {
 
 describe('UPDATE new order', () => {
     it('should return updated order', (done) => {
-        const order = { sequence: 'updated value', price: '12', remarks: '', id: '134' };
+
+        const order = { sequence: 'updated value', price: '12', remarks: '', id: id };
 
         server
         .post('/order')
@@ -50,5 +54,20 @@ describe('UPDATE new order', () => {
             done();
         } )
 
+    })
+})
+
+describe('DELETE an order', () => {
+    it('should delete an order', (done) => {
+
+        const order = { id: id };
+
+        server
+        .delete('/order')
+        .send(order)
+        .end( (err, res) => {
+            expect(1).equal(res.body.ok);
+            done();
+        })
     })
 })

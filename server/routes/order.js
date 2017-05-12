@@ -15,7 +15,8 @@ module.exports = (app) => {
 
         Order.delete({_id: Body.id}, (err, result) => {
             if(err) throw err;
-            res.send(Body);
+
+            res.send(result);
         })
         
     })  // eo delete order
@@ -73,12 +74,12 @@ module.exports = (app) => {
             const order = new Order(Body);
             order.save((err, order) => {
                 if(err) throw err;
-                res.send(Body);
+                res.send(order);
             });
         }else{
             Order.findOneAndUpdate({_id: Body.id}, {$set: Body}, (err, order) => {
                 if(err) throw err;
-                res.send(Body);
+                res.send(order);
             });
         }
     })  // eo post order
