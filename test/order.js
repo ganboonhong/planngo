@@ -1,8 +1,11 @@
 const 
-assert    = require('chai').assert,
-supertest = require('supertest'),
-expect    = require('chai').expect
-server    = supertest.agent('http://localhost:9000');
+assert     = require('chai').assert,
+supertest  = require('supertest'),
+expect     = require('chai').expect,
+Global     = require('../src/components/Global'),
+production = Global.production,
+url        = (production) ? 'http://demowebsite.ddns.net' : 'http://localhost:9000',
+server     = supertest.agent(url);
 
 let id;
 
