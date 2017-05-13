@@ -1,6 +1,6 @@
 -#!/bin/sh
 ssh francis@138.68.11.86 <<EOF
-cd /var/www/demowebsite
+cd /var/www/html/demowebsite
 git pull
 npm run build
 exit
