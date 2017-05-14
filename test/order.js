@@ -16,10 +16,11 @@ describe('orders', () => {
     server
     .get('/orders')
     .end( (err, res) => {
+
         const 
-        jsonObj  = JSON.parse(res.text),
-        sequence = jsonObj.list[0].sequence,
-        price    = jsonObj.list[0].price;
+        jsonObj  = res.body.list[0],
+        sequence = jsonObj.sequence,
+        price    = jsonObj.price;
 
         expect(price).to.be.a('number');
         expect(sequence).to.be.a('string');
