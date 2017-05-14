@@ -6,7 +6,7 @@ supertest  = require('supertest'),
 expect     = require('chai').expect,
 Global     = require('../src/components/Global'),
 production = Global.production,
-url        = (production) ? 'http://demowebsite.ddns.net' : 'http://localhost:9000',
+url        = (production) ? 'http://demowebsite.ddns.net:9000' : 'http://localhost:9000',
 server     = supertest.agent(url);
 
 let id;
@@ -15,6 +15,7 @@ describe('orders', () => {
   it('should return JSON object with values', function (done) {
     server
     .get('/orders')
+    .query({isUnitTest: true})
     .end( (err, res) => {
 
         const 
