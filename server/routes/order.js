@@ -77,7 +77,11 @@ module.exports = (app) => {
                 res.send(order);
             });
         }else{
-            Order.findOneAndUpdate({_id: Body.id}, {$set: Body}, (err, order) => {
+            Order.findOneAndUpdate(
+                {_id: Body.id}, 
+                {$set: Body}, 
+                {new: true},  // return updated doc instead of original doc
+                (err, order) => {
                 if(err) throw err;
                 res.send(order);
             });
