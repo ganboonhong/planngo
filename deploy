@@ -3,5 +3,6 @@ ssh francis@138.68.11.86 <<EOF
 cd /var/www/html/demowebsite
 git pull
 npm run build
+npm test
 exit
 EOF
