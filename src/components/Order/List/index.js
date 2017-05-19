@@ -148,7 +148,7 @@ export default class List extends Component {
                     <thead>
                       <tr>
                         <th className="text-center">#</th>
-                        <th className="text-center">Sequence No.123</th>
+                        <th className="text-center">Sequence No.</th>
                         <th className="text-center">Price</th>
                         <th className="remarks text-center">Remarks</th>
                         <th className="lastUpdate text-center">Last Update</th>
