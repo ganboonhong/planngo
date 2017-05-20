@@ -25,7 +25,7 @@ module.exports = (app) => {
 
         if(!req.cookies.email && production && !req.query.isUnitTest) {
             // in development env, cookie can't be set between different port, hence there's no need to check authority
-            res.send({message: 'error'}); return;
+            // res.send({message: 'error'}); return;
         }
 
         let 

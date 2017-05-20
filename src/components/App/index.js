@@ -230,7 +230,7 @@ var Bio = React.createClass({
               <hr />
 
               <div className="item">
-                <p><span className="project-title"><a href="http://demowebsite.ddns.net:9000/order" target="_blank">Mini POS System (Work In Progress)</a></span></p>
+                <p><span className="project-title"><a href="http://demowebsite.ddns.net:80/order" target="_blank">Mini POS System (Work In Progress)</a></span></p>
                 <p>I am using Node.js and React to create a mini POS system for a photography studio.</p>
                 <p>They are able to</p>
                 <ul>
@@ -238,7 +238,7 @@ var Bio = React.createClass({
                     <li>Print out receipt in PDF file.</li>
                 </ul>                
                 <p><b>Project Stack:</b> React + Node.js (Express) + MongoDB</p>
-                <p><b>Demo:</b> <a href="http://demowebsite.ddns.net:9000/order" target="_blank">demowebsite.ddns.net:9000/order</a></p>
+                <p><b>Demo:</b> <a href="http://demowebsite.ddns.net:80/order" target="_blank">demowebsite.ddns.net:80/order</a></p>
                 <p><b>Source Code:</b> <a href="https://github.com/ganboonhong/planngo" target="_blank">github.com/ganboonhong/planngo</a></p>
                 <p><b>Tutorial:</b> <a href="https://www.youtube.com/watch?v=X6q-tYV0G-Y&feature=em-upload_owner" target="_blank">youtube.com/watch?v=X6q-tYV0G-Y&feature=em-upload_owner</a></p>
                 <span className="project-tagline">
