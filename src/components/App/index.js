@@ -238,7 +238,7 @@ var Bio = React.createClass({
                     <li>Print out receipt in PDF file.</li>
                 </ul>                
                 <p><b>Project Stack:</b> React + Node.js (Express) + MongoDB</p>
-                <p><b>Demo:</b> <a href="https://demowebsite.ddns.net/order" target="_blank">demowebsite.ddns.net/join</a></p>
+                <p><b>Demo:</b> <a href="https://demowebsite.ddns.net/order" target="_blank">https://demowebsite.ddns.net/join</a></p>
                 <p><b>Source Code:</b> <a href="https://github.com/ganboonhong/planngo" target="_blank">github.com/ganboonhong/planngo</a></p>
                 <p><b>Tutorial:</b> <a href="https://www.youtube.com/watch?v=X6q-tYV0G-Y&feature=em-upload_owner" target="_blank">youtube.com/watch?v=X6q-tYV0G-Y&feature=em-upload_owner</a></p>
                 <span className="project-tagline">
