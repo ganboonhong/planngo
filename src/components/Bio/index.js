@@ -229,7 +229,7 @@ var BioZh = React.createClass({
               <hr />
 
               <div className="item">
-                <p><span className="project-title"><a href="http://demowebsite.ddns.net:9000/order" target="_blank">銷售時點情報系統(POS) (專案仍在進行中)</a></span></p>
+                <p><span className="project-title"><a href="https://demowebsite.ddns.net/order" target="_blank">銷售時點情報系統(POS) (專案仍在進行中)</a></span></p>
                 <p>我使用 Node.js 作為後端的語言，  React 作為前端的語言，來為一家攝影社建置一個銷售時點情報系統(POS)。</p>
                 <p>他們能夠使用此系統</p>
                 <ul>
@@ -237,7 +237,7 @@ var BioZh = React.createClass({
                     <li>列印PDF發票</li>
                 </ul>                
                 <p><b>Stack:</b> React + Node.js (Express) + MongoDB</p>
-                <p><b>網站:</b> <a href="http://demowebsite.ddns.net:9000/order" target="_blank">demowebsite.ddns.net:9000/order</a></p>
+                <p><b>網站:</b> <a href="https://demowebsite.ddns.net/join" target="_blank">https://demowebsite.ddns.net/join</a></p>
                 <p><b>源碼:</b> <a href="https://github.com/ganboonhong/planngo" target="_blank">github.com/ganboonhong/planngo</a></p>
                 <p><b>教學影片:</b> <a href="https://www.youtube.com/watch?v=X6q-tYV0G-Y&feature=em-upload_owner" target="_blank">youtube.com/watch?v=X6q-tYV0G-Y&feature=em-upload_owner</a></p>
                 <span className="project-tagline">
