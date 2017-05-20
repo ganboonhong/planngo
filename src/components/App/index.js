@@ -170,22 +170,24 @@ var Bio = React.createClass({
 
               <hr />
 
+              {/*
               <div className="item">
                 <div className="meta">
                   <div className="upper-row">
                     <h3 className="job-title">Microsoft-Intel IoT Hackathon</h3>
                     <div className="time">2016 Dec. 15 - 16</div>
-                  </div>{/*//upper-row*/}
+                  </div>
                   <div className="company">Singapore</div>
-                </div>{/*//meta*/}
+                </div>
                 <div className="details">
                   <p>
                     Our team won first prize among the teams from Thailand and Indonesia.
                   </p>  
-                </div>{/*//details*/}
-              </div>{/*//item*/}
+                </div>
+              </div>
 
               <hr />
+              */}
 
 
               <div className="item">

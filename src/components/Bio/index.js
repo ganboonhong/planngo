@@ -169,22 +169,24 @@ var BioZh = React.createClass({
 
               <hr />
 
+              {/*
               <div className="item">
                 <div className="meta">
                   <div className="upper-row">
                     <h3 className="job-title">Microsoft-Intel IoT Hackathon</h3>
                     <div className="time">2016 Dec. 15 - 16</div>
-                  </div>{/*//upper-row*/}
+                  </div>
                   <div className="company">新加坡</div>
-                </div>{/*//meta*/}
+                </div>
                 <div className="details">
                   <p>
                     我們的團隊在此次 Hackathon中，從印尼和泰國的隊伍中脫穎而出，得到了冠軍。
                   </p>  
-                </div>{/*//details*/}
-              </div>{/*//item*/}
+                </div>
+              </div>
 
               <hr />
+              */}
 
 
               <div className="item">
