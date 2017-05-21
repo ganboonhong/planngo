@@ -16,7 +16,7 @@ ajaxLoaderGiF = Global.ajaxLoaderGiF;
 
 let currentUrl = foo.location.href.replace('https', 'http');
 const lastSlashIndex = currentUrl.lastIndexOf('/');
-const domain = (production) ? currentUrl.slice(0, lastSlashIndex) + ':9000' + currentUrl.slice(lastSlashIndex) : Global.localDomain;
+const domain = (production) ? currentUrl.slice(0, lastSlashIndex) + ':9000' : Global.localDomain;
 
 let FilterObj;
 
