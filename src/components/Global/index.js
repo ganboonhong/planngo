@@ -1,3 +1,4 @@
+import foo from 'window-or-global';
 var 
 moment = require('moment'),
 obj    = {
@@ -11,13 +12,13 @@ obj    = {
     cookieLife: 60*1000,
 }
 
-function getWindow(){
-    return this.location.href
-}
+// function getWindow(){
+//     return this.location.href
+// }
 
-var href = getWindow.apply(window);
+// var href = getWindow.apply(window);
 
-var currentUrl = href.replace('https', 'http');
+var currentUrl = foo.location.href.replace('https', 'http');
 var lastSlashIndex = currentUrl.lastIndexOf('/');
 currentUrl = currentUrl.slice(0, lastSlashIndex) + ':9000' + currentUrl.slice(lastSlashIndex);
 
