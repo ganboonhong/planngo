@@ -11,19 +11,7 @@ obj    = {
     cookieLife: 60*1000,
 }
 
-// function getWindow(){
-//     return this.location.href
-// }
-
-// var href = getWindow.apply(window);
-
-
-// var currentUrl = foo.location.href.replace('https', 'http');
-// var lastSlashIndex = currentUrl.lastIndexOf('/');
-// currentUrl = currentUrl.slice(0, lastSlashIndex) + ':9000' + currentUrl.slice(lastSlashIndex);
-
-// obj.productionDomain = currentUrl;
-obj.env              = (obj.production) ? 'production' : 'development';
-obj.ajaxLoaderGiF    = (obj.production) ?  '/assets/ajax-loader.gif' : obj.localReactDomain + '/assets/ajax-loader.gif';
+obj.env           = (obj.production) ? 'production' : 'development';
+obj.ajaxLoaderGiF = (obj.production) ?  '/assets/ajax-loader.gif' : obj.localReactDomain + '/assets/ajax-loader.gif';
 
 module.exports = obj;
