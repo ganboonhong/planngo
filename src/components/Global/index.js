@@ -1,5 +1,4 @@
-'use strict';
-const 
+var 
 moment = require('moment'),
 obj    = {
     production: (process.env.NODE_ENV === 'development') ? false : true,
@@ -11,8 +10,8 @@ obj    = {
     moment: moment,
     cookieLife: 60*1000,
 }
-let currentUrl = window.location.href.replace('https', 'http');
-const lastSlashIndex = currentUrl.lastIndexOf('/');
+var currentUrl = window.location.href.replace('https', 'http');
+var lastSlashIndex = currentUrl.lastIndexOf('/');
 currentUrl = currentUrl.slice(0, lastSlashIndex) + ':9000' + currentUrl.slice(lastSlashIndex);
 
 obj.productionDomain = currentUrl;
