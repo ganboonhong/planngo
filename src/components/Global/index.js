@@ -18,6 +18,7 @@ obj    = {
 
 // var href = getWindow.apply(window);
 
+
 var currentUrl = foo.location.href.replace('https', 'http');
 var lastSlashIndex = currentUrl.lastIndexOf('/');
 currentUrl = currentUrl.slice(0, lastSlashIndex) + ':9000' + currentUrl.slice(lastSlashIndex);
