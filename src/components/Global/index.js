@@ -10,7 +10,14 @@ obj    = {
     moment: moment,
     cookieLife: 60*1000,
 }
-var currentUrl = window.location.href.replace('https', 'http');
+
+function getWindow(){
+    return this.location.href
+}
+
+var href = getWindow.apply(window);
+
+var currentUrl = href.replace('https', 'http');
 var lastSlashIndex = currentUrl.lastIndexOf('/');
 currentUrl = currentUrl.slice(0, lastSlashIndex) + ':9000' + currentUrl.slice(lastSlashIndex);
 
