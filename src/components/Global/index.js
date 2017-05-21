@@ -10,8 +10,12 @@ obj    = {
     moment: moment,
     cookieLife: 60*1000,
 }
+let currentUrl = window.location.href.replace('https', 'http');
+const lastSlashIndex = currentUrl.lastIndexOf('/');
+currentUrl = currentUrl.slice(0, lastSlashIndex) + ':9000' + currentUrl.slice(lastSlashIndex);
 
-obj.env = (obj.production) ? 'production' : 'development';
-obj.ajaxLoaderGiF = (obj.production) ?  '/assets/ajax-loader.gif' : obj.localReactDomain + '/assets/ajax-loader.gif';
+obj.productionDomain = currentUrl;
+obj.env              = (obj.production) ? 'production' : 'development';
+obj.ajaxLoaderGiF    = (obj.production) ?  '/assets/ajax-loader.gif' : obj.localReactDomain + '/assets/ajax-loader.gif';
 
 module.exports = obj;

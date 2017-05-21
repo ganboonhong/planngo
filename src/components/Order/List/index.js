@@ -10,7 +10,7 @@ import './index.scss';
 
 const Global = require('../../Global'),
 production   = Global.production,
-domain       = (production) ? ':9000' : Global.localDomain,
+domain       = (production) ? Global.productionDomain : Global.localDomain,
 ajaxLoaderGiF = Global.ajaxLoaderGiF;
 
 let FilterObj;
