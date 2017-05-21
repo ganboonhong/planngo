@@ -7,11 +7,16 @@ import { Table, Button, Glyphicon, Modal, Grid, OverlayTrigger, Tooltip } from '
 import TitleList from '../TitleList';
 import Filter from '../Filter';
 import './index.scss';
+import foo from 'window-or-global';
 
 const Global = require('../../Global'),
 production   = Global.production,
-domain       = (production) ? Global.productionDomain : Global.localDomain,
+// domain       = (production) ? Global.productionDomain : Global.localDomain,
 ajaxLoaderGiF = Global.ajaxLoaderGiF;
+
+let currentUrl = foo.location.href.replace('https', 'http');
+const lastSlashIndex = currentUrl.lastIndexOf('/');
+const domain = (production) ? currentUrl.slice(0, lastSlashIndex) + ':9000' + currentUrl.slice(lastSlashIndex) : Global.localDomain;
 
 let FilterObj;
 
