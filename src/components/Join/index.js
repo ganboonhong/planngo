@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router';
 import './style.css';
 import Content from '../Content';
 import Footer from '../Footer';
@@ -13,7 +14,7 @@ class Join extends Component {
       <div>
         <h1 style={{'textAlign': 'center'}}>
             <Label bsStyle="primary">Join Us</Label>
-            <a href="/login">
+            <Link to="/login">
                 <OverlayTrigger placement="right" overlay={tooltip}>
                       <Glyphicon 
                       glyph="log-in" 
@@ -21,7 +22,7 @@ class Join extends Component {
                       onClick={this.logout}
                       />
                 </OverlayTrigger>
-            </a>
+            </Link>
         </h1>
         <Content />
         <Footer />
